@@ -1,0 +1,55 @@
+import React, { Component } from 'react'
+
+export default class MainContainer extends Component {
+    render() {
+        return (
+            <div>
+            <div class="header">
+                <header>Header</header>
+            </div>
+            <div class="topnav">
+                <a href="#">Link</a>
+                <a href="#">Link</a>
+                <a href="#">Link</a>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <form>
+                    <div className="field">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <label>Username</label>
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Username"
+                    />
+                    </div>
+                    <div className="field">
+                    <i class="glyphicon glyphicon-cloud"></i>
+                    <label>Password</label>
+                    <input
+                        name="password"
+                        type="password"
+                        placeholder="Password"
+                    />
+                    </div>
+                    <button type="submit" className="button">
+                    Submit
+                    </button>
+                    </form>
+                </div>
+
+            <div class="column">
+                <h2>Column</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
+            </div>
+  
+            <div class="column">
+                <h2>Column</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet pretium urna. Vivamus venenatis velit nec neque ultricies, eget elementum magna tristique. Quisque vehicula, risus eget aliquam placerat, purus leo tincidunt eros, eget luctus quam orci in velit. Praesent scelerisque tortor sed accumsan convallis.</p>
+            </div>
+          </div>
+        </div>
+        )
+    }
+}
