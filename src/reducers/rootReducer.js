@@ -1,9 +1,13 @@
-const defaultState = {
-
-}
-
-function rootReducer(state = defaultState, action) {
-    return state;
-}
+const rootReducer = (state = { users: [], loading: false }, action) => {
+    switch(action.type) {
+      case 'ADD_USERS':
+        return {
+          ...state,
+          users: action.users
+        }
+      default:
+        return state;
+    }
+  }
 
 export default rootReducer

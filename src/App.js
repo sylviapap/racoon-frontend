@@ -1,15 +1,32 @@
-import React from 'react';
-import MainContainer from './containers/MainContainer'
-import MapContainer from './containers/MapContainer'
-// import logo from './logo.svg';
-// import './App.css';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
+import {fetchUsers} from './actions/fetchUsers'
 
-function App() {
-  return (
-    <div>
-      <MapContainer />
-    </div>
-  );
+import MainContainer from './containers/MainContainer'
+// import MapContainer from './containers/MapContainer'
+
+class App extends Component {   
+  
+  componentDidMount() {
+    this.props.fetchUsers()
+  }
+  
+  render() {
+    return (
+      <div>
+        <MainContainer users={this.props.users}/>
+      </div>
+    );
+  }
+  
 }
 
-export default App;
+const mapDispatchToProps = (state) => {
+  return {
+    users: state.users
+  }
+}
+
+
+export default connect(mapDispatchToProps, { fetchUsers })(App)
