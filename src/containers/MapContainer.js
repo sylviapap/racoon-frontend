@@ -1,53 +1,45 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
-
-const mapStyles = {
-    width: '100%',
-    height: '100%'
-  };
+import { connect } from 'react-redux';
+import fetchInitialMap from '../actions/fetchInitialMap';
+import GoogleMap from './GoogleMap'
 
 class MapContainer extends Component {
-    state = {
-        showingInfoWindow: false,
-        activeMarker: {},
-        selectedPlace: {},
-      };
-     
-      onMarkerClick = (props, marker, e) =>
-        this.setState({
-          selectedPlace: props,
-          activeMarker: marker,
-          showingInfoWindow: true
-        });
-     
-      onMapClicked = (props) => {
-        if (this.state.showingInfoWindow) {
-          this.setState({
-            showingInfoWindow: false,
-            activeMarker: null
-          })
-        }
-      };
-     
-      render() {
-        return (
-          <Map google={this.props.google}
-              onClick={this.onMapClicked}>
-            <Marker onClick={this.onMarkerClick}
-                    name={'Current location'} />
-     
-            <InfoWindow
-              marker={this.state.activeMarker}
-              visible={this.state.showingInfoWindow}>
-                <div>
-                  <h1>{this.state.selectedPlace.name}</h1>
-                </div>
-            </InfoWindow>
-          </Map>
-        )
-      }
+  constructor() {
+    super()
+    this.state = {
+      initialMap: [],
+      centerLat: 37.7749,
+      centerLong: -122.4194,
+      zoom: 14
+    }
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({initialMap: props.initialMap})
+  }
+  
+  // componentDidUpdate() {
+  //   this.props.initialMap
+  // }
+  
+  render() {
+    return (
+      <div className="map">
+        <GoogleMap data={this.props.initialMap} />
+      </div>
+    )
+  }
 }
 
-export default GoogleApiWrapper({
-  apiKey: process.env.REACT_APP_API_KEY
-})(MapContainer);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchInitialMap: () => { dispatch(fetchInitialMap()) }
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    initialMap: state.initialMap
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(MapContainer)

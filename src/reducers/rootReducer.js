@@ -1,13 +1,26 @@
-const rootReducer = (state = { users: [], loading: false }, action) => {
-    switch(action.type) {
-      case 'ADD_USERS':
-        return {
-          ...state,
-          users: action.users
-        }
-      default:
-        return state;
-    }
-  }
+const intitialState = {
+  initialMap: [],
+  mapFilters: {},
+  displayMap: null
+}
 
-export default rootReducer
+const rootReducer = (state = intitialState, action) => {
+  switch(action.type) {
+    case 'ADD_USERS':
+      return {
+        ...state,
+        users: action.users
+      }
+
+    case 'GET_MAP':
+      return {
+        ...state, 
+        initialMap: action.initialMap
+      }
+
+    default:
+      return state;
+  }
+}
+
+export default rootReducer;
