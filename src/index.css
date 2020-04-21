@@ -1,14 +1,9 @@
-* {
+.App {
   box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
 }
 
 code {
@@ -39,12 +34,6 @@ button[type=submit] {
 
 button[type=submit]:hover {
   background-color: #90a7d3;
-}
-
-div {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
 }
 
 .header {
@@ -89,5 +78,14 @@ div {
 @media screen and (max-width: 600px) {
   .column {
     width: 100%;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

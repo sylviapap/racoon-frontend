@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import {fetchUsers} from './actions/fetchUsers'
 
 import MainContainer from './containers/MainContainer'
-// import MapContainer from './containers/MapContainer'
+import MapContainer from './containers/MapContainer'
 
 class App extends Component {   
   
@@ -14,9 +14,13 @@ class App extends Component {
   
   render() {
     return (
-      <div>
-        <MainContainer users={this.props.users}/>
-      </div>
+      <Fragment>
+        <Route exact path="/" component={MapContainer} />
+        <Route exact path="/main" render= { () => { return(
+        <MainContainer users={this.props.users}/>)}
+        }
+        />
+      </Fragment>
     );
   }
   

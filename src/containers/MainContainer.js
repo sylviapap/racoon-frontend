@@ -6,14 +6,12 @@ export default class MainContainer extends Component {
       }
     render() {
         return (
-            <div>
+            <div className="App">
             <div className="header">
                 <header>Header</header>
             </div>
             <div className="topnav">
-                <a href="#">Link</a>
-                <a href="#">Link</a>
-                <a href="#">Link</a>
+                <p>Link</p>
             </div>
             <div className="row">
                 <div className="column">
