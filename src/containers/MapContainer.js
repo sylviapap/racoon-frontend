@@ -34,7 +34,7 @@ class MapContainer extends Component {
     console.log(this.props)
     return (
       <div className="map">
-        <GoogleMap data={this.props.initialMap} />
+        <GoogleMap history={this.props.history} data={this.props.initialMap} />
       </div>
     )
   }

@@ -20,8 +20,8 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route exact path="/" render={() => 
-          <MapContainer initialMap={this.props.initialMap}/>} 
+        <Route exact path="/" render={(props) => 
+          <MapContainer {...props} initialMap={this.props.initialMap}/>} 
           />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/login" component={Login} />
