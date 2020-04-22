@@ -14,9 +14,9 @@ class MapContainer extends Component {
     }
   }
 
-  componentDidMount() {
-    this.props.fetchInitialMap()
-  }
+  // componentDidMount() {
+  //   this.props.fetchInitialMap()
+  // }
 
   // componentWillReceiveProps(props) {
   //   this.setState({initialMap: props.initialMap})
@@ -40,10 +40,12 @@ class MapContainer extends Component {
   }
 }
 
-const mapDispatchToProps = state => {
-  return {
-    initialMap: state.initialMap
-  }
-}
+// const mapDispatchToProps = state => {
+//   return {
+//     initialMap: state.initialMap
+//   }
+// }
 
-export default connect(mapDispatchToProps, { fetchInitialMap })(MapContainer)
+// export default connect(mapDispatchToProps, { fetchInitialMap })(MapContainer)
+
+export default MapContainer

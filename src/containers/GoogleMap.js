@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import InfoWindowFormat  from '../components/InfoWindowFormat'
+import {BrowserRouter as Router, Link} from "react-router-dom"
 
 const mapStyles = {
     width: '100%',
     height: '100%'
 };
 
-const containerStyle = {
-    position: 'absolute',  
-    width: '75%',
-    height: '95%'
-};
+// const containerStyle = {
+//   position: 'absolute'
+// };
 
 class GoogleMap extends Component {
     constructor() {
@@ -66,8 +65,8 @@ class GoogleMap extends Component {
         <Map 
             google={this.props.google}
             onClick={this.onMapClicked}
-            containerStyle={containerStyle}
-            zoom={14}
+            // containerStyle={containerStyle}
+            zoom={2}
             ref={(ref) => {this.map = ref}}
             style={mapStyles}
             initialCenter={{
@@ -80,11 +79,12 @@ class GoogleMap extends Component {
                     <Marker 
                     onClick={this.onMarkerClick}
                     position={{
-                        lat: object["latitude"],
-                        lng: object["longitude"]}}
-                    name={object.title}
+                        lat: object.latitude,
+                        lng: object.longitude}}
+                    title={object.title}
                     address={object.address}
                     key={object.id}
+                    message="hi"
                     />))
                     :
                     null
@@ -98,7 +98,11 @@ class GoogleMap extends Component {
               marker={this.state.activeMarker}
               visible={this.state.showingInfoWindow}>
                 <div>
-                  <h1>{this.state.selectedPlace.name}</h1>
+                  <h3>{this.state.selectedPlace.title}</h3>
+                  <p>{this.state.selectedPlace.address}</p>
+                  <p>{this.state.selectedPlace.message}</p>
+                  <Router><Link to="/">View More</Link></Router>
+                  
                 </div>
             </InfoWindowFormat>
           </Map>

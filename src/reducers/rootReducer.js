@@ -4,7 +4,6 @@ const intitialState = {
 }
 
 const rootReducer = (state = intitialState, action) => {
-  console.log(state.initialMap)
   switch(action.type) {
     case "GET_USERS":
       return {
