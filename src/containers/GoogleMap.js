@@ -60,10 +60,10 @@ class GoogleMap extends Component {
         }
       };
 
-    handleInfoClick = (place) => {
+    handleMarkerClick = (place) => {
       console.log(place)
-      let eventId = place.id
-      this.props.history.push(`/info/${eventId}`)
+      let markerId = place.id
+      this.props.history.push(`/marker/${markerId}`)
     }
      
     render() {
@@ -108,7 +108,7 @@ class GoogleMap extends Component {
                   <h3>{this.state.selectedPlace.title}</h3>
                   <p>{this.state.selectedPlace.address}</p>
                   <p>{this.state.selectedPlace.message}</p>
-                  <button className="button" onClick={() => this.handleInfoClick(this.state.selectedPlace)} key={this.state.selectedPlace.id}>More Info</button>
+                  <button className="button" onClick={() => this.handleMarkerClick(this.state.selectedPlace)} key={this.state.selectedPlace.id}>More Info</button>
                   
                 </div>
             </InfoWindowFormat>

@@ -8,7 +8,7 @@ import MainContainer from './containers/MainContainer'
 import MapContainer from './containers/MapContainer'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
-import InfoCard from './components/InfoCard'
+import MarkerCard from './components/MarkerCard'
 
 class App extends Component {   
   
@@ -28,8 +28,8 @@ class App extends Component {
         <Route exact path="/main" render= { () => { return(
           <MainContainer users={this.props.users}/>)}}
           />
-        <Route exact path="/info/:id" render={(props) => 
-          <InfoCard {...props} />} 
+        <Route exact path="/marker/:id" render={(props) => 
+          <MarkerCard {...props} />} 
           />
       </Switch>
     );

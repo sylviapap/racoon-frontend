@@ -1,28 +1,28 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-class InfoCard extends Component{
+class MarkerCard extends Component{
     constructor(){
         super()
         this.state ={
-            eventData: {}
+            markerData: {}
         }
     }
 
     componentDidMount(){
         let id = this.props.match.params.id
-        fetch(`http://localhost:3001/api/v1/map_events/${id}`)
+        fetch(`http://localhost:3001/api/v1/map_markers/${id}`)
         .then(response => response.json())
-        .then(json => { console.log(json); this.setState({eventData: json})})
+        .then(json => { console.log(json); this.setState({markerData: json})})
     }
 
     render(){
         return(
-            <div className="info-page">
-                <h1 className="info-page-title">{this.state.eventData.title}</h1>
-                <p>{this.state.eventData.address}</p>
-                <p>{this.state.eventData.comments ? 
-                (this.state.eventData.comments.map(comment => comment.content))
+            <div className="marker-page">
+                <h1 className="marker-page-title">{this.state.markerData.title}</h1>
+                <p>{this.state.markerData.address}</p>
+                <p>{this.state.markerData.comments ? 
+                (this.state.markerData.comments.map(comment => comment.content))
                 :
                 null
             }</p>
@@ -39,4 +39,4 @@ const mapDispatchToProps = {
     
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(InfoCard)
+export default connect(mapStateToProps, mapDispatchToProps)(MarkerCard)
