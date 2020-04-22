@@ -18,7 +18,7 @@ class App extends Component {
   
   render() {
     return (
-      <Fragment>
+      <Switch>
         <Route exact path="/" render={() => <MapContainer initialMap={this.props.initialMap}/>} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/login" component={Login} />
@@ -26,7 +26,7 @@ class App extends Component {
         <MainContainer users={this.props.users}/>)}
         }
         />
-      </Fragment>
+      </Switch>
     );
   }
   
