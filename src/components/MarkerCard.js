@@ -1,5 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
+import { BrowserRouter as Router, NavLink, withRouter, Redirect} from 'react-router-dom';
+
 
 class MarkerCard extends Component{
     constructor(){
@@ -18,15 +20,19 @@ class MarkerCard extends Component{
 
     render(){
         return(
+            <Fragment>
+            <Router><NavLink to="/">Home</NavLink></Router>
             <div className="marker-page">
                 <h1 className="marker-page-title">{this.state.markerData.title}</h1>
                 <p>{this.state.markerData.address}</p>
-                <p>{this.state.markerData.comments ? 
-                (this.state.markerData.comments.map(comment => comment.content))
+                <h2>Comments:</h2>
+                <ul>{this.state.markerData.comments ? 
+                (this.state.markerData.comments.map(comment => <li>{comment.content}</li>))
                 :
                 null
-            }</p>
+            }</ul>
             </div>
+            </Fragment>
         )
     }
 }
@@ -39,4 +45,4 @@ const mapDispatchToProps = {
     
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MarkerCard)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MarkerCard))
