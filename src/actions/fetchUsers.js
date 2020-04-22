@@ -3,7 +3,7 @@ export const fetchUsers = () => {
       fetch('http://localhost:3001/api/v1/users')
       .then(resp => resp.json())
       .then(json => {
-        dispatch({ type: 'ADD_USERS', users: json })
+        dispatch({ type: 'GET_USERS', users: json })
       })
     }
   }

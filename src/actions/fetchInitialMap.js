@@ -1,13 +1,12 @@
 import {API_ROOT, token, authHeaders, headers} from './api'
 
-const fetchInitialMap = () => {
-    return(dispatch) => {
-        return fetch(`${API_ROOT}/map_events`)
+export const fetchInitialMap = () => {
+    return (dispatch) => {
+        fetch('http://localhost:3001/api/v1/map_events')
         .then(resp => resp.json())
+        // .then(r => console.log(r))
         .then(json => {
             dispatch({ type: "GET_MAP", initialMap: json})
         })
     }
 }
-
-export default fetchInitialMap

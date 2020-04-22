@@ -1,18 +1,18 @@
 const intitialState = {
-  initialMap: [],
   mapFilters: {},
-  displayMap: null
+  users: []
 }
 
 const rootReducer = (state = intitialState, action) => {
+  console.log(state.initialMap)
   switch(action.type) {
-    case 'ADD_USERS':
+    case "GET_USERS":
       return {
         ...state,
         users: action.users
       }
 
-    case 'GET_MAP':
+    case "GET_MAP":
       return {
         ...state, 
         initialMap: action.initialMap

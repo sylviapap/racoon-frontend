@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import fetchInitialMap from '../actions/fetchInitialMap';
+import { fetchInitialMap } from '../actions/fetchInitialMap';
 import GoogleMap from './GoogleMap'
 
 class MapContainer extends Component {
@@ -14,15 +14,24 @@ class MapContainer extends Component {
     }
   }
 
-  componentWillReceiveProps(props) {
-    this.setState({initialMap: props.initialMap})
+  componentDidMount() {
+    this.props.fetchInitialMap()
   }
+
+  // componentWillReceiveProps(props) {
+  //   this.setState({initialMap: props.initialMap})
+  // }
   
   // componentDidUpdate() {
-  //   this.props.initialMap
+  //   this.props.initialMap && this.autoZoom()
+  // }
+
+  // autoZoom = () => { 
+  //   console.log("zoom", this.props.initialMap[0])
   // }
   
   render() {
+    console.log(this.props)
     return (
       <div className="map">
         <GoogleMap data={this.props.initialMap} />
@@ -31,15 +40,10 @@ class MapContainer extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchInitialMap: () => { dispatch(fetchInitialMap()) }
-  }
-}
-
-const mapStateToProps = (state) => {
+const mapDispatchToProps = state => {
   return {
     initialMap: state.initialMap
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(MapContainer)
+
+export default connect(mapDispatchToProps, { fetchInitialMap })(MapContainer)

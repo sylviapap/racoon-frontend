@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import {fetchUsers} from './actions/fetchUsers'
+import {fetchInitialMap} from './actions/fetchInitialMap'
 
 import MainContainer from './containers/MainContainer'
 import MapContainer from './containers/MapContainer'
@@ -11,13 +12,14 @@ import SignUp from './components/SignUp'
 class App extends Component {   
   
   componentDidMount() {
-    this.props.fetchUsers()
+    // this.props.fetchUsers()
+    this.props.fetchInitialMap()
   }
   
   render() {
     return (
       <Fragment>
-        <Route exact path="/" render={(props) => <MapContainer {...props}/>} />
+        <Route exact path="/" render={() => <MapContainer initialMap={this.props.initialMap}/>} />
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/main" render= { () => { return(
@@ -30,16 +32,17 @@ class App extends Component {
   
 }
 
-const mapStateToProps = (state) => {
+// const mapStateToProps = (state) => {
+//   return {
+//     user: state.user,
+//     initialMap: state.initialMap
+//   }
+// }
+
+const mapDispatchToProps = state => {
   return {
-    user: state.user
+    initialMap: state.initialMap
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-      fetchUsers: (history) => { dispatch(fetchUsers(history)) }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapDispatchToProps, {fetchInitialMap})(App)

@@ -14,13 +14,11 @@ import './index.css';
 const store = createStore(rootReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
-  <div>
     <Provider store={store}>
-        <Router>
-          <App />
-        </Router>
+      <Router>
+        <App />
+      </Router>
     </Provider>
-  </div>
   ,
   document.getElementById('root')
 );

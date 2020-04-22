@@ -61,6 +61,7 @@ class GoogleMap extends Component {
       };
      
       render() {
+          console.log(this.props.data)
         return (
         <Map 
             google={this.props.google}
@@ -74,7 +75,7 @@ class GoogleMap extends Component {
                 lng: -122.4194 }}
             bounds={this.state.bounds}>
                 
-                { this.props.data[0] ? 
+                { this.props.data ? 
                 (this.props.data.map(object =>
                     <Marker 
                     onClick={this.onMarkerClick}
