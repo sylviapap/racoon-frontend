@@ -9,7 +9,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk'
 import rootReducer from './reducers/rootReducer'
 
-import './index.css';
+// import './index.css';
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
 

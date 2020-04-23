@@ -20,8 +20,6 @@ class MarkerCard extends Component{
 
     render(){
         return(
-            <Fragment>
-            <Router><NavLink to="/">Home</NavLink></Router>
             <div className="marker-page">
                 <h1 className="marker-page-title">{this.state.markerData.title}</h1>
                 <p>{this.state.markerData.address}</p>
@@ -32,7 +30,6 @@ class MarkerCard extends Component{
                 null
             }</ul>
             </div>
-            </Fragment>
         )
     }
 }

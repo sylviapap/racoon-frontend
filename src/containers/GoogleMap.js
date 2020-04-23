@@ -8,9 +8,11 @@ const mapStyles = {
     height: '100%'
 };
 
-// const containerStyle = {
-//   position: 'absolute'
-// };
+const containerStyle = {
+  position: 'absolute',
+  width: '95%',
+  height: '95%'
+};
 
 class GoogleMap extends Component {
     constructor() {
@@ -71,7 +73,7 @@ class GoogleMap extends Component {
         <Map 
             google={this.props.google}
             onClick={this.onMapClicked}
-            // containerStyle={containerStyle}
+            containerStyle={containerStyle}
             zoom={2}
             ref={(ref) => {this.map = ref}}
             style={mapStyles}
