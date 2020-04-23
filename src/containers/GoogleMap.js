@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import InfoWindowFormat  from '../components/InfoWindowFormat'
-import {BrowserRouter as Router, Link} from "react-router-dom"
+// import {BrowserRouter as Router, Link} from "react-router-dom"
 
 const mapStyles = {
     width: '100%',

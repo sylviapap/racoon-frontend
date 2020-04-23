@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
-import {fetchUsers} from './actions/fetchUsers'
+import { Route, Switch, withRouter } from 'react-router-dom';
+// import {fetchUsers} from './actions/fetchUsers'
 import {fetchInitialMap} from './actions/fetchInitialMap'
 
 import MainContainer from './containers/MainContainer'
@@ -54,4 +54,4 @@ const mapDispatchToProps = state => {
   }
 }
 
-export default connect(mapDispatchToProps, {fetchInitialMap})(App)
+export default withRouter(connect(mapDispatchToProps, {fetchInitialMap})(App))

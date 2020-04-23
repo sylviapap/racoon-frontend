@@ -1,7 +1,5 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, NavLink, withRouter, Redirect} from 'react-router-dom';
-
 
 class MarkerCard extends Component{
     constructor(){
@@ -42,4 +40,4 @@ const mapDispatchToProps = {
     
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MarkerCard))
+export default connect(mapStateToProps, mapDispatchToProps)(MarkerCard)
