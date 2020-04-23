@@ -1,8 +1,8 @@
-import {API_ROOT, token, authHeaders, headers} from './api'
+import {API_ROOT} from '../services/api'
 
 export const fetchInitialMap = () => {
     return (dispatch) => {
-        fetch('http://localhost:3001/api/v1/map_markers')
+        fetch(`${API_ROOT}/map_markers`)
         .then(resp => resp.json())
         // .then(r => console.log(r))
         .then(json => {

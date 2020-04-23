@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Comment from './Comment'
 
 class MarkerCard extends Component{
     constructor(){
@@ -17,13 +18,14 @@ class MarkerCard extends Component{
     }
 
     render(){
+        console.log(this.state.markerData)
         return(
             <div className="marker-page">
                 <h1 className="marker-page-title">{this.state.markerData.title}</h1>
                 <p>{this.state.markerData.address}</p>
                 <h2>Comments:</h2>
                 <ul>{this.state.markerData.comments ? 
-                (this.state.markerData.comments.map(comment => <li>{comment.content}</li>))
+                (this.state.markerData.comments.map(comment => <Comment data={comment} />))
                 :
                 null
             }</ul>
