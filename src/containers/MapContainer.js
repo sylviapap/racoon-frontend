@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchInitialMap } from '../actions/fetchInitialMap';
 import GoogleMap from './GoogleMap'
+
+// import { connect } from 'react-redux';
+// import { fetchInitialMap } from '../actions/fetchInitialMap';
+
 
 class MapContainer extends Component {
   constructor() {
