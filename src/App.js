@@ -14,7 +14,6 @@ import MarkerCard from './components/MarkerCard'
 class App extends Component {   
   
   componentDidMount() {
-    // this.props.fetchUsers()
     this.props.fetchInitialMap()
   }
   
@@ -40,13 +39,6 @@ class App extends Component {
   }
   
 }
-
-// const mapStateToProps = (state) => {
-//   return {
-//     user: state.user,
-//     initialMap: state.initialMap
-//   }
-// }
 
 const mapDispatchToProps = state => {
   return {

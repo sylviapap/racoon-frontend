@@ -25,7 +25,7 @@ class MarkerCard extends Component{
                 <p>{this.state.markerData.address}</p>
                 <h2>Comments:</h2>
                 <ul>{this.state.markerData.comments ? 
-                (this.state.markerData.comments.map(comment => <Comment data={comment} />))
+                (this.state.markerData.comments.map(comment => <Comment comment={comment} key={comment.id}/>))
                 :
                 null
             }</ul>

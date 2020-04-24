@@ -4,8 +4,8 @@ const Comment = props =>  {
     console.log(props)
     return(
         <div className="comment-card">
-            <h6 className="comment-username">{props.data.user}:</h6>
-            <p className="comment-content">{props.data.content}</p>
+            <h6 className="comment-username">{props.comment.user.username}:</h6>
+            <p className="comment-content">{props.comment.content}</p>
         </div>
     )
 }

@@ -24,26 +24,6 @@ class GoogleMap extends Component {
             bounds: null
         }
     }
-
-    // componentDidUpdate() {
-
-    // }
-
-    // componentWillReceiveProps(props) {
-    //     props.data && this.autoZoom(props)
-    // }
-
-    // autoZoom = (props) => { 
-    //     console.log("autozoom", props.data[0])
-    //     let items = props.data && props.data[0].map(object => 
-    //      ({lat: object["latitude"],
-    //    lng: object["longitude"]}))
-    //    let bounds = new this.props.google.maps.LatLngBounds();
-    //    for (let i = 0; i < items.length; i++) {
-    //      bounds.extend(items[i]);
-    //    }
-    //    this.setState({bounds: bounds})
-    // }
      
     onMarkerClick = (props, marker, e) =>
     {console.log(props);
@@ -69,6 +49,7 @@ class GoogleMap extends Component {
     }
      
     render() {
+      console.log(this.props.initialMapData)
       return (
         <Map 
             google={this.props.google}
@@ -77,13 +58,11 @@ class GoogleMap extends Component {
             zoom={2}
             ref={(ref) => {this.map = ref}}
             style={mapStyles}
-            initialCenter={{
-                lat: 37.7749,
-                lng: -122.4194 }}
+            initialCenter={{lat: 0, lng: 0}}
             bounds={this.state.bounds}>
                 
-                { this.props.data ? 
-                (this.props.data.map(object =>
+                { this.props.initialMapData ? 
+                (this.props.initialMapData.map(object =>
                     <Marker 
                     onClick={this.onMarkerClick}
                     position={{
@@ -91,17 +70,14 @@ class GoogleMap extends Component {
                         lng: object.longitude}}
                     title={object.title}
                     address={object.address}
+                    comments={object.comments}
                     id={object.id}
                     key={object.id}
-                    message="hi"
+                    message="this is a marker"
                     />))
                     :
                     null
                 }
-
-
-
-
      
             <InfoWindowFormat
               marker={this.state.activeMarker}

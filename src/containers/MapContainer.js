@@ -7,45 +7,18 @@ class MapContainer extends Component {
   constructor() {
     super()
     this.state = {
-      initialMap: [],
-      centerLat: 37.7749,
-      centerLong: -122.4194,
-      zoom: 14
+      initialMap: []
     }
   }
-
-  // componentDidMount() {
-  //   this.props.fetchInitialMap()
-  // }
-
-  // componentWillReceiveProps(props) {
-  //   this.setState({initialMap: props.initialMap})
-  // }
-  
-  // componentDidUpdate() {
-  //   this.props.initialMap && this.autoZoom()
-  // }
-
-  // autoZoom = () => { 
-  //   console.log("zoom", this.props.initialMap[0])
-  // }
   
   render() {
     console.log(this.props)
     return (
       <div className="map">
-        <GoogleMap history={this.props.history} data={this.props.initialMap} />
+        <GoogleMap history={this.props.history} initialMapData={this.props.initialMap} />
       </div>
     )
   }
 }
-
-// const mapDispatchToProps = state => {
-//   return {
-//     initialMap: state.initialMap
-//   }
-// }
-
-// export default connect(mapDispatchToProps, { fetchInitialMap })(MapContainer)
 
 export default MapContainer
