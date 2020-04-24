@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import logIn from '../actions/logIn';
 
-const Login = props =>  {
-  const { fields, handleSubmit, handleChange } = props;
+class Login extends Component {
+  constructor(){
+    super()
+    this.state = {
+      username: "",
+      password: ""
+    }
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  render() {
+    const { handleChange } = this;
+    const { username, password } = this.state;
     return (
-        <div className="App">
-        <form onSubmit={handleSubmit}>
+      <div className="login">
+        <form onSubmit={(event) => {this.props.logIn(event, this.state, this.props.history)}}>
           <div className="field">
           <i className="glyphicon glyphicon-user"></i>
             <label>Username</label>
@@ -12,7 +30,7 @@ const Login = props =>  {
               name="username"
               type="text"
               placeholder="Username"
-            //   value={fields.username}
+              value={username}
               onChange={handleChange}
             />
           </div>
@@ -23,7 +41,7 @@ const Login = props =>  {
               name="password"
               type="password"
               placeholder="Password"
-            //   value={fields.password}
+              value={password}
               onChange={handleChange}
             />
           </div>
@@ -32,7 +50,20 @@ const Login = props =>  {
           </button>
         </form>
         </div>
-      );
+        );
+      }
     }
-  
-  export default Login;
+    
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logIn: (event, userInput, history) => { dispatch(logIn(event, userInput, history)) }
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
