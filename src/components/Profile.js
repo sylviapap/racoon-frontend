@@ -2,10 +2,13 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import MarkerCard from './MarkerCard'
 
+// need bookmarks and created markers in state - initial load is empty array so ternaries don't work
+
 class Profile extends Component {
 
   render() {
     console.log(this.props)
+    console.log(this.props.user.bookmarks)
 
     return(
     <div className="profile">

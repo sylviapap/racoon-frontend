@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import fetchInitialMap from './actions/fetchInitialMap'
@@ -18,15 +18,45 @@ class App extends Component {
     this.props.getCurrentUser();
     this.props.fetchInitialMap();
   }
+
+  handleErrorClick = () => {
+    console.log("clicked");
+    this.setState({error: false})
+  }
   
   render() {
     return (
-      <div>
-        <NavBar history={this.props.history} />
+      <div className="App">
+        {this.props.error ? 
+        <div className="warning-message">
+          <i className="close icon" onClick={this.handleErrorClick}></i>
+          <div className="header">
+            Error
+          </div>
+            <p>{this.props.messages}</p>
+            <p>Please log in or sign up</p>
+          </div> 
+          : 
+          null}
+          
+      <Route
+        path="/"
+        render= { (routerProps) => {
+          return (
+            <Fragment>
+            <NavBar {...routerProps} />
+            <MapContainer {...routerProps} />
+            </Fragment> 
+            ) 
+        }}
+      />
+
+        {/* <NavBar history={this.props.history} /> */}
+
         <Switch>
-          <Route exact path="/" render={(props) => 
+          {/* <Route exact path="/" render={(props) => 
             <MapContainer {...props} initialMap={this.props.initialMap}/>} 
-            />
+            /> */}
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/main" render= { () => { return(
@@ -44,10 +74,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    user: state.user,
-    initialMap: state.initialMap
-  }
+  return state
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -56,7 +83,5 @@ const mapDispatchToProps = (dispatch) => {
     fetchInitialMap: () => { dispatch(fetchInitialMap()) }
   }
 }
-
-
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

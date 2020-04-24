@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
 import GoogleMap from './GoogleMap'
 
-// import { connect } from 'react-redux';
-// import { fetchInitialMap } from '../actions/fetchInitialMap';
-
+import { connect } from 'react-redux';
 
 class MapContainer extends Component {
-  constructor() {
-    super()
-    this.state = {
-      initialMap: []
-    }
-  }
   
   render() {
     console.log(this.props)
@@ -23,4 +15,8 @@ class MapContainer extends Component {
   }
 }
 
-export default MapContainer
+const mapStateToProps = (state) => {
+  return state
+}
+
+export default connect(mapStateToProps)(MapContainer)

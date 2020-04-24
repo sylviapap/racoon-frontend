@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import InfoWindowFormat  from '../components/InfoWindowFormat'
-// import {BrowserRouter as Router, Link} from "react-router-dom"
 
 const mapStyles = {
     width: '100%',
@@ -15,15 +14,15 @@ const containerStyle = {
 };
 
 class GoogleMap extends Component {
-    constructor() {
-        super()
-        this.state = {
-            showingInfoWindow: false,
-            activeMarker: {},
-            selectedPlace: {},
-            bounds: null
-        }
+  constructor() {
+    super()
+    this.state = {
+        showingInfoWindow: false,
+        activeMarker: {},
+        selectedPlace: {},
+        bounds: null
     }
+  }
      
     onMarkerClick = (props, marker, e) =>
     {console.log(props);
