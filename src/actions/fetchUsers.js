@@ -1,5 +1,4 @@
 import {API_ROOT} from '../services/api'
-// import {API_ROOT, token, authHeaders, headers} from '../services/api'
 
 export const fetchUsers = () => {
     return (dispatch) => {

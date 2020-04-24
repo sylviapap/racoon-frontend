@@ -1,7 +1,7 @@
 const intitialState = {
   loading: false,
-  users: [],
-  currentUser: {}
+  currentUser: {},
+  bookmarks: []
 }
 
 const rootReducer = (state = intitialState, action) => {
@@ -29,6 +29,22 @@ const rootReducer = (state = intitialState, action) => {
         ...state, 
         currentUser: action.user
       }
+
+    case "SET_BOOKMARKS":
+      return {
+        ...state, 
+        bookmarks: action.bookmarks
+      }
+
+    case "SET_ERROR":
+      return {
+        ...state,
+        error: true,
+        messages: action.messages
+      }
+
+    case "CLEAR_CURRENT_USER":
+      return {...state, currentUser: {}}
 
     default:
       return state;
