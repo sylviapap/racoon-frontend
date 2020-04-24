@@ -1,10 +1,17 @@
 const intitialState = {
-  mapFilters: {},
-  users: []
+  loading: false,
+  users: [],
+  currentUser: {}
 }
 
 const rootReducer = (state = intitialState, action) => {
   switch(action.type) {
+    case "LOADING":
+      return {
+        ...state, 
+        loading: true
+      }
+
     case "GET_USERS":
       return {
         ...state,
@@ -15,6 +22,12 @@ const rootReducer = (state = intitialState, action) => {
       return {
         ...state, 
         initialMap: action.initialMap
+      }
+
+    case "SET_CURRENT_USER":
+      return {
+        ...state, 
+        currentUser: action.user
       }
 
     default:
