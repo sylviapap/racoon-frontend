@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
@@ -7,6 +7,7 @@ class NavBar extends Component {
   logout = () => {
 		localStorage.clear()
 		this.props.clearCurrentUser()
+		this.props.history.push('/')
 	}
 
   render() {
@@ -21,9 +22,14 @@ class NavBar extends Component {
 				<button onClick={this.logout}className="logout-button">Logout</button>
 			</div>
 				:
-			<div className="nav-item">
-				<NavLink to="/login">Login</NavLink>
-			</div>
+			<Fragment>
+				<div className="nav-item">
+					<NavLink to="/login">Login</NavLink>
+				</div>
+				<div className="nav-item">
+				<NavLink to="/signup">Sign Up</NavLink>
+				</div>
+			</Fragment>
 			}
 		</div>
 		)

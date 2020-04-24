@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
-// import {fetchUsers} from './actions/fetchUsers'
 import {fetchInitialMap} from './actions/fetchInitialMap'
 
 import MainContainer from './containers/MainContainer'
@@ -20,7 +19,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavBar />
+        <NavBar history={this.props.history} />
         <Switch>
           <Route exact path="/" render={(props) => 
             <MapContainer {...props} initialMap={this.props.initialMap}/>} 

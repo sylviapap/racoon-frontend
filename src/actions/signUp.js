@@ -8,6 +8,7 @@ const signUp = (event, userInput, history) => {
       headers: headers, 
       body: JSON.stringify({
         username: userInput.username,
+        email: userInput.email,
         password: userInput.password
       })})
       .then(response => response.json())
