@@ -8,6 +8,7 @@ import MapContainer from './containers/MapContainer'
 import NavBar from './components/NavBar'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
+import Profile from './components/Profile'
 import MarkerCard from './components/MarkerCard'
 
 class App extends Component {   
@@ -32,6 +33,7 @@ class App extends Component {
           <Route exact path="/marker/:id" render={(props) => 
             <MarkerCard {...props} />} 
             />
+          <Route exact path="/profile" render={(props) => <Profile {...props}/>}/>
         </Switch>
       </div>
     );
