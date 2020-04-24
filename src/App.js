@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
-import {fetchInitialMap} from './actions/fetchInitialMap'
+import fetchInitialMap from './actions/fetchInitialMap'
+import getCurrentUser from './actions/getCurrentUser'
 
 import MainContainer from './containers/MainContainer'
 import MapContainer from './containers/MapContainer'
@@ -14,7 +15,8 @@ import MarkerCard from './components/MarkerCard'
 class App extends Component {   
   
   componentDidMount() {
-    this.props.fetchInitialMap()
+    this.props.getCurrentUser();
+    this.props.fetchInitialMap();
   }
   
   render() {
@@ -33,7 +35,7 @@ class App extends Component {
           <Route exact path="/marker/:id" render={(props) => 
             <MarkerCard {...props} />} 
             />
-          <Route exact path="/profile" render={(props) => <Profile {...props}/>}/>
+          <Route path="/profile" render={(props) => <Profile {...props}/>}/>
         </Switch>
       </div>
     );
@@ -41,10 +43,20 @@ class App extends Component {
   
 }
 
-const mapDispatchToProps = state => {
+const mapStateToProps = (state) => {
   return {
+    user: state.user,
     initialMap: state.initialMap
   }
 }
 
-export default withRouter(connect(mapDispatchToProps, {fetchInitialMap})(App))
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getCurrentUser: () => { dispatch(getCurrentUser()) },
+    fetchInitialMap: () => { dispatch(fetchInitialMap()) }
+  }
+}
+
+
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

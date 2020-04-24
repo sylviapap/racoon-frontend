@@ -9,26 +9,5 @@ export const headers = {
 export const authHeaders = {
     'Content-Type': 'application/json',
     Accept: 'application/json',
-    Authorization: `Bearer ${token}`
+    Authorization: token
 };
-
-// fetch('http://localhost:3001/api/v1/map_markers', {
-//   method: 'POST',
-//   headers: {
-//       'Content-Type': 'application/json', 
-//       Accept: 'application/json'
-//   },
-//   body: JSON.stringify({user_id: 8})
-// })
-// .then(response => response.json())
-// .then(data => console.log(data))
-
-// fetch('http://localhost:3001/api/v1/users', {
-//     method: "POST",
-//     headers: headers, 
-//     body: JSON.stringify({
-//         username: "usertest",
-//         password: "pw",
-//     })
-// }).then(response => response.json())
-//     .then(json => { console.log(json)

@@ -1,6 +1,6 @@
 import {API_ROOT} from '../services/api'
 
-export const fetchInitialMap = () => {
+const fetchInitialMap = () => {
     return (dispatch) => {
         fetch(`${API_ROOT}/map_markers`)
         .then(resp => resp.json())
@@ -9,3 +9,5 @@ export const fetchInitialMap = () => {
         })
     }
 }
+
+export default fetchInitialMap
