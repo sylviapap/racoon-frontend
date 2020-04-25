@@ -24,15 +24,14 @@ class GoogleMap extends Component {
     }
   }
      
-    onMarkerClick = (props, marker, e) =>
-    {console.log(props);
-    this.setState({
-          selectedPlace: props,
-          activeMarker: marker,
-          showingInfoWindow: true
-        });}
+    onMarkerViewInfoWindowClick = (props, marker) =>
+    {this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    })}
      
-    onMapClicked = (props) => {
+    onMapClicked = () => {
         if (this.state.showingInfoWindow) {
           this.setState({
             showingInfoWindow: false,
@@ -41,8 +40,7 @@ class GoogleMap extends Component {
         }
       };
 
-    handleMarkerClick = (place) => {
-      console.log(place)
+    handleMarkerViewInfoClick = (place) => {
       let markerId = place.id
       this.props.history.push(`/markers/${markerId}`)
     }
@@ -63,7 +61,7 @@ class GoogleMap extends Component {
                 { this.props.initialMapData ? 
                 (this.props.initialMapData.map(object =>
                     <Marker 
-                    onClick={this.onMarkerClick}
+                    onClick={this.onMarkerViewInfoWindowClick}
                     position={{
                         lat: object.latitude,
                         lng: object.longitude}}
@@ -85,7 +83,7 @@ class GoogleMap extends Component {
                   <h3>{this.state.selectedPlace.title}</h3>
                   <p>{this.state.selectedPlace.address}</p>
                   <p>{this.state.selectedPlace.message}</p>
-                  <button className="button" onClick={() => this.handleMarkerClick(this.state.selectedPlace)} key={this.state.selectedPlace.id}>More Info</button>
+                  <button className="button" onClick={() => this.handleMarkerViewInfoClick(this.state.selectedPlace)} key={this.state.selectedPlace.id}>More Info</button>
                   
                 </div>
             </InfoWindowFormat>
