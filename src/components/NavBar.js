@@ -18,6 +18,7 @@ class NavBar extends Component {
 			</div>
 		{ loggedIn ?
 			<Fragment>
+				<div className="nav-header">Welcome, {this.props.user.username}</div>
 				<div className="nav-item" onClick={this.logout}>
 					<NavLink to="/">Logout</NavLink>
 				</div>

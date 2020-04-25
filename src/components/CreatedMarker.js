@@ -5,7 +5,7 @@ class CreatedMarker extends Component {
 
 	render() {
 		return(
-			<div className="created-marker">
+			<div className="created-marker item">
 				<h1 className="marker-page-title">Title: {this.props.marker.title}</h1>
 				<p>Address: {this.props.marker.address}</p>
 				<h2>Comments:</h2>
