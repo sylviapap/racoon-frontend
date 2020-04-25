@@ -1,15 +1,19 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import MarkerCard from './MarkerCard'
+import CreatedMarker from './CreatedMarker'
 
 // need bookmarks and created markers in state - initial load is empty array so ternaries don't work
 
 class Profile extends Component {
 
-  render() {
-    console.log(this.props)
-    console.log(this.props.user.bookmarks)
+  componentDidUpdate() {
 
+    console.log(this.props.createdMarkers)
+    let array = this.props.createdMarkers.map(marker => marker.id)
+    console.log(array)
+  }
+
+  render() {
     return(
     <div className="profile">
       {!!this.props.user.id ? 
@@ -19,17 +23,19 @@ class Profile extends Component {
       }
 
       <div className="bookmarks">
-        { !this.props.user.bookmarks ? 
+        <h2>Your Bookmarks</h2>
+        { this.props.bookmarks.length === 0 ? 
         <h4 className="no-markers">Looks like you have no bookmarks..</h4> 
         :
-        this.props.user.bookmarks.map(bookmark => <MarkerCard history={this.props.history} user={this.props.user} data={bookmark}/>)
+        this.props.bookmarks.map(bookmark => <CreatedMarker key={bookmark.id} marker={bookmark}/>)
         }
       </div>
       <div className="created-markers">
-        { !this.props.user.created_markers ?
+        <h2>Your Created Markers</h2>
+        { this.props.createdMarkers.length === 0 ?
         <h4 className="no-markers">Looks like you haven't posted a marker..</h4> 
         :
-        this.props.user.created_markers.map(marker => <MarkerCard history={this.props.history} data={marker}/>) 
+        this.props.createdMarkers.map(marker => <CreatedMarker key={marker.id} marker={marker}/>) 
         }
       </div>
     </div>
@@ -39,7 +45,9 @@ class Profile extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.currentUser
+    user: state.currentUser,
+    bookmarks: state.bookmarks,
+    createdMarkers: state.createdMarkers
   }
 }
 

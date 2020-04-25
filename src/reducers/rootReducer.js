@@ -1,7 +1,8 @@
 const intitialState = {
   loading: false,
   currentUser: {},
-  bookmarks: []
+  bookmarks: [],
+  createdMarkers: []
 }
 
 const rootReducer = (state = intitialState, action) => {
@@ -34,6 +35,12 @@ const rootReducer = (state = intitialState, action) => {
       return {
         ...state, 
         bookmarks: action.bookmarks
+      }
+
+    case "SET_CREATED_MARKERS":
+      return {
+        ...state, 
+        createdMarkers: action.createdMarkers
       }
 
     case "SET_ERROR":

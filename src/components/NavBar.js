@@ -17,9 +17,15 @@ class NavBar extends Component {
 				<NavLink to="/">Home</NavLink>
 			</div>
 		{ loggedIn ?
-			<NavLink to="/"><div className="nav-item" onClick={this.logout}>Logout
-			</div></NavLink>
-			
+			<Fragment>
+				<div className="nav-item" onClick={this.logout}>
+					<NavLink to="/">Logout</NavLink>
+				</div>
+				
+				<div className="nav-item">
+					<NavLink to="/profile">Your Profile</NavLink>
+				</div>
+			</Fragment>
 				:
 			<Fragment>
 				<div className="nav-item">
