@@ -44,7 +44,7 @@ class GoogleMap extends Component {
     handleMarkerClick = (place) => {
       console.log(place)
       let markerId = place.id
-      this.props.history.push(`/marker/${markerId}`)
+      this.props.history.push(`/markers/${markerId}`)
     }
      
     render() {
