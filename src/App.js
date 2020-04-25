@@ -4,7 +4,6 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import fetchInitialMap from './actions/fetchInitialMap'
 import getCurrentUser from './actions/getCurrentUser'
 
-import MainContainer from './containers/MainContainer'
 import MapContainer from './containers/MapContainer'
 import NavBar from './components/NavBar'
 import Login from './components/Login'
@@ -20,7 +19,6 @@ class App extends Component {
   }
 
   handleErrorClick = () => {
-    console.log("clicked");
     this.setState({error: false})
   }
   
@@ -38,33 +36,13 @@ class App extends Component {
           </div> 
           : 
           null}
-          
-      <Route
-        path="/"
-        render= { (routerProps) => {
-          return (
-            <Fragment>
-            <NavBar {...routerProps} />
-            <MapContainer {...routerProps} />
-            </Fragment> 
-            ) 
-        }}
-      />
 
-        {/* <NavBar history={this.props.history} /> */}
-
+      <NavBar />
         <Switch>
-          {/* <Route exact path="/" render={(props) => 
-            <MapContainer {...props} initialMap={this.props.initialMap}/>} 
-            /> */}
+          <Route exact path="/" component={MapContainer} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/main" render= { () => { return(
-            <MainContainer users={this.props.users}/>)}}
-            />
-          <Route exact path="/marker/:id" render={(props) => 
-            <MarkerCard {...props} />} 
-            />
+          <Route path="/markers/:id" component={MarkerCard} />
           <Route path="/profile" render={(props) => <Profile {...props}/>}/>
         </Switch>
       </div>
