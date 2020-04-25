@@ -7,7 +7,6 @@ class NavBar extends Component {
   logout = () => {
 		localStorage.clear()
 		this.props.clearCurrentUser()
-		this.props.history.push('/')
 	}
 
   render() {
@@ -18,9 +17,9 @@ class NavBar extends Component {
 				<NavLink to="/">Home</NavLink>
 			</div>
 		{ loggedIn ?
-			<div className="nav-item">
-				<button onClick={this.logout}className="logout-button">Logout</button>
-			</div>
+			<NavLink to="/"><div className="nav-item" onClick={this.logout}>Logout
+			</div></NavLink>
+			
 				:
 			<Fragment>
 				<div className="nav-item">
