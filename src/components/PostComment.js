@@ -17,19 +17,20 @@ class PostComment extends Component{
       method: "POST", 
       headers: headers,
       body: JSON.stringify({
-        user: this.props.user,
-        map_event_id: this.props.markerId,
+        user_id: this.props.currentUser.id,
+        map_marker_id: this.props.markerId,
         content: this.state.content
       })
     })
       .then(response => response.json())
       .then(json => {console.log(json);
+        this.props.handleCommentPost(event, json);
         this.setState({content: ""})
       })
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props.currentUser)
     return(
       <form onSubmit ={this.handleSubmit}className="post-container">
         <textarea
@@ -44,9 +45,7 @@ class PostComment extends Component{
 }
 
 const mapStateToProps = (state) => {
-  return {
-    user: state.currentUser
-  }
+  return state
 }
 
 export default connect(mapStateToProps)(PostComment)

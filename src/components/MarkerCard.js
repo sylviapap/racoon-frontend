@@ -18,14 +18,14 @@ class MarkerCard extends Component {
 			.then(json => {this.setState({markerData: json})})
 	}
 
-	handlePost = (comment) => {
+	handleCommentPost = (event, comment) => {
 		const newComment = {
 			content: comment.content,
-			user: this.props.user
+			user: this.props.currentUser
 		}
-		this.setState(previousState => {
-			previousState.markerData.comments.push(newComment); 
-			return previousState
+		this.setState(prevState => {
+			prevState.markerData.comments.push(newComment); 
+			return prevState
 		})
 	}
 
@@ -40,15 +40,15 @@ class MarkerCard extends Component {
 				:
 				null
 			}</ul>
-			<PostComment handlePost={this.handlePost} markerId={this.state.markerData.id}/>
+			<PostComment handleCommentPost={this.handleCommentPost} markerId={this.state.markerData.id}/>
 			</div>
 		)
 	}
 }
 
-const mapStateToProps = (state) => ({
-    
-})
+const mapStateToProps = (state) => {
+  return state
+}
 
 const mapDispatchToProps = {
     
