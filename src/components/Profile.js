@@ -1,23 +1,21 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import CreatedMarker from './CreatedMarker'
+import Bookmark from './Bookmark'
 
 // need bookmarks and created markers in state - initial load is empty array so ternaries don't work
 
 class Profile extends Component {
 
   componentDidUpdate() {
-
-    console.log(this.props.createdMarkers)
-    let array = this.props.createdMarkers.map(marker => marker.id)
-    console.log(array)
   }
 
   render() {
+    console.log(this.props.currentUser)
     return(
     <div className="profile">
-      {!!this.props.user.id ? 
-        <h1 className="welcome">Welcome to your profile, {this.props.user.username}</h1>
+      {!!this.props.currentUser.id ? 
+        <h1 className="welcome">Welcome to your profile, {this.props.currentUser.username}</h1>
       :
         <p>You are not logged in</p>
       }
@@ -27,7 +25,7 @@ class Profile extends Component {
         { this.props.bookmarks.length === 0 ? 
         <p className="no-markers">Looks like you have no bookmarks..</p> 
         :
-        this.props.bookmarks.map(bookmark => <CreatedMarker key={bookmark.id} marker={bookmark}/>)
+        this.props.currentUser.bookmarks.map(bookmark => <Bookmark key={bookmark.id} bookmark={bookmark}/>)
         }
       </div>
       <div className="created-markers card">
@@ -35,7 +33,7 @@ class Profile extends Component {
         { this.props.createdMarkers.length === 0 ?
         <p className="no-markers">Looks like you haven't posted a marker..</p> 
         :
-        this.props.createdMarkers.map(marker => <CreatedMarker key={marker.id} marker={marker}/>) 
+        this.props.currentUser.created_markers.map(marker => <CreatedMarker key={marker.id} marker={marker}/>) 
         }
       </div>
       <div className="card">
@@ -48,11 +46,7 @@ class Profile extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    user: state.currentUser,
-    bookmarks: state.bookmarks,
-    createdMarkers: state.createdMarkers
-  }
+  return state
 }
 
 export default connect(mapStateToProps)(Profile)

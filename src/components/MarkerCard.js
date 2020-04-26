@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Comment from './Comment'
 import PostComment from './PostComment'
 import {API_ROOT, headers} from '../services/api'
+import addBookmark from '../actions/addBookmark'
 
 class MarkerCard extends Component {
 	constructor() {
@@ -31,16 +32,12 @@ class MarkerCard extends Component {
 	}
 
 	addToBookmarks = (event) => {
-		fetch(`${API_ROOT}/bookmarks`, {
-      method: "POST", 
-      headers: headers,
-      body: JSON.stringify({
-        user_id: this.props.currentUser.id,
-				map_marker_id: this.props.match.params.id
-			})
-		})
-		.then(response => response.json())
-		.then(json => console.log(json))
+		let markerData = {
+			user_id: this.props.currentUser.id,
+			map_marker_id: this.state.markerData.id
+		}
+
+		this.props.addBookmark(event, markerData, this.props.history)
 	}
 
 	render() {
@@ -65,7 +62,10 @@ const mapStateToProps = (state) => {
   return state
 }
 
-const mapDispatchToProps = {
+const mapDispatchToProps = (dispatch) => {
+	return {
+		addBookmark: (event, markerData, history) => {dispatch(addBookmark(event, markerData, history))}
+	}
     
 }
 
