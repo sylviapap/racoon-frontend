@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Comment from './Comment'
 import PostComment from './PostComment'
+import {API_ROOT, headers} from '../services/api'
 
 class MarkerCard extends Component {
 	constructor() {
@@ -13,7 +14,7 @@ class MarkerCard extends Component {
 
 	componentDidMount() {
 		let id = this.props.match.params.id
-		fetch(`http://localhost:3001/api/v1/map_markers/${id}`)
+		fetch(`${API_ROOT}/map_markers/${id}`)
 			.then(response => response.json())
 			.then(json => {this.setState({markerData: json})})
 	}
@@ -29,6 +30,19 @@ class MarkerCard extends Component {
 		})
 	}
 
+	addToBookmarks = (event) => {
+		fetch(`${API_ROOT}/bookmarks`, {
+      method: "POST", 
+      headers: headers,
+      body: JSON.stringify({
+        user_id: this.props.currentUser.id,
+				map_marker_id: this.props.match.params.id
+			})
+		})
+		.then(response => response.json())
+		.then(json => console.log(json))
+	}
+
 	render() {
 		return(
 			<div className="marker-page">
@@ -41,6 +55,7 @@ class MarkerCard extends Component {
 				null
 			}</ul>
 			<PostComment handleCommentPost={this.handleCommentPost} markerId={this.state.markerData.id}/>
+			<button onClick={this.addToBookmarks}className="add-bookmark-button">Add To Bookmarks</button>
 			</div>
 		)
 	}
