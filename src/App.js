@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import fetchInitialMap from './actions/fetchInitialMap'
 import getCurrentUser from './actions/getCurrentUser'
 
@@ -26,8 +26,7 @@ class App extends Component {
     return (
       <div className="App">
         {this.props.error ? 
-        <div className="warning-message">
-          <i className="close icon" onClick={this.handleErrorClick}></i>
+        <div className="warning-message" onClick={this.handleErrorClick}>
           <div className="header">
             Error
           </div>
@@ -42,8 +41,17 @@ class App extends Component {
           <Route exact path="/" component={MapContainer} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/login" component={Login} />
-          <Route path="/markers/:id" component={MarkerCard} />
-          <Route path="/profile" render={(props) => <Profile {...props}/>}/>
+
+          {localStorage.getItem("token") ?  (
+              <Switch>
+                <Route exact path="/profile" render={(props) => <Profile {...props}/>}/> 
+                <Route exact path="/markers/:id" render={(props) => <MarkerCard {...props} />} />
+                <Route render={()=> <Redirect to= "/"/>}/>
+              </Switch>
+              )
+              : 
+              <Redirect to="/"/>
+              }
         </Switch>
       </div>
     );

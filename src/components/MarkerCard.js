@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Comment from './Comment'
+import PostComment from './PostComment'
 
 class MarkerCard extends Component {
 	constructor() {
@@ -17,6 +18,17 @@ class MarkerCard extends Component {
 			.then(json => {this.setState({markerData: json})})
 	}
 
+	handlePost = (comment) => {
+		const newComment = {
+			content: comment.content,
+			user: this.props.user
+		}
+		this.setState(previousState => {
+			previousState.markerData.comments.push(newComment); 
+			return previousState
+		})
+	}
+
 	render() {
 		return(
 			<div className="marker-page">
@@ -28,6 +40,7 @@ class MarkerCard extends Component {
 				:
 				null
 			}</ul>
+			<PostComment handlePost={this.handlePost} markerId={this.state.markerData.id}/>
 			</div>
 		)
 	}
