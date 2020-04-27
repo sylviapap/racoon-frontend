@@ -59,7 +59,9 @@ class MarkerCard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return state
+  return {
+		currentUser: state.user.currentUser
+	}
 }
 
 const mapDispatchToProps = (dispatch) => {

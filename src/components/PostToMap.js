@@ -75,7 +75,9 @@ class PostToMap extends Component{
 }
 
 const mapStateToProps = (state) => {
-  return state
+  return {
+		currentUser: state.user.currentUser
+	}
 }
 
 export default connect(mapStateToProps)(PostToMap)
