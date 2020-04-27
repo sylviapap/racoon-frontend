@@ -13,12 +13,6 @@ const rootReducer = (state = intitialState, action) => {
         loading: true
       }
 
-    case "GET_USERS":
-      return {
-        ...state,
-        users: action.users
-      }
-
     case "GET_MAP":
       return {
         ...state, 
