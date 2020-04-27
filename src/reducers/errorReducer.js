@@ -10,6 +10,12 @@ const errorReducer = (state = intitialState, action) => {
         error: true,
         messages: action.messages
       }
+
+    case "NO_ERROR":
+      return {
+        ...state,
+        error: false
+      }
         
     default: 
       return state;

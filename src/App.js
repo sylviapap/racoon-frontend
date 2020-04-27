@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import fetchInitialMap from './actions/fetchInitialMap'
 import getCurrentUser from './actions/getCurrentUser'
+import errorToggle from './actions/errorToggle'
 
 import MapContainer from './containers/MapContainer'
 import NavBar from './components/NavBar'
@@ -19,15 +20,16 @@ class App extends Component {
     this.props.fetchInitialMap();
   }
 
-  // handleErrorClick = () => {
-  //   this.setState({error: false})
-  // }
+  handleErrorClick = () => {
+    this.props.errorToggle()
+  }
   
   render() {
     return (
       <div className="App">
         {this.props.error.error ? 
-        <div className="warning-message" onClick={this.handleErrorClick}>
+        <div className="warning-message">
+          <i className="fa fa-times" onClick={this.handleErrorClick} />
           <div className="header">
             Error
           </div>
@@ -67,7 +69,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getCurrentUser: () => { dispatch(getCurrentUser()) },
-    fetchInitialMap: () => { dispatch(fetchInitialMap()) }
+    fetchInitialMap: () => { dispatch(fetchInitialMap()) },
+    errorToggle: () => { dispatch(errorToggle())}
   }
 }
 
