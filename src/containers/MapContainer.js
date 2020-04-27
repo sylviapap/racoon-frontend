@@ -15,7 +15,10 @@ class MapContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return state
+  return {
+    initialMap: state.map.initialMap,
+    currentUser: state.user.currentUser
+  }
 }
 
 export default connect(mapStateToProps)(MapContainer)

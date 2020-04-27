@@ -46,7 +46,11 @@ class Profile extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return state
+  return {
+    currentUser: state.user.currentUser,
+    bookmarks: state.user.bookmarks,
+    createdMarkers: state.user.createdMarkers
+  }
 }
 
 export default connect(mapStateToProps)(Profile)

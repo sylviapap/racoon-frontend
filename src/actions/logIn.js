@@ -20,6 +20,7 @@ const logIn = (event, userInput, history) => {
                 dispatch({ type: "SET_ERROR", messages: json.error })
             } 
 			else {
+                console.log(json);
                 dispatch({ type: "SET_CURRENT_USER", user: json.user })
                 dispatch({type: "SET_BOOKMARKS", bookmarks: json.user.bookmarks})
                 localStorage.setItem('token', json.token);

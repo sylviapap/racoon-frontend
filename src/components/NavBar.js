@@ -10,7 +10,7 @@ class NavBar extends Component {
 	}
 
   render() {
-		const loggedIn = !!this.props.user.id
+		const loggedIn = !!this.props.currentUser.id
 		return(
 		<div className="nav-bar">
 			<div className="nav-item">
@@ -18,7 +18,7 @@ class NavBar extends Component {
 			</div>
 		{ loggedIn ?
 			<Fragment>
-				<div className="nav-header">Welcome, {this.props.user.username}</div>
+				<div className="nav-header">Welcome, {this.props.currentUser.username}</div>
 				<div className="nav-item" onClick={this.logout}>
 					<NavLink to="/">Logout</NavLink>
 				</div>
@@ -48,7 +48,7 @@ class NavBar extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		user: state.currentUser
+		currentUser: state.user.currentUser
 	}
 }
 
