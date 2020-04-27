@@ -18,7 +18,7 @@ class PostToMap extends Component{
     console.log(this.state.fields)
   };
 
-  handleSubmit = (event) => {
+  handleSubmit = (event, history) => {
     event.preventDefault()
     fetch(`${API_ROOT}/map_markers`, {
       method: "POST", 
@@ -38,7 +38,8 @@ class PostToMap extends Component{
           longitude: [],
           title: [], 
           address: []
-        }})
+        }});
+        this.props.history.push('/')
       })
   }
 

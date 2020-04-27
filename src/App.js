@@ -46,7 +46,7 @@ class App extends Component {
           {localStorage.getItem("token") ?  (
               <Switch>
                 <Route exact path="/profile" render={(props) => <Profile {...props}/>}/> 
-                <Route exact path="/post" component={PostToMap} />
+                <Route exact path="/post" render={(props) => <PostToMap {...props} />} />
                 <Route exact path="/markers/:id" render={(props) => <MarkerCard {...props} />} />
                 <Route render={()=> <Redirect to= "/"/>}/>
               </Switch>
