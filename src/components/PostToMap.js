@@ -12,6 +12,19 @@ class PostToMap extends Component{
     }
   }
 
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(this.showPosition);
+  }
+
+  showPosition = (position) => {
+    this.setState({ fields: {
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude,
+      title: [], 
+      address: []
+    }})
+  }
+
   handleChange = (event) => {
     const newFields = { ...this.state.fields, [event.target.name]: event.target.value };
     this.setState({ fields: newFields });
