@@ -19,20 +19,19 @@ class App extends Component {
     this.props.fetchInitialMap();
   }
 
-  handleErrorClick = () => {
-    this.setState({error: false})
-  }
+  // handleErrorClick = () => {
+  //   this.setState({error: false})
+  // }
   
   render() {
     return (
       <div className="App">
-        {this.props.error ? 
+        {this.props.error.error ? 
         <div className="warning-message" onClick={this.handleErrorClick}>
           <div className="header">
             Error
           </div>
-            <p>{this.props.messages}</p>
-            <p>Please log in or sign up</p>
+            <p>{this.props.error.messages}</p>
           </div> 
           : 
           null}
@@ -43,7 +42,7 @@ class App extends Component {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/login" component={Login} />
 
-          {this.props.currentUser !== undefined && this.props.currentUser.id ?  (
+          {this.props.user.currentUser !== undefined && this.props.user.currentUser.id ?  (
               <Switch>
                 <Route exact path="/profile" render={(props) => <Profile {...props}/>}/> 
                 <Route exact path="/post" render={(props) => <PostToMap {...props} />} />
@@ -62,9 +61,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    currentUser: state.user.currentUser
-  }
+  return state
 }
 
 const mapDispatchToProps = (dispatch) => {
