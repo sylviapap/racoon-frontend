@@ -10,6 +10,7 @@ import Login from './components/Login'
 import SignUp from './components/SignUp'
 import Profile from './components/Profile'
 import MarkerCard from './components/MarkerCard'
+import PostToMap from './components/PostToMap'
 
 class App extends Component {   
   
@@ -45,6 +46,7 @@ class App extends Component {
           {localStorage.getItem("token") ?  (
               <Switch>
                 <Route exact path="/profile" render={(props) => <Profile {...props}/>}/> 
+                <Route exact path="/post" component={PostToMap} />
                 <Route exact path="/markers/:id" render={(props) => <MarkerCard {...props} />} />
                 <Route render={()=> <Redirect to= "/"/>}/>
               </Switch>

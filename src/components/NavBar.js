@@ -26,6 +26,10 @@ class NavBar extends Component {
 				<div className="nav-item">
 					<NavLink to="/profile">Your Profile</NavLink>
 				</div>
+
+				<div className="nav-item">
+					<NavLink to="/post">Post To Map</NavLink>
+				</div>
 			</Fragment>
 				:
 			<Fragment>
