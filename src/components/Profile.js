@@ -7,14 +7,11 @@ import Bookmark from './Bookmark'
 
 class Profile extends Component {
 
-  componentDidUpdate() {
-  }
-
   render() {
     console.log(this.props.currentUser)
     return(
     <div className="profile">
-      {!!this.props.currentUser.id ? 
+      {!!this.props.currentUser ? 
         <h1 className="welcome">Welcome to your profile, {this.props.currentUser.username}</h1>
       :
         <p>You are not logged in</p>

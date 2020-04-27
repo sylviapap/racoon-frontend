@@ -23,7 +23,8 @@ class MarkerCard extends Component {
 	handleCommentPost = (event, comment) => {
 		const newComment = {
 			content: comment.content,
-			user: this.props.currentUser
+			user: this.props.currentUser,
+			id: comment.id
 		}
 		this.setState(prevState => {
 			prevState.markerData.comments.push(newComment); 
@@ -51,7 +52,7 @@ class MarkerCard extends Component {
 				:
 				null
 			}</ul>
-			<PostComment handleCommentPost={this.handleCommentPost} markerId={this.state.markerData.id}/>
+			<PostComment handleCommentPost={this.handleCommentPost} markerId={this.state.markerData.id} />
 			<button onClick={this.addToBookmarks}className="add-bookmark-button">Add To Bookmarks</button>
 			</div>
 		)

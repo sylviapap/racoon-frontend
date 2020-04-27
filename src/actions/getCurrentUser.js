@@ -6,15 +6,24 @@ const getCurrentUser = () => {
 		headers: authHeaders
 		})
 		.then(res => res.json())
-		.then(json => { 
-			if (json.error) {
-				console.log(json.error)
-				dispatch({ type: "SET_ERROR", messages: json.error })
-			} 
+		.catch((error) => {
+			if (error) {
+				console.log(error);
+				dispatch({ type: "SET_ERROR", messages: error })
+			}
 			else {
-				dispatch({ type: "SET_CURRENT_USER", currentUser: json.user })
+				return window.alert("???")
+			}
+		})
+		.then(json => { 
+			if(json.user !== undefined) {
+				console.log(json.user);
+				dispatch({ type: "SET_CURRENT_USER", user: json.user })
 				dispatch({type: "SET_BOOKMARKS", bookmarks: json.user.bookmarks})
 				dispatch({type: "SET_CREATED_MARKERS", createdMarkers: json.user.created_markers})
+			} 
+			else {
+				console.log("no user?")
 			}
 		})
 	}

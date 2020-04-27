@@ -10,13 +10,13 @@ class NavBar extends Component {
 	}
 
   render() {
-		const loggedIn = !!this.props.currentUser.id
+		// const loggedIn = !!this.props.currentUser.id
 		return(
 		<div className="nav-bar">
 			<div className="nav-item">
 				<NavLink to="/">Home</NavLink>
 			</div>
-		{ loggedIn ?
+		{ this.props.currentUser !== undefined && this.props.currentUser.id ?
 			<Fragment>
 				<div className="nav-header">Welcome, {this.props.currentUser.username}</div>
 				<div className="nav-item" onClick={this.logout}>

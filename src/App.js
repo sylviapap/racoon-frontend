@@ -43,12 +43,12 @@ class App extends Component {
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/login" component={Login} />
 
-          {localStorage.getItem("token") ?  (
+          {this.props.currentUser !== undefined && this.props.currentUser.id ?  (
               <Switch>
                 <Route exact path="/profile" render={(props) => <Profile {...props}/>}/> 
                 <Route exact path="/post" render={(props) => <PostToMap {...props} />} />
                 <Route exact path="/markers/:id" render={(props) => <MarkerCard {...props} />} />
-                <Route render={()=> <Redirect to= "/"/>}/>
+                <Route render={() => <Redirect to= "/" />}/>
               </Switch>
               )
               : 
@@ -63,7 +63,7 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.user
+    currentUser: state.user.currentUser
   }
 }
 
