@@ -9,6 +9,12 @@ const mapReducer = (state = intitialState, action) => {
         ...state, 
         initialMap: action.initialMap
       }
+
+    case "ADD_TO_MAP":
+      return {
+        ...state,
+        initialMap: [...state.initialMap, action.marker]
+      }
       
     default:
       return state;

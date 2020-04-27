@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import {API_ROOT, headers} from '../services/api'
+import addToMap from '../actions/addToMap'
 
 class PostToMap extends Component{
   state = {
@@ -31,29 +31,23 @@ class PostToMap extends Component{
     console.log(this.state.fields)
   };
 
-  handleSubmit = (event, history) => {
+  handleSubmit = (event) => {
     event.preventDefault()
-    fetch(`${API_ROOT}/map_markers`, {
-      method: "POST", 
-      headers: headers,
-      body: JSON.stringify({
-        user_id: this.props.currentUser.id,
-        latitude: this.state.fields.latitude,
-        longitude: this.state.fields.longitude,
-        title: this.state.fields.title, 
-        address: this.state.fields.address, 
-      })
-    })
-      .then(response => response.json())
-      .then(json => {console.log(json);
-        this.setState({ fields: {
-          latitude: [],
-          longitude: [],
-          title: [], 
-          address: []
-        }});
-        this.props.history.push('/')
-      })
+    let markerData = {
+      user_id: this.props.currentUser.id,
+      latitude: this.state.fields.latitude,
+      longitude: this.state.fields.longitude,
+      title: this.state.fields.title, 
+      address: this.state.fields.address
+    }
+    this.props.addToMap(event, markerData, this.props.history);
+    this.setState({ 
+      fields: {
+        latitude: [],
+        longitude: [],
+        title: [], 
+        address: []
+    }});
   }
 
   render() {
@@ -80,4 +74,9 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps)(PostToMap)
+const mapDispatchToProps = (dispatch) => {
+  return{
+      addToMap: (event, markerData, history) => {dispatch(addToMap(event, markerData, history))}
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(PostToMap)
