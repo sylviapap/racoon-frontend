@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import logo from '../logo.png'
+import logo from '../racoon-logo.png';
 
 class NavBar extends Component {
 
@@ -14,7 +14,7 @@ class NavBar extends Component {
 		// const loggedIn = !!this.props.currentUser.id
 		return(
 		<div className="nav-bar">
-			<img src={logo} className="logo" alt="logo"></img>
+			<img src={logo} className="racoon-logo" alt="racoon-logo"></img>
 			<div className="nav-item">
 				<NavLink to="/">Home</NavLink>
 			</div>
