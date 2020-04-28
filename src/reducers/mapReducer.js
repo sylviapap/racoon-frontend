@@ -15,6 +15,14 @@ const mapReducer = (state = intitialState, action) => {
         ...state,
         initialMap: [...state.initialMap, action.marker]
       }
+
+    case "DELETE_FROM_MAP":
+      const initialMap = state.initialMap.filter(marker => marker.id !== action.id)
+      console.log(initialMap)
+      return {
+        ...state,
+        initialMap
+      }
       
     default:
       return state;
