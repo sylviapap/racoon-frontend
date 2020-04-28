@@ -28,7 +28,7 @@ class Profile extends Component {
         { this.props.createdMarkers.length === 0 ?
         <p className="no-markers">Looks like you haven't posted a marker..</p> 
         :
-        this.props.currentUser.created_markers.map(marker => <CreatedMarker key={marker.id} marker={marker}/>) 
+        this.props.createdMarkers.map(marker => <CreatedMarker key={marker.id} marker={marker}/>) 
         }
       </div>
       <div className="card">

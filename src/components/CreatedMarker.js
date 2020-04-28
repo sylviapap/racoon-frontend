@@ -1,24 +1,28 @@
 import React, { Component } from 'react'
-import {API_ROOT, authHeaders} from '../services/api'
+import { connect } from 'react-redux'
+import deleteCreatedMarker from '../actions/deleteCreatedMarker'
 
 class CreatedMarker extends Component {
 
 	delete = () => {
-		fetch(`${API_ROOT}/bookmarks/${this.props.marker.id}`, 
-		{method: "DELETE",
-		headers: authHeaders})
+		let id = this.props.marker.id;
+		this.props.deleteCreatedMarker(id);
 	}
 
 	render() {
-		console.log(this.props.marker)
+		console.log(this.props)
 		return(
 			<div className="created-marker item">
 				<h1 className="marker-page-title">Title: {this.props.marker.title}</h1>
 				<p>Address: {this.props.marker.address}</p>
-				<button onClick={this.delete}>Remove</button>
+				<button onClick={this.delete}>Delete From Map</button>
 			</div>
 		)
 	}
 }
 
-export default CreatedMarker
+const mapDispatchToProps = (dispatch) => ({
+  deleteCreatedMarker: (id) => {dispatch(deleteCreatedMarker(id))}
+})
+
+export default connect(null, mapDispatchToProps)(CreatedMarker)

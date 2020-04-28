@@ -31,6 +31,13 @@ const userReducer = (state = intitialState, action) => {
         bookmarks
       }
 
+    case "DELETE_CREATED_MARKER":
+      const createdMarkers = state.createdMarkers.filter(marker => marker.id !== action.id)
+      return {
+        ...state,
+        createdMarkers
+      }
+
     case "SET_CREATED_MARKERS":
       return {
         ...state, 
