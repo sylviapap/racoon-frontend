@@ -1,24 +1,75 @@
 .App {
   text-align: center;
-  background-color: #f2f2f2;
-  padding: 3%;
 }
 
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100%;
-  width: 100%;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.map {
+  width: 100%;
+  height: 80%;
+  margin-top: 20%;
+  left: 0px;
+  top: 0px;
 }
+
+.nav-bar {
+  overflow: hidden;
+  background-color: #4464D7;
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  left: 0px;
+  top: 0px;
+}
+
+.logo{
+  width: 100px;
+  height: 72.62px;
+  left: 40px;
+  top: 77.38px;
+  float: left;
+}
+
+.nav-bar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 1%;
+  text-decoration: none;
+}
+
+.nav-header {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 1%;
+}
+
+.nav-bar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.nav-item {
+  position: static;
+}
+
+.card {
+  background-color: #77d5f1;
+  padding: 1%;
+  margin: 1%;
+  text-align: center;
+  text-decoration: none;
+  border-style: outset;
+}
+
 
 input[type=text], input[type=password], select {
   width: 100%;
@@ -43,42 +94,6 @@ button[type=submit] {
 
 button[type=submit]:hover {
   background-color: #c0cbe0;
-}
-
-.nav-bar {
-  overflow: hidden;
-  background-color: rgba(51, 51, 51, 0.479);
-  width: 100%;
-}
-
-.nav-bar a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 1%;
-  text-decoration: none;
-}
-
-.nav-header {
-  float: right;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 1%;
-}
-
-.nav-bar a:hover {
-  background-color: #ddd;
-  color: black;
-} 
-
-.card {
-  background-color: #77d5f1;
-  padding: 1%;
-  margin: 1%;
-  text-align: center;
-  text-decoration: none;
-  border-style: outset;
 }
 
 .item {

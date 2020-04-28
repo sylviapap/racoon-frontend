@@ -2,17 +2,6 @@ import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import InfoWindowFormat  from '../components/InfoWindowFormat'
 
-const mapStyles = {
-    width: '100%',
-    height: '100%'
-};
-
-const containerStyle = {
-  position: 'absolute',
-  width: '95%',
-  height: '95%'
-};
-
 class GoogleMap extends Component {
   constructor() {
     super()
@@ -48,13 +37,12 @@ class GoogleMap extends Component {
     render() {
       console.log(this.props.initialMapData)
       return (
+        <div className="map">
         <Map 
             google={this.props.google}
             onClick={this.onMapClicked}
-            containerStyle={containerStyle}
             zoom={2}
             ref={(ref) => {this.map = ref}}
-            style={mapStyles}
             initialCenter={{lat: 0, lng: 0}}
             bounds={this.state.bounds}>
                 
@@ -79,7 +67,7 @@ class GoogleMap extends Component {
             <InfoWindowFormat
               marker={this.state.activeMarker}
               visible={this.state.showingInfoWindow}>
-                <div>
+                <div classname="info-window">
                   <h3>{this.state.selectedPlace.title}</h3>
                   <p>{this.state.selectedPlace.address}</p>
                   <p>{this.state.selectedPlace.message}</p>
@@ -88,6 +76,7 @@ class GoogleMap extends Component {
                 </div>
             </InfoWindowFormat>
           </Map>
+          </div>
         )
     }
 }

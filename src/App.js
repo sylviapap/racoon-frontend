@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import fetchInitialMap from './actions/fetchInitialMap'
 import getCurrentUser from './actions/getCurrentUser'
 import errorToggle from './actions/errorToggle'
