@@ -46,6 +46,7 @@ class MarkerCard extends Component {
 			<div className="marker-page">
 				<h1 className="marker-page-title">{this.state.markerData.title}</h1>
 				<p>{this.state.markerData.address}</p>
+				<button onClick={this.addToBookmarks}className="add-bookmark-button">Add To Bookmarks</button>
 				<h2>Comments:</h2>
 				<ul>{this.state.markerData.comments ? 
 				(this.state.markerData.comments.map(comment => <Comment comment={comment} key={comment.id}/>))
@@ -53,7 +54,7 @@ class MarkerCard extends Component {
 				null
 			}</ul>
 			<PostComment handleCommentPost={this.handleCommentPost} markerId={this.state.markerData.id} />
-			<button onClick={this.addToBookmarks}className="add-bookmark-button">Add To Bookmarks</button>
+
 			</div>
 		)
 	}
