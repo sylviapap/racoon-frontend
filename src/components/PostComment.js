@@ -38,7 +38,7 @@ class PostComment extends Component{
           onChange={this.handleChange}
           placeholder="Write a comment"
           className="comment-input"/>
-        <input className="post" type="submit" value="POST"/>
+        <input className="post" type="submit" value="Post Comment"/>
       </form>
     )
   }
