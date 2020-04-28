@@ -76,7 +76,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return{
-      addToMap: (event, markerData, history) => {dispatch(addToMap(event, markerData, history))}
+    addToMap: (event, markerData, history) => {dispatch(addToMap(event, markerData, history))}
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(PostToMap)
