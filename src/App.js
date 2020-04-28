@@ -27,10 +27,7 @@ class App extends Component {
   render() {
     return (
       <div className="App-container">
-        <div className="nav">
-          <NavBar />
-        </div>
-        
+        <NavBar />
       <div className="App">
         {this.props.error.error ? 
         <div className="warning-message">
