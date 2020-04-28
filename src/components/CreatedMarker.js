@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import {API_ROOT, headers} from '../services/api'
+import {API_ROOT, authHeaders} from '../services/api'
 
 class CreatedMarker extends Component {
 
 	delete = () => {
 		fetch(`${API_ROOT}/bookmarks/${this.props.marker.id}`, 
-		{method: "DELETE"})
+		{method: "DELETE",
+		headers: authHeaders})
 	}
 
 	render() {

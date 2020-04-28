@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import {API_ROOT, headers} from '../services/api'
+import {API_ROOT, authHeaders} from '../services/api'
 
 class PostComment extends Component{
   state = {
@@ -15,7 +15,7 @@ class PostComment extends Component{
     event.preventDefault()
     fetch(`${API_ROOT}/comments`, {
       method: "POST", 
-      headers: headers,
+      headers: authHeaders,
       body: JSON.stringify({
         user_id: this.props.currentUser.id,
         map_marker_id: this.props.markerId,

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Comment from './Comment'
 import PostComment from './PostComment'
-import {API_ROOT, headers} from '../services/api'
+import {API_ROOT} from '../services/api'
 import addBookmark from '../actions/addBookmark'
 
 class MarkerCard extends Component {

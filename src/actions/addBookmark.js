@@ -1,4 +1,4 @@
-import {API_ROOT, headers} from '../services/api'
+import {API_ROOT, authHeaders} from '../services/api'
 
 const addBookmark = (event, markerData, history) => {
    
@@ -6,7 +6,7 @@ const addBookmark = (event, markerData, history) => {
      
     return fetch(`${API_ROOT}/bookmarks`, {
       method: "POST", 
-      headers: headers,
+      headers: authHeaders,
       body: JSON.stringify({
         user_id: markerData.user_id,
         map_marker_id: markerData.map_marker_id      

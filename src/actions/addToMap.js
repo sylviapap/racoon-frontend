@@ -1,10 +1,10 @@
-import {API_ROOT, headers} from '../services/api'
+import {API_ROOT, authHeaders} from '../services/api'
 
 const addToMap = (event, markerData, history) => {
   return (dispatch) => {
     return fetch(`${API_ROOT}/map_markers`, {
       method: "POST", 
-      headers: headers,
+      headers: authHeaders,
       body: JSON.stringify(markerData)
     })
     .then(response => response.json())
