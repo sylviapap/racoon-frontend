@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import fetchInitialMap from './actions/fetchInitialMap'
@@ -26,6 +26,8 @@ class App extends Component {
   
   render() {
     return (
+      <Fragment>
+        <NavBar />
       <div className="App">
         {this.props.error.error ? 
         <div className="warning-message">
@@ -38,7 +40,6 @@ class App extends Component {
           : 
           null}
 
-      <NavBar />
       <Route exact path="/" component={MapContainer} />
 
         <Switch>
@@ -57,6 +58,7 @@ class App extends Component {
             }
         </Switch>
       </div>
+      </Fragment>
     );
   }
   
