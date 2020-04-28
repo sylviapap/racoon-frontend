@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import InfoWindowFormat  from '../components/InfoWindowFormat'
+import cough from '../cough.png'
+import {styles} from '../services/mapStyles'
 
 class GoogleMap extends Component {
   constructor() {
@@ -42,6 +44,8 @@ class GoogleMap extends Component {
             google={this.props.google}
             onClick={this.onMapClicked}
             zoom={2}
+            minZoom={1.75}
+            styles={styles}
             ref={(ref) => {this.map = ref}}
             initialCenter={{lat: 0, lng: 0}}
             bounds={this.state.bounds}>
@@ -59,6 +63,7 @@ class GoogleMap extends Component {
                     id={object.id}
                     key={object.id}
                     message="this is a marker"
+                    icon={cough}
                     />))
                     :
                     null
