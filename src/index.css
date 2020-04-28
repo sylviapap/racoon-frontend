@@ -1,6 +1,9 @@
-.App {
-  text-align: center;
-  margin-top: 100px;
+:root {
+  --main-spacing: 15px;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -9,18 +12,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
 }
 
-h1 {
-  font-size: 200%;
-}
-
-h2 {
-  font-size: 150%;
-}
-
-h3 {
-  font-size: 90%;
+.App-container {
+  display: flex;
+  flex-direction: column;
 }
 
 /******************************* Map  */
@@ -45,11 +42,11 @@ h3 {
 .nav-bar {
   overflow: hidden;
   background-color: #4464D7;
-  position: absolute;
   width: 100%;
-  height: 100px;
+  height: 20vh;
   left: 0px;
   top: 0px;
+  padding: var(--main-spacing);
 }
 
 .nav-header {
@@ -59,24 +56,24 @@ h3 {
   padding: 1%;
 }
 
+.nav-item {
+  float: left;
+  text-align: center;
+  padding: 1%;
+}
+
+.nav-item :hover {
+  background: #e9e7f9;
+  color: black;
+}
+
 .nav-bar a {
   float: left;
   display: block;
   color: #f2f2f2;
-  text-align: center;
-  padding: 1%;
   text-decoration: none;
 }
 
-.nav-item {
-  position: static;
-  float: left;
-}
-
-.nav-item :hover {
-  background: white;
-  color: black;
-}
 
 /******************************* Cards */
 

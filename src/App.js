@@ -26,8 +26,11 @@ class App extends Component {
   
   render() {
     return (
-      <Fragment>
-        <NavBar />
+      <div className="App-container">
+        <div className="nav">
+          <NavBar />
+        </div>
+        
       <div className="App">
         {this.props.error.error ? 
         <div className="warning-message">
@@ -58,7 +61,7 @@ class App extends Component {
             }
         </Switch>
       </div>
-      </Fragment>
+      </div>
     );
   }
   
