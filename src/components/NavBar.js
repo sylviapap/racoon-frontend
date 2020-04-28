@@ -14,7 +14,7 @@ class NavBar extends Component {
 		// const loggedIn = !!this.props.currentUser.id
 		return(
 		<div className="nav-bar">
-			<img src={logo} className="racoon-logo" alt="racoon-logo"></img>
+			<img src={logo} className="nav-item" alt="racoon-logo" id="racoon-logo"></img>
 			<div className="nav-item">
 				<NavLink to="/">Home</NavLink>
 			</div>
