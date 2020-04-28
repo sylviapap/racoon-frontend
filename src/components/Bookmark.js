@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import {API_ROOT, headers} from '../services/api'
+import { connect } from 'react-redux'
+import deleteBookmark from '../actions/deleteBookmark'
 
 class Bookmark extends Component {
 
 	delete = () => {
-		fetch(`${API_ROOT}/bookmarks/${this.props.bookmark.id}`, 
-		{method: "DELETE"})
+		let id = this.props.bookmark.id;
+		this.props.deleteBookmark(id);
 	}
 
 	render() {
@@ -20,4 +21,8 @@ class Bookmark extends Component {
 	}
 }
 
-export default Bookmark
+const mapDispatchToProps = (dispatch) => ({
+  deleteBookmark: (id) => {dispatch(deleteBookmark(id))}
+})
+
+export default connect(null, mapDispatchToProps)(Bookmark)

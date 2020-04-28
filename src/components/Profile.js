@@ -3,8 +3,6 @@ import {connect} from 'react-redux';
 import CreatedMarker from './CreatedMarker'
 import Bookmark from './Bookmark'
 
-// need bookmarks and created markers in state - initial load is empty array so ternaries don't work
-
 class Profile extends Component {
 
   render() {
@@ -22,7 +20,7 @@ class Profile extends Component {
         { this.props.bookmarks.length === 0 ? 
         <p className="no-markers">Looks like you have no bookmarks..</p> 
         :
-        this.props.currentUser.bookmarks.map(bookmark => <Bookmark key={bookmark.id} bookmark={bookmark}/>)
+        this.props.bookmarks.map(bookmark => <Bookmark key={bookmark.id} bookmark={bookmark}/>)
         }
       </div>
       <div className="created-markers card">
@@ -34,8 +32,8 @@ class Profile extends Component {
         }
       </div>
       <div className="card">
-        <p>Click here to post to the map</p>
-        <p>Click here to go to the map and save</p>
+        <p>Placeholder: post to the map</p>
+        <p>Placeholder: go to the map and save</p>
       </div>
     </div>
     )
