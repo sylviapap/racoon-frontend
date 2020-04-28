@@ -39,22 +39,22 @@ class App extends Component {
           null}
 
       <NavBar />
+      <Route exact path="/" component={MapContainer} />
+
         <Switch>
-          <Route exact path="/" component={MapContainer} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/login" component={Login} />
 
           {this.props.user.currentUser !== undefined && this.props.user.currentUser.id ?  (
               <Switch>
-                <Route exact path="/profile" render={(props) => <Profile {...props}/>}/> 
-                <Route exact path="/post" render={(props) => <PostToMap {...props} />} />
-                <Route exact path="/markers/:id" render={(props) => <MarkerCard {...props} />} />
-                <Route render={() => <Redirect to= "/" />}/>
+                <Route path="/profile" render={(props) => <Profile {...props}/>}/> 
+                <Route path="/post" render={(props) => <PostToMap {...props} />} />
+                <Route path="/markers/:id" render={(props) => <MarkerCard {...props} />} />
               </Switch>
               )
               : 
-              <Redirect to="/"/>
-              }
+              <Route exact path="/" component={MapContainer} />
+            }
         </Switch>
       </div>
     );
