@@ -62,7 +62,7 @@ class GoogleMap extends Component {
                     comments={object.comments}
                     id={object.id}
                     key={object.id}
-                    message="this is a marker"
+                    message="COVID-19 Self-Report"
                     icon={cough}
                     />))
                     :

@@ -18,22 +18,18 @@ class Profile extends Component {
       <div className="bookmarks card">
         <h2>Your Bookmarks</h2>
         { this.props.bookmarks.length === 0 ? 
-        <p className="no-markers">Looks like you have no bookmarks..</p> 
+        <p className="no-markers">You have none.. go to a marker's info page to save a bookmark</p> 
         :
         this.props.bookmarks.map(bookmark => <Bookmark key={bookmark.id} bookmark={bookmark}/>)
         }
       </div>
       <div className="created-markers card">
-        <h2>Your Created Markers</h2>
+        <h2>Markers You've Posted</h2>
         { this.props.createdMarkers.length === 0 ?
-        <p className="no-markers">Looks like you haven't posted a marker..</p> 
+        <p className="no-markers">You haven't posted yet... go to the map to post</p> 
         :
         this.props.createdMarkers.map(marker => <CreatedMarker key={marker.id} marker={marker}/>) 
         }
-      </div>
-      <div className="card">
-        <p>Placeholder: post to the map</p>
-        <p>Placeholder: go to the map and save</p>
       </div>
     </div>
     )
