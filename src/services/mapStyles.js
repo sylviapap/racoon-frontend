@@ -8,37 +8,10 @@ export const styles = [
     ]
   },
   {
-    "elementType": "geometry.stroke",
-    "stylers": [
-      {
-        "color": "#4464d7"
-      }
-    ]
-  },
-  {
-    "elementType": "labels",
-    "stylers": [
-      {
-        "color": "#4464d7"
-      }
-    ]
-  },
-  {
     "elementType": "labels.icon",
     "stylers": [
       {
-        "color": "#989a9a"
-      }
-    ]
-  },
-  {
-    "elementType": "labels.text",
-    "stylers": [
-      {
-        "color": "#4464d7"
-      },
-      {
-        "weight": 3
+        "visibility": "off"
       }
     ]
   },
@@ -46,7 +19,7 @@ export const styles = [
     "elementType": "labels.text.fill",
     "stylers": [
       {
-        "color": "#000000"
+        "color": "#616161"
       }
     ]
   },
@@ -168,18 +141,10 @@ export const styles = [
   },
   {
     "featureType": "water",
-    "stylers": [
-      {
-        "color": "#143d4d"
-      }
-    ]
-  },
-  {
-    "featureType": "water",
     "elementType": "geometry",
     "stylers": [
       {
-        "color": "#c9d5fb"
+        "color": "#a4b6f3"
       }
     ]
   },
@@ -188,7 +153,10 @@ export const styles = [
     "elementType": "labels.text.fill",
     "stylers": [
       {
-        "color": "#9e9e9e"
+        "color": "#4464d7"
+      },
+      {
+        "weight": 2
       }
     ]
   }
