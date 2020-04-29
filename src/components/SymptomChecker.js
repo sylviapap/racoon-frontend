@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {symptoms} from '../services/symptoms'
 import {riskFactors} from '../services/riskFactors'
+import Results from './Results'
 
 const infermedicaHeaders = {
   "App-Id": process.env.REACT_APP_INFERMEDICA_APP_ID,
@@ -64,16 +65,19 @@ class SymptomChecker extends Component {
   }
   
   render() {
-    console.log(!!this.state.response.serious)
     if (this.state.response.serious) {const results = this.state.response.serious.map(a => a.common_name)
     console.log(results)}
     return(
       <div className="symptom-checker">
-        <div className="results">
-        {!!this.state.response.serious ? <div>Serious symptoms: {this.state.response.serious.map(a => <p key={a.id}>{a.common_name}</p>)}</div> : null
+        <h1 className="card-title">Symptom Check</h1>
+
+        {!!this.state.response.serious ? 
+          <Results response={this.state.response}/>
+          : 
+          <h2>Please select your sex, age, symptoms, and risk factors</h2>
         }
-        </div>
-        <h5 className="card-title">Please select your sex and age.</h5>
+        
+        <h3>Results are based on a rough implementation of the Infermedica API and are not meant to provide any sort of clinical diagnosis nor to replace any medical advice.</h3>
         <form onSubmit={this.handleSubmit} >
           <label className="label">Sex:</label>
             <input 
