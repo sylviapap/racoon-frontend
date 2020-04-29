@@ -9,7 +9,9 @@ class MarkerCard extends Component {
 	constructor() {
 		super()
 		this.state = {
-			markerData: {}
+			markerData: {
+				comments: []
+			}
 		}
 	}
 
@@ -46,13 +48,15 @@ class MarkerCard extends Component {
 			<div className="marker-page">
 				<h1 className="marker-page-title">{this.state.markerData.title}</h1>
 				<p>{this.state.markerData.address}</p>
+				<h2>User's Self Report Symptoms: </h2>
+					<p>{this.state.markerData.message}</p>
 				<button onClick={this.addToBookmarks}className="add-bookmark-button">Add To Bookmarks</button>
 				<h2>Comments:</h2>
-				<ul>{this.state.markerData.comments ? 
-				(this.state.markerData.comments.map(comment => <Comment comment={comment} key={comment.id}/>))
+				{this.state.markerData.comments.length ? 
+				(this.state.markerData.comments.map(comment => <ul><Comment comment={comment} key={comment.id}/></ul>))
 				:
-				null
-			}</ul>
+				<p>Looks like no comments  yet...be the first!</p>
+			}
 			<PostComment handleCommentPost={this.handleCommentPost} markerId={this.state.markerData.id} />
 
 			</div>

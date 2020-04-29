@@ -57,8 +57,8 @@ class GoogleMap extends Component {
                     <Marker 
                     onClick={this.onMarkerViewInfoWindowClick}
                     position={{
-                        lat: object.latitude,
-                        lng: object.longitude}}
+                      lat: object.latitude,
+                      lng: object.longitude}}
                     title={object.title}
                     address={object.address}
                     comments={object.comments}
@@ -76,9 +76,10 @@ class GoogleMap extends Component {
               marker={this.state.activeMarker}
               visible={this.state.showingInfoWindow}>
                 <div className="info-window">
-                  <h3>{this.state.selectedPlace.title}</h3>
-                  <p>{this.state.selectedPlace.address}</p>
-                  <p>{this.state.selectedPlace.message}</p>
+                  <h3>{this.state.selectedPlace.message}</h3>
+                  <h3>Description: {this.state.selectedPlace.title}</h3>
+                  <p>Address: {this.state.selectedPlace.address}</p>
+                  <p>Symptoms: {this.state.selectedPlace.symptoms}</p>
                   <button className="button" onClick={() => this.handleMarkerViewInfoClick(this.state.selectedPlace)} key={this.state.selectedPlace.id}>More Info</button>
                   
                 </div>
