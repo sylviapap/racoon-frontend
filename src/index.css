@@ -80,9 +80,7 @@ body {
   background-color: rgba(31, 40, 207, 0.1);
   padding: 1%;
   margin: 1%;
-  text-align: center;
   text-decoration: none;
-  border-style: outset;
 }
 
 
@@ -127,13 +125,12 @@ button:hover, input[type=submit]:hover {
 }
 
 .item {
-  border-style: double;
   background-color: white;
 }
 
 .comment-card {
   border: 1px solid #ccc;
-  border-radius: 2px;
+  border-radius: 4px;
   width: 25%;
   margin: 1%;
 }
