@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {symptoms} from '../services/symptoms'
+import {riskFactors} from '../services/riskFactors'
 
 const headers = {
   "App-Id": "582e2307",
@@ -15,7 +16,9 @@ class SymptomChecker extends Component {
     radio: {
       sex: ""
     },
-    symptom_ids: []
+    symptom_ids: [],
+    riskFactors: [],
+    response: {}
   }
 
   handleChange = (event) => {
@@ -35,14 +38,16 @@ class SymptomChecker extends Component {
         value.push(options[i].value);
       }
     }
-    this.setState({symptom_ids: value});
+    this.setState({[event.target.name]: value});
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const evidence = this.state.symptom_ids.map(s => Object.assign({}, {"id": s, "choice_id": "present"}));
+    const symptomArray = this.state.symptom_ids.map(s => Object.assign({}, {"id": s, "choice_id": "present"}));
+    const riskArray = this.state.riskFactors.map(rf => Object.assign({}, {"id": rf, "choice_id": "present"}));
+    const evidence = symptomArray.concat(riskArray)
     console.log(evidence)
-    fetch("https://api.infermedica.com/covid19/diagnosis", {
+    fetch("https://api.infermedica.com/covid19/triage", {
       method: "POST",
       headers: headers,
       body: JSON.stringify({
@@ -52,13 +57,22 @@ class SymptomChecker extends Component {
       })
     })
     .then(response => response.json())
-    .then(json => console.log(json))
+    .then(json => {
+      console.log(json)
+      this.setState({response: json})
+    })
   }
   
   render() {
-    console.log(this.state.symptom_ids)
+    console.log(!!this.state.response.serious)
+    if (this.state.response.serious) {const results = this.state.response.serious.map(a => a.common_name)
+    console.log(results)}
     return(
       <div className="symptom-checker">
+        <div className="results">
+        {!!this.state.response.serious ? <div>Serious symptoms: {this.state.response.serious.map(a => <p key={a.id}>{a.common_name}</p>)}</div> : null
+        }
+        </div>
         <h5 className="card-title">Please select your sex and age.</h5>
         <form onSubmit={this.handleSubmit} >
           <label className="label">Sex:</label>
@@ -92,12 +106,26 @@ class SymptomChecker extends Component {
             <select 
               multiple={true} 
               value={this.state.symptom_ids} 
+              name="symptom_ids"
               onChange={this.handleSelect} >
                 {symptoms.map(symptom => 
                   <option 
                     value={symptom["id"]} 
                     key={symptom["id"]}>
                       {symptom["common_name"]}
+                  </option>)}
+            </select>
+            <label>Select those that apply:</label>
+            <select 
+              multiple={true} 
+              value={this.state.riskFactors} 
+              name="riskFactors"
+              onChange={this.handleSelect} >
+                {riskFactors.map(rf => 
+                  <option 
+                    value={rf["id"]} 
+                    key={rf["id"]}>
+                      {rf["question"]}
                   </option>)}
             </select>
             <input 
