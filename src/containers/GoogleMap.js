@@ -47,7 +47,7 @@ class GoogleMap extends Component {
             minZoom={1.75}
             styles={styles}
             ref={(ref) => {this.map = ref}}
-            initialCenter={{lat: 0, lng: 0}}
+            initialCenter={{lat: 0, lng: -98.5794797}}
             bounds={this.state.bounds}>
                 
                 { this.props.initialMapData ? 
