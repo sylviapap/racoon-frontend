@@ -2,7 +2,7 @@ import {API_ROOT, authHeaders} from '../services/api'
 
 const getCurrentUser = () => {
 	return (dispatch) => {
-		return fetch(`${API_ROOT}/current_user`, {
+		return fetch(`${API_ROOT}/profile`, {
 		headers: authHeaders
 		})
 		.then(res => res.json())
