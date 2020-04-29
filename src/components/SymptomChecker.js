@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import {symptoms} from '../services/symptoms'
 import {riskFactors} from '../services/riskFactors'
 
-const headers = {
-  "App-Id": "582e2307",
-  "App-Key": "c98b58a9bf15795b1dacdfebe5375701",
+const infermedicaHeaders = {
+  "App-Id": process.env.REACT_APP_INFERMEDICA_APP_ID,
+  "App-Key": process.env.REACT_APP_INFERMEDICA_APP_KEY,
   "Content-Type": "application/json"
 }
 
@@ -49,7 +49,7 @@ class SymptomChecker extends Component {
     console.log(evidence)
     fetch("https://api.infermedica.com/covid19/triage", {
       method: "POST",
-      headers: headers,
+      headers: infermedicaHeaders,
       body: JSON.stringify({
         "sex": this.state.radio.sex,
         "age": parseInt(this.state.fields.age),
