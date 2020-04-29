@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import addToMap from '../actions/addToMap'
+import {API_ROOT} from '../services/api'
 
 class PostToMap extends Component{
   state = {
@@ -9,20 +10,26 @@ class PostToMap extends Component{
       longitude: [],
       title: [], 
       address: []
-    }
+    },
+    symptomChoices: [],
+    symptoms: []
   }
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(this.showPosition);
+    fetch(`${API_ROOT}/symptoms`)
+      .then(resp => resp.json())
+      .then(json => this.setState({symptomChoices: json}))
   }
 
   showPosition = (position) => {
-    this.setState({ fields: {
-      latitude: position.coords.latitude,
-      longitude: position.coords.longitude,
-      title: [], 
-      address: []
-    }})
+    this.setState(prevState => ({ 
+      fields: {
+        ...prevState.fields,
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+      }
+    }))
   }
 
   handleChange = (event) => {
@@ -38,7 +45,8 @@ class PostToMap extends Component{
       latitude: this.state.fields.latitude,
       longitude: this.state.fields.longitude,
       title: this.state.fields.title, 
-      address: this.state.fields.address
+      address: this.state.fields.address,
+      message: this.state.symptoms
     }
     this.props.addToMap(event, markerData, this.props.history);
     this.setState({ 
@@ -48,6 +56,17 @@ class PostToMap extends Component{
         title: [], 
         address: []
     }});
+  }
+
+  handleSelect = (event) => {
+    const options = event.target.options;
+    const values = [];
+    for (var i = 0, l = options.length; i < l; i++) {
+      if (options[i].selected) {
+        values.push(options[i].value);
+      }
+    }
+    this.setState({[event.target.name]: values});
   }
 
   render() {
@@ -61,6 +80,20 @@ class PostToMap extends Component{
         <input name="latitude" type="number" value={this.state.fields.latitude} onChange={this.handleChange}/>
         <label>Longitude</label>
         <input name="longitude" type="number" value={this.state.fields.longitude} onChange={this.handleChange}/>
+
+        <label>Select your symptoms: (Hold Ctrl or Cmd to select multiple)</label>
+            <select 
+              multiple={true} 
+              value={this.state.symptoms} 
+              name="symptoms"
+              onChange={this.handleSelect} >
+                {this.state.symptomChoices.map(symptom => 
+                  <option 
+                    value={symptom.common_name} 
+                    key={symptom.id}>
+                      {symptom.common_name}
+                  </option>)}
+            </select>
 
         <input className="post" type="submit" value="POST"/>
       </form>
