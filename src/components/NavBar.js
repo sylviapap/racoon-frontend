@@ -24,9 +24,6 @@ class NavBar extends Component {
 		{ this.props.currentUser !== undefined && this.props.currentUser.id ?
 			<Fragment>
 				<div className="nav-header">Welcome, {this.props.currentUser.username}</div>
-				<div className="nav-item" onClick={this.logout}>
-					<NavLink to="/">Logout</NavLink>
-				</div>
 				
 				<div className="nav-item">
 					<NavLink to="/profile">Profile</NavLink>
@@ -34,6 +31,10 @@ class NavBar extends Component {
 
 				<div className="nav-item">
 					<NavLink to="/post">Post</NavLink>
+				</div>
+
+				<div className="nav-item" onClick={this.logout}>
+					<NavLink to="/">Logout</NavLink>
 				</div>
 			</Fragment>
 				:
