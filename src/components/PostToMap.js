@@ -46,7 +46,7 @@ class PostToMap extends Component{
       longitude: this.state.fields.longitude,
       title: this.state.fields.title, 
       address: this.state.fields.address,
-      message: this.state.symptoms
+      message: this.state.symptoms.toString()
     }
     this.props.addToMap(event, markerData, this.props.history);
     this.setState({ 

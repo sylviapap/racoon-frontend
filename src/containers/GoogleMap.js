@@ -4,6 +4,8 @@ import InfoWindowFormat  from '../components/InfoWindowFormat'
 import cough from '../cough.png'
 import {styles} from '../services/mapStyles'
 
+// latitude = vertical! north, up and down
+
 class GoogleMap extends Component {
   constructor() {
     super()
@@ -62,6 +64,7 @@ class GoogleMap extends Component {
                     comments={object.comments}
                     id={object.id}
                     key={object.id}
+                    symptoms={object.message}
                     message="COVID-19 Self-Report"
                     icon={cough}
                     />))
