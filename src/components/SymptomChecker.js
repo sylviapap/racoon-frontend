@@ -120,11 +120,11 @@ class SymptomChecker extends Component {
               value={this.state.symptom_ids} 
               name="symptom_ids"
               onChange={this.handleSelect} >
-                {symptoms.map(symptom => 
+                {this.state.symptoms.map(symptom => 
                   <option 
-                    value={symptom["id"]} 
-                    key={symptom["id"]}>
-                      {symptom["common_name"]}
+                    value={symptom.infermedica_id} 
+                    key={symptom.id}>
+                      {symptom.common_name}
                   </option>)}
             </select>
             <label>Select those that apply:</label>
