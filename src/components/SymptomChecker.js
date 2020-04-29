@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {symptoms} from '../services/symptoms'
 import {riskFactors} from '../services/riskFactors'
 import Results from './Results'
+import {API_ROOT} from '../services/api'
 
 const infermedicaHeaders = {
   "App-Id": process.env.REACT_APP_INFERMEDICA_APP_ID,
@@ -11,6 +12,7 @@ const infermedicaHeaders = {
 
 class SymptomChecker extends Component {
   state = {
+    symptoms: [],
     fields: {
       age: ""
     },
@@ -20,6 +22,12 @@ class SymptomChecker extends Component {
     symptom_ids: [],
     riskFactors: [],
     response: {}
+  }
+
+  componentDidMount() {
+    fetch(`${API_ROOT}/symptoms`)
+    .then(resp => resp.json())
+    .then(json => this.setState({symptoms: json}))
   }
 
   handleChange = (event) => {
