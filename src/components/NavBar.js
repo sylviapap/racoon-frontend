@@ -16,7 +16,10 @@ class NavBar extends Component {
 		<div className="nav-bar">
 			<img src={logo} className="nav-item" alt="racoon-logo" id="racoon-logo"></img>
 			<div className="nav-item">
-				<NavLink to="/">Home</NavLink>
+				<NavLink to="/">Map</NavLink>
+			</div>
+			<div className="nav-item">
+			<NavLink to="/checker">Symptom Check</NavLink>
 			</div>
 		{ this.props.currentUser !== undefined && this.props.currentUser.id ?
 			<Fragment>
@@ -26,11 +29,11 @@ class NavBar extends Component {
 				</div>
 				
 				<div className="nav-item">
-					<NavLink to="/profile">Your Profile</NavLink>
+					<NavLink to="/profile">Profile</NavLink>
 				</div>
 
 				<div className="nav-item">
-					<NavLink to="/post">Post To Map</NavLink>
+					<NavLink to="/post">Post</NavLink>
 				</div>
 			</Fragment>
 				:

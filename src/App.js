@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import fetchInitialMap from './actions/fetchInitialMap'
@@ -12,6 +12,7 @@ import SignUp from './components/SignUp'
 import Profile from './components/Profile'
 import MarkerCard from './components/MarkerCard'
 import PostToMap from './components/PostToMap'
+import SymptomChecker from './components/SymptomChecker'
 
 class App extends Component {   
   
@@ -45,6 +46,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/checker" component={SymptomChecker} />
 
           {this.props.user.currentUser !== undefined && this.props.user.currentUser.id ?  (
               <Switch>

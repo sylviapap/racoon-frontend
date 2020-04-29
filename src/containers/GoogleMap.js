@@ -72,7 +72,7 @@ class GoogleMap extends Component {
             <InfoWindowFormat
               marker={this.state.activeMarker}
               visible={this.state.showingInfoWindow}>
-                <div classname="info-window">
+                <div className="info-window">
                   <h3>{this.state.selectedPlace.title}</h3>
                   <p>{this.state.selectedPlace.address}</p>
                   <p>{this.state.selectedPlace.message}</p>
