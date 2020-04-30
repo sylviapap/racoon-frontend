@@ -20,7 +20,7 @@ class InfoWindowRef extends Component {
   }
 
   render() {
-    return <InfoWindow ref={this.infoWindowRef} {...this.props} />;
+    return <InfoWindow ref={this.infoWindowRef} {...this.props} />
   }
 }
 
