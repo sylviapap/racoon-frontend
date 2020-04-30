@@ -8,7 +8,7 @@ class Profile extends Component {
   render() {
     console.log(this.props.currentUser)
     return(
-    <div className="profile">
+    <div className="profile" id="page">
       {!!this.props.currentUser ? 
         <h1 className="welcome">Welcome to your profile, {this.props.currentUser.username}</h1>
       :

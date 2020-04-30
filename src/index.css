@@ -74,7 +74,12 @@ body {
 }
 
 
-/******************************* Cards */
+/******************************* Non Map Pages */
+
+#page {
+  padding: 1%;
+  margin: 1%;
+}
 
 .card {
   background-color: rgba(31, 40, 207, 0.1);

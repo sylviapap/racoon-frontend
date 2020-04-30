@@ -76,7 +76,7 @@ class SymptomChecker extends Component {
     if (this.state.response.serious) {const results = this.state.response.serious.map(a => a.common_name)
     console.log(results)}
     return(
-      <div className="symptom-checker">
+      <div className="symptom-checker" id="page">
         <h1 className="card-title">Symptom Check</h1>
 
         {!!this.state.response.serious ? 
