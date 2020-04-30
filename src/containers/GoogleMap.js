@@ -6,6 +6,12 @@ import {styles} from '../services/mapStyles'
 
 // latitude = vertical! north, up and down
 
+const containerStyle = {
+  position: "fixed",
+  width: "100%",
+  height: "80%"
+}
+
 class GoogleMap extends Component {
   constructor() {
     super()
@@ -59,8 +65,9 @@ class GoogleMap extends Component {
     console.log(this.state.selectedPlace.name === "Marker")
     
     return (
-    <div className="map">
       <Map 
+        className={"map"}
+        containerStyle={containerStyle}
         google={this.props.google}
         onClick={this.onMapClick}
         zoom={2}
@@ -141,7 +148,6 @@ class GoogleMap extends Component {
           </div>
         </InfoWindowRef>
       </Map>
-    </div>
     )
   }
 }

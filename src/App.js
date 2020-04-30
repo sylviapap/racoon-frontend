@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import fetchInitialMap from './actions/fetchInitialMap'
 import getCurrentUser from './actions/getCurrentUser'
 import errorToggle from './actions/errorToggle'
 
-import MapContainer from './containers/MapContainer'
+import GoogleMap from './containers/GoogleMap'
 import NavBar from './components/NavBar'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
@@ -27,9 +27,7 @@ class App extends Component {
   
   render() {
     return (
-      <div className="App-container">
-        <NavBar />
-      <div className="App">
+      <Fragment>
         {this.props.error.error ? 
         <div className="warning-message">
           <i className="fa fa-times" onClick={this.handleErrorClick} />
@@ -37,11 +35,12 @@ class App extends Component {
             Error
           </div>
             <p>{this.props.error.messages}</p>
-          </div> 
+        </div> 
           : 
           null}
 
-      <Route exact path="/" component={MapContainer} />
+      <Route path="/" component={NavBar} />
+      <Route exact path="/" render={(props) => <GoogleMap {...props} initialMapData={this.props.map.initialMap} />} />
 
         <Switch>
           <Route exact path="/signup" component={SignUp} />
@@ -56,11 +55,10 @@ class App extends Component {
               </Switch>
               )
               : 
-              <Route exact path="/" component={MapContainer} />
+              <Route exact path="/" render={(props) => <GoogleMap {...props} initialMapData={this.props.map.initialMap} />} />
             }
         </Switch>
-      </div>
-      </div>
+        </Fragment>
     );
   }
   
