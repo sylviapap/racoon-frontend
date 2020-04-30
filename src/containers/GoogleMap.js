@@ -10,20 +10,32 @@ class GoogleMap extends Component {
   constructor() {
     super()
     this.state = {
+      officialData: [],
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
       bounds: null
     }
   }
+
+  componentDidMount() {
+    this.fetchOfficialData()
+  }
+
+  fetchOfficialData = () => {
+    fetch(`https://covid19-api.com/country/all`)
+    .then(response => response.json())
+    .then(json => this.setState({officialData: json}))
+  }
      
-  onInfoWindowClick = (props, marker) => {
+  onMarkerClick = (props, marker) => {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
       showingInfoWindow: true
     })
   }
+
      
   onMapClick = () => {
     if (this.state.showingInfoWindow) {
@@ -41,8 +53,10 @@ class GoogleMap extends Component {
   }
 
   render() {
-    const coords = {lat: 0, lng: -98.5794797}
+    const centerCoords = {lat: 0, lng: -98.5794797}
     const population = 2714856
+    const circleRadius = Math.sqrt(population) * 100
+    console.log(this.state.selectedPlace.name === "Marker")
     
     return (
     <div className="map">
@@ -53,24 +67,42 @@ class GoogleMap extends Component {
         minZoom={1.75}
         styles={styles}
         ref={(ref) => {this.map = ref}}
-        initialCenter={{lat: 0, lng: -98.5794797}}
+        initialCenter={centerCoords}
         bounds={this.state.bounds}
         >
+          {this.state.officialData ?
+          this.state.officialData.map(object => 
+          <Circle
+          key={this.state.officialData.indexOf(object)}
+          radius={Math.sqrt(object.confirmed) * 1000}
+          center={{
+            lat: parseFloat(object.latitude) || 0,
+            lng: parseFloat(object.longitude) || 0}}
+          strokeColor={"#FF0000"}
+          strokeOpacity={0}
+          strokeWeight={5}
+          fillColor={"#FF0000"}
+          fillOpacity={0.2}
+          onClick={this.onMarkerClick}
+          position={{
+            lat: object.latitude,
+            lng: object.longitude}}
+          country={object.country}
+          confirmed={object.confirmed}
+          recovered={object.recovered}
+          critical={object.critical}
+          deaths={object.deaths}
+          />)
+          :
+          null
+          }
 
-        <Circle
-        radius={1200000}
-        center={coords}
-        strokeColor={"#FF0000"}
-        strokeOpacity={0}
-        strokeWeight={5}
-        fillColor={"#FF0000"}
-        fillOpacity={0.2}
-        />
+        
               
         { this.props.initialMapData ? 
         (this.props.initialMapData.map(object =>
         <Marker 
-          onClick={this.onInfoWindowClick}
+          onClick={this.onMarkerClick}
           position={{
             lat: object.latitude,
             lng: object.longitude}}
@@ -87,19 +119,25 @@ class GoogleMap extends Component {
           :
           null
         }
-    
+
         <InfoWindowRef
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
           <div className="info-window">
-            <h3>{this.state.selectedPlace.message}</h3>
+          {this.state.selectedPlace.name === "Marker" ? 
+            (<div><h3>{this.state.selectedPlace.message}</h3>
             <h3>{this.state.selectedPlace.title}</h3>
             <p>Address: {this.state.selectedPlace.address}</p>
             <p>Symptoms: {this.state.selectedPlace.symptoms}</p>
             <button 
               className="button" 
               onClick={() => this.onMoreInfoClick(this.state.selectedPlace)} 
-              key={this.state.selectedPlace.id}>More Info</button>
+              key={this.state.selectedPlace.id}>More Info</button></div>)
+              :
+              (<div>
+                <h3>{this.state.selectedPlace.country}</h3>
+                <p>Confirmed cases: {this.state.selectedPlace.confirmed}</p>
+              </div>)}
           </div>
         </InfoWindowRef>
       </Map>
