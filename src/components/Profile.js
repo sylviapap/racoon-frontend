@@ -5,9 +5,12 @@ import Bookmark from './Bookmark'
 
 class Profile extends Component {
 
+
+
   render() {
     return(
-    <div className="profile page" id="">
+    <div className="profile page">
+      <i className="fa fa-times-circle return" onClick={this.props.handleReturnClick}/>
       <h1 className="welcome">My Health Profile</h1>
       {!!this.props.currentUser ? 
         <p>Username: {this.props.currentUser.username}</p>

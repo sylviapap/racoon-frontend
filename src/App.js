@@ -23,13 +23,17 @@ class App extends Component {
   handleErrorClick = () => {
     this.props.errorToggle()
   }
+
+  handleReturnClick = () => {
+    this.props.history.push("/")
+  }
   
   render() {
     return (
       <Fragment>
         {this.props.error.error ? 
         <div className="warning-message">
-          <i className="fa fa-times" onClick={this.handleErrorClick} />
+          <i className="fa fa-times close" onClick={this.handleErrorClick} />
           <div className="header">
             Error
           </div>
@@ -45,7 +49,7 @@ class App extends Component {
 
         {this.props.user.currentUser !== undefined && this.props.user.currentUser.id ?  (
           <Switch>
-            <Route path="/profile" render={(props) => <Profile {...props}/>}/> 
+            <Route path="/profile" render={(props) => <Profile {...props} handleReturnClick={this.handleReturnClick}/>}/> 
             <Route path="/post" render={(props) => <PostToMap {...props} />} />
             <Route path="/markers/:id" render={(props) => <MarkerCard {...props} />} />
             <Route exact path="/checker" component={SymptomChecker} />
