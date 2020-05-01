@@ -21,13 +21,6 @@ h1, p, option {
   margin: 1%;
 }
 
-/******************************* Map  */
-
-/* .map {
-  overflow: hidden;
-} */
-
-
 /******************************* Nav Bar */
 
 .nav-bar {
@@ -200,6 +193,22 @@ button, input[type=submit] {
 button:hover, input[type=submit]:hover {
   background-color: rgba(74, 114, 255, 0.3);
   color: black;
+}
+
+/******************************* Error Message */
+
+.warning-message {
+  padding: 1%;
+  margin: 1%;
+  position: fixed;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  overflow-y: auto;
+  height: 70%;
+  width: 50%;
+  z-index: 1;
 }
 
 /******************************* Responsive layout */
