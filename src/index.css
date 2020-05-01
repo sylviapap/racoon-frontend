@@ -35,6 +35,12 @@ header {
   flex-direction: row;
 }
 
+.disclaimer {
+  font-style: italic;
+  font-size: x-small;
+  text-align: right;
+}
+
 /******************************* Nav Bar */
 
 .nav-bar {

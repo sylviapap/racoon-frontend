@@ -78,7 +78,6 @@ class SymptomChecker extends Component {
           : 
           <p>Please fill in your information</p>
         }
-        <p>Results are not meant to replace professional medical advice</p>
         <form onSubmit={this.handleSubmit} >
           <label className="label">Sex:</label>
           <div className="field">
@@ -111,7 +110,7 @@ class SymptomChecker extends Component {
               name="age"
               value={this.state.fields.age} 
               onChange={this.handleChange} />
-          <label>Select your symptoms: (Hold Ctrl or Cmd to select multiple)</label>
+          <label>Select symptoms: (Hold Ctrl or Cmd for multiple)</label>
             <select 
               multiple={true} 
               value={this.state.symptom_ids} 
@@ -140,6 +139,7 @@ class SymptomChecker extends Component {
             <input 
               type="submit" value="Submit" />
         </form>
+        <p className="disclaimer">*Results are not meant to replace professional medical advice</p>
       </div>
     )
   }
