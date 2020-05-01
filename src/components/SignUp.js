@@ -3,14 +3,13 @@ import { connect } from 'react-redux'
 import signUp from '../actions/signUp'
 
 class SignUp extends Component{
-  constructor(){
-    super()
-    this.state = {
-        username: "",
-        email: "",
-        password: ""        
+  state = {
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+    password_confirmation: ""        
     }
-  }
 
   handleChange = (event) => {
     this.setState({
@@ -20,7 +19,7 @@ class SignUp extends Component{
 
   render() {
     const { handleChange } = this;
-    const { username, password, email } = this.state;
+    const { firstname, lastname, password, password_confirmation, email } = this.state;
 
     return (
       <div className="signup page">
@@ -28,10 +27,20 @@ class SignUp extends Component{
           <div className="field">
             <label><i className="fa fa-user"/></label>
             <input
-              name="username"
+              name="firstname"
               type="text"
-              placeholder="Username"
-              value={username}
+              placeholder="First Name"
+              value={firstname}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="field">
+            <label><i className="fa fa-user-o"/></label>
+            <input
+              name="lastname"
+              type="text"
+              placeholder="Last Name"
+              value={lastname}
               onChange={handleChange}
             />
           </div>
@@ -54,10 +63,18 @@ class SignUp extends Component{
               value={password}
               onChange={handleChange}
             />
+          </div>          
+          <div className="field">
+            <label><i className="fa fa-check"/></label>
+            <input 
+              onChange={handleChange}
+              name="password_confirmation"
+              type="password"
+              value={password_confirmation}
+              placeholder="Confirm Password"
+              />          
           </div>
-          <button type="submit" className="button">
-            Sign Up
-          </button>
+          <input type="submit" className="button" value="Sign Up"/>
         </form>
       </div>
       );
