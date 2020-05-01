@@ -15,9 +15,7 @@ class SymptomChecker extends Component {
   state = {
     symptoms: [], 
     fields: {
-      age: ""
-    },
-    radio: {
+      age: "",
       sex: ""
     },
     symptom_ids: [],
@@ -35,10 +33,6 @@ class SymptomChecker extends Component {
     const newFields = { ...this.state.fields, [event.target.name]: event.target.value };
     this.setState({ fields: newFields });
   };
-
-  handleRadioChange = (event) => {
-    this.setState({radio: {sex: event.target.value}})
-  }
 
   handleSelect = (event) => {
     const options = event.target.options;
@@ -82,9 +76,9 @@ class SymptomChecker extends Component {
         {!!this.state.response.serious ? 
           <Results response={this.state.response}/>
           : 
-          <p>Please select your sex, age, symptoms, and risk factors</p>
+          <p>Please fill in your information</p>
         }
-        <p>Results are not meant to provide any sort of clinical diagnosis nor to replace any medical advice.</p>
+        <p>Results are not meant to replace professional medical advice</p>
         <form onSubmit={this.handleSubmit} >
           <label className="label">Sex:</label>
           <div className="field">
@@ -93,8 +87,8 @@ class SymptomChecker extends Component {
               name="sex" 
               className="input-sex" 
               value="male" 
-              checked={this.state.radio.sex === "male"}
-              onChange={this.handleRadioChange} />
+              checked={this.state.fields.sex === "male"}
+              onChange={this.handleChange} />
                 <label><i className="fa fa-fw fa-mars"/>Male</label>
           </div>
           <div className="field">
@@ -103,8 +97,8 @@ class SymptomChecker extends Component {
               name="sex" 
               className="input-sex" 
               value="female" 
-              checked={this.state.radio.sex === "female"}
-              onChange={this.handleRadioChange} />
+              checked={this.state.fields.sex === "female"}
+              onChange={this.handleChange} />
                 <label><i className="fa fa-fw fa-venus"/>Female</label>
             </div>
           <label className="label">Age:</label>
