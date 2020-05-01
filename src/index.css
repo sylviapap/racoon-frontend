@@ -27,52 +27,54 @@ h1, p, label, option {
   overflow: hidden;
 } */
 
-#racoon-logo{
-  margin: auto;
-  width: 90px;
-  height: 72.62px;
-  left: 40px;
-  top: 77.38px;
-}
 
 /******************************* Nav Bar */
 
 .nav-bar {
-  overflow: hidden;
   background-color: #4464D7;
   width: 100%;
-  height: 30%;
-  left: 0px;
-  top: 0px;
-  padding: var(--main-spacing);
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#racoon-logo{
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 1%;
+  margin-right: 1%;  
+  width: 90px;
+  height: 72.62px;
 }
 
 .nav-header {
-  float: right;
   color: #f2f2f2;
   text-align: center;
-  padding: 1%;
+  order: 8;
+  margin-left: auto;
+  margin-right: 1%;
 }
 
 .nav-item {
   float: left;
   text-align: center;
-  padding: 2%;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 1%;
+  margin-right: 1%;
 }
 
 .nav-item :hover {
-  background: #e9e7f9;
-  color: black;
-  border-radius: 4px;
+  border-bottom-style: solid;
+  border-bottom-width: thin;
 }
 
 .nav-bar a {
-  float: left;
-  display: block;
   color: #f2f2f2;
   text-decoration: none;
 }
-
 
 /******************************* Non Map Pages */
 
@@ -84,6 +86,9 @@ h1, p, label, option {
   display: flex;
   flex-direction: column;
   border-radius: 4px;
+  overflow-y: auto;
+  height: 70%;
+  width: 50%;
 }
 
 .card {
