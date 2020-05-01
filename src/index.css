@@ -29,7 +29,7 @@ h1, p, label, option {
 
 #racoon-logo{
   margin: auto;
-  width: 100px;
+  width: 90px;
   height: 72.62px;
   left: 40px;
   top: 77.38px;
@@ -83,7 +83,6 @@ h1, p, label, option {
   background: white;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   border-radius: 4px;
 }
 
@@ -118,6 +117,11 @@ select {
   margin: 1%;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
 }
 
 /************************ Comments */
