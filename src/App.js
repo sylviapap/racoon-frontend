@@ -34,10 +34,8 @@ class App extends Component {
         {this.props.error.error ? 
         <div className="warning-message">
           <i className="fa fa-times close" onClick={this.handleErrorClick} />
-          <div className="header">
-            Error
-          </div>
-            <p>{this.props.error.messages}</p>
+          <h1 className="error-header">Error</h1>
+            <ul>{this.props.error.messages.map(message => <li key={this.props.error.messages.indexOf(message)}>{message}</li>)}</ul>
         </div> 
           : 
           null}

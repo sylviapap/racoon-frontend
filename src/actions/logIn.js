@@ -24,6 +24,7 @@ const logIn = (event, userInput, history) => {
                 dispatch({ type: "SET_CURRENT_USER", user: json.user })
                 dispatch({type: "SET_BOOKMARKS", bookmarks: json.user.bookmarks})
                 dispatch({type: "SET_CREATED_MARKERS", createdMarkers: json.user.created_markers})
+                dispatch({ type: "NO_ERROR" })
                 localStorage.setItem('token', json.token);
                 history.push('/profile')
             }

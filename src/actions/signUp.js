@@ -21,6 +21,7 @@ const signUp = (event, userInput, history) => {
         }
         else {
           dispatch({ type: "SET_CURRENT_USER", user: json.user })
+          dispatch({ type: "NO_ERROR" })
           localStorage.setItem('token', json.token);
           history.push('/profile')
         }

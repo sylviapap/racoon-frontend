@@ -1,5 +1,6 @@
 const intitialState = {
-  error: false
+  error: false,
+  messages: []
 }
 
 const errorReducer = (state = intitialState, action) => {
@@ -8,13 +9,14 @@ const errorReducer = (state = intitialState, action) => {
       return {
         ...state,
         error: true,
-        messages: action.messages
+        messages: [...state.messages, action.messages]
       }
 
     case "NO_ERROR":
       return {
         ...state,
-        error: false
+        error: false,
+        messages: []
       }
         
     default: 
