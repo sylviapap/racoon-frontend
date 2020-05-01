@@ -46,14 +46,15 @@ class MarkerCard extends Component {
 	render() {
 		return(
 			<div className="marker page">
+				<i className="fa fa-times-circle return" onClick={this.props.handleReturnClick}/>
 				<h1 className="marker-page-title">{this.state.markerData.title}</h1>
 				<p>{this.state.markerData.address}</p>
-				<h2>User's Self Report Symptoms: </h2>
+				<h2>User's Self Reported Symptoms: </h2>
 					<p>{this.state.markerData.message}</p>
 				<button onClick={this.addToBookmarks}className="add-bookmark-button">Add To Bookmarks</button>
 				<h2>Comments:</h2>
 				{this.state.markerData.comments.length ? 
-				(this.state.markerData.comments.map(comment => <ul><Comment comment={comment} key={comment.id}/></ul>))
+				(this.state.markerData.comments.map(comment => <Comment comment={comment} key={comment.id}/>))
 				:
 				<p>Looks like no comments  yet...be the first!</p>
 			}

@@ -51,7 +51,7 @@ class App extends Component {
           <Switch>
             <Route path="/profile" render={(props) => <Profile {...props} handleReturnClick={this.handleReturnClick}/>}/> 
             <Route path="/post" render={(props) => <PostToMap {...props} />} />
-            <Route path="/markers/:id" render={(props) => <MarkerCard {...props} />} />
+            <Route path="/markers/:id" render={(props) => <MarkerCard {...props} handleReturnClick={this.handleReturnClick}/>}/>} />
             <Route exact path="/checker" component={SymptomChecker} />
           </Switch>
           )
