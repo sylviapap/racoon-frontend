@@ -32,10 +32,14 @@ class App extends Component {
     return (
       <Fragment>
         {this.props.error.error ? 
-        <div className="warning-message">
-          <i className="fa fa-times close" onClick={this.handleErrorClick} />
-          <h1 className="error-header">Error</h1>
-            <ul>{this.props.error.messages.map(message => <li key={this.props.error.messages.indexOf(message)}>{message}</li>)}</ul>
+        <div className="warning-window">
+          <div className="warning-message">
+          <header>
+            <h1 className="error-header">Error</h1>
+            <i className="fa fa-times close" onClick={this.handleErrorClick} />
+          </header>
+            <ul>{this.props.error.messages.map(message => <li>{message}</li>)}</ul>
+          </div>
         </div> 
           : 
           null}

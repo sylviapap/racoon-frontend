@@ -9,7 +9,7 @@ const errorReducer = (state = intitialState, action) => {
       return {
         ...state,
         error: true,
-        messages: [...state.messages, action.messages]
+        messages: action.messages
       }
 
     case "NO_ERROR":
