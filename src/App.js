@@ -6,7 +6,6 @@ import getCurrentUser from './actions/getCurrentUser'
 import errorToggle from './actions/errorToggle'
 
 import GoogleMap from './containers/GoogleMap'
-import OtherContainer from './containers/OtherContainer'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import Profile from './components/Profile'

@@ -61,9 +61,6 @@ class GoogleMap extends Component {
 
   render() {
     const centerCoords = {lat: 0, lng: -98.5794797}
-    const population = 2714856
-    const circleRadius = Math.sqrt(population) * 100
-    console.log(this.state.selectedPlace.name === "Marker")
     
     return (
       <Fragment>

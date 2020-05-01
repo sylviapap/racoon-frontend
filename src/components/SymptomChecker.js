@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {symptoms} from '../services/symptoms'
-import {riskFactors} from '../services/riskFactors'
+// import {symptoms} from '../services/symptoms'
+// import {riskFactors} from '../services/riskFactors'
 import Results from './Results'
 import {API_ROOT} from '../services/api'
 

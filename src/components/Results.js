@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import {API_ROOT, authHeaders} from '../services/api'
+// import {API_ROOT, authHeaders} from '../services/api'
 
 class Results extends Component{
 
