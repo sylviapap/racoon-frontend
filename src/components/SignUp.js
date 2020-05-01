@@ -26,8 +26,7 @@ class SignUp extends Component{
       <div className="signup page">
         <form onSubmit={(event) => {this.props.signUp(event, this.state, this.props.history)}}>
           <div className="field">
-          <i className="glyphicon glyphicon-user"></i>
-            <label>Username</label>
+            <label><i className="fa fa-user"/></label>
             <input
               name="username"
               type="text"
@@ -37,8 +36,7 @@ class SignUp extends Component{
             />
           </div>
           <div className="field">
-          <i className="glyphicon glyphicon-envelope"></i>
-            <label>Email</label>
+            <label><i className="fa fa-envelope"/></label>
             <input
               name="email"
               type="text"
@@ -48,8 +46,7 @@ class SignUp extends Component{
             />
           </div>
           <div className="field">
-          <i className="glyphicon glyphicon-cloud"></i>
-            <label>Password</label>
+            <label><i className="fa fa-lock"/></label>
             <input
               name="password"
               type="password"

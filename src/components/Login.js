@@ -24,8 +24,7 @@ class Login extends Component {
       <div className="login page">
         <form onSubmit={(event) => {this.props.logIn(event, this.state, this.props.history)}}>
           <div className="field">
-          <i className="glyphicon glyphicon-user"></i>
-            <label>Username</label>
+            <label><i className="fa fa-user"/></label>
             <input
               name="username"
               type="text"
@@ -35,8 +34,7 @@ class Login extends Component {
             />
           </div>
           <div className="field">
-          <i className="glyphicon glyphicon-cloud"></i>
-            <label>Password</label>
+            <label><i className="fa fa-lock"/></label>
             <input
               name="password"
               type="password"
