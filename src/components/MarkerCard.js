@@ -45,7 +45,7 @@ class MarkerCard extends Component {
 
 	render() {
 		return(
-			<div className="marker-page">
+			<div className="marker page">
 				<h1 className="marker-page-title">{this.state.markerData.title}</h1>
 				<p>{this.state.markerData.address}</p>
 				<h2>User's Self Report Symptoms: </h2>

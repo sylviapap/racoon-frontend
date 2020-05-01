@@ -23,7 +23,7 @@ class SignUp extends Component{
     const { username, password, email } = this.state;
 
     return (
-        <div className="App">
+      <div className="signup page">
         <form onSubmit={(event) => {this.props.signUp(event, this.state, this.props.history)}}>
           <div className="field">
           <i className="glyphicon glyphicon-user"></i>
@@ -62,7 +62,7 @@ class SignUp extends Component{
             Submit
           </button>
         </form>
-        </div>
+      </div>
       );
     }
   }

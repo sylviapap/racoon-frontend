@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Map, GoogleApiWrapper, Marker, Circle } from 'google-maps-react';
 import InfoWindowRef  from '../components/InfoWindowRef'
+import NavBar  from '../components/NavBar'
 import cough from '../cough.png'
 import {styles} from '../services/mapStyles'
 
@@ -9,7 +10,7 @@ import {styles} from '../services/mapStyles'
 const containerStyle = {
   position: "fixed",
   width: "100%",
-  height: "80%"
+  height: "90%"
 }
 
 class GoogleMap extends Component {
@@ -65,6 +66,8 @@ class GoogleMap extends Component {
     console.log(this.state.selectedPlace.name === "Marker")
     
     return (
+      <Fragment>
+      <NavBar />
       <Map 
         className={"map"}
         containerStyle={containerStyle}
@@ -148,6 +151,7 @@ class GoogleMap extends Component {
           </div>
         </InfoWindowRef>
       </Map>
+      </Fragment>
     )
   }
 }

@@ -6,11 +6,11 @@ import Bookmark from './Bookmark'
 class Profile extends Component {
 
   render() {
-    console.log(this.props.currentUser)
     return(
-    <div className="profile" id="page">
+    <div className="profile page" id="">
+      <h1 className="welcome">My Health Profile</h1>
       {!!this.props.currentUser ? 
-        <h1 className="welcome">Welcome to your profile, {this.props.currentUser.username}</h1>
+        <p>Username: {this.props.currentUser.username}</p>
       :
         <p>You are not logged in</p>
       }

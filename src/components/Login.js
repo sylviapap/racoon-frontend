@@ -21,7 +21,7 @@ class Login extends Component {
     const { handleChange } = this;
     const { username, password } = this.state;
     return (
-      <div className="login">
+      <div className="login page">
         <form onSubmit={(event) => {this.props.logIn(event, this.state, this.props.history)}}>
           <div className="field">
           <i className="glyphicon glyphicon-user"></i>

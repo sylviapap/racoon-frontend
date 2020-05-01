@@ -71,7 +71,8 @@ class PostToMap extends Component{
 
   render() {
     return(
-      <form onSubmit ={this.handleSubmit}className="post-container">
+      <div className="post-container page">
+      <form onSubmit ={this.handleSubmit}className="post-form">
         <label>Title</label>
         <input name="title" type="text" value={this.state.fields.title} onChange={this.handleChange}/>
         <label>Address</label>
@@ -97,6 +98,7 @@ class PostToMap extends Component{
 
         <input className="post" type="submit" value="POST"/>
       </form>
+      </div>
     )
   }
 }
