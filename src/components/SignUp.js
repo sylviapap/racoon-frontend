@@ -56,7 +56,7 @@ class SignUp extends Component{
             />
           </div>
           <button type="submit" className="button">
-            Submit
+            Sign Up
           </button>
         </form>
       </div>
