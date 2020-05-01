@@ -11,7 +11,7 @@ const addToMap = (event, markerData, history) => {
     .catch(error => {
 			if (error) {
 				console.log(error);
-				dispatch({ type: "SET_ERROR", messages: error })
+				dispatch({ type: "SET_ERROR", messages: [error] })
 			}
 			else {
 				return window.alert("addToMap error")

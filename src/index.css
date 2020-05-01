@@ -22,8 +22,12 @@ h1, p, option {
 }
 
 ul {
+  list-style-type: none;
   padding: 0;
-  margin: 1%;
+}
+
+li {
+  margin: 4%;
 }
 
 header {

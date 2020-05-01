@@ -9,7 +9,7 @@ const getCurrentUser = () => {
 		.catch((error) => {
 			if (error) {
 				console.log(error);
-				dispatch({ type: "SET_ERROR", messages: error })
+				dispatch({ type: "SET_ERROR", messages: [error] })
 			}
 			else {
 				return window.alert("???")
@@ -24,7 +24,7 @@ const getCurrentUser = () => {
 				dispatch({type: "SET_CREATED_MARKERS", createdMarkers: json.user.created_markers})
 			} 
 			else {
-				console.log("no user?")
+				console.log(json, "not logged in")
 			}
 		})
 	}

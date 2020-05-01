@@ -17,7 +17,7 @@ const logIn = (event, userInput, history) => {
         .then(json => { 
             if(json.error){
                 console.log(json.error)
-                dispatch({ type: "SET_ERROR", messages: json.error })
+                dispatch({ type: "SET_ERROR", messages: [json.error] })
             } 
 			else {
                 console.log(json);

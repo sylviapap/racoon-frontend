@@ -38,7 +38,7 @@ class App extends Component {
             <h1 className="error-header">Error</h1>
             <i className="fa fa-times close" onClick={this.handleErrorClick} />
           </header>
-            <ul>{this.props.error.messages.map(message => <li>{message}</li>)}</ul>
+            <ul>{this.props.error.messages.map(message => <li key={this.props.error.messages.indexOf(message)}>{message}</li>)}</ul>
           </div>
         </div> 
           : 
@@ -62,7 +62,7 @@ class App extends Component {
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/checker" component={SymptomChecker} />
-            <Redirect to="/" />
+            {/* <Redirect to="/" /> */}
           </Switch>
         }
         </Fragment>
