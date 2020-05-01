@@ -13,7 +13,7 @@ class Profile extends Component {
       <i className="fa fa-times-circle return" onClick={this.props.handleReturnClick}/>
       <h1 className="welcome">My Health Profile</h1>
       {!!this.props.currentUser ? 
-        <p>Username: {this.props.currentUser.username}</p>
+        <p>Profile For: {this.props.currentUser.first_name} {this.props.currentUser.last_name}</p>
       :
         <p>You are not logged in</p>
       }

@@ -23,7 +23,7 @@ class NavBar extends Component {
 			</div>
 		{ this.props.currentUser !== undefined && this.props.currentUser.id ?
 			<Fragment>
-				<div className="nav-header">Welcome, {this.props.currentUser.username}</div>
+				<div className="nav-header">Welcome, {this.props.currentUser.first_name}</div>
 				
 				<div className="nav-item">
 					<NavLink to="/profile">Profile</NavLink>

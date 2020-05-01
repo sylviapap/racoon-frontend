@@ -6,7 +6,7 @@ class Login extends Component {
   constructor(){
     super()
     this.state = {
-      username: "",
+      email: "",
       password: ""
     }
   }
@@ -19,17 +19,18 @@ class Login extends Component {
 
   render() {
     const { handleChange } = this;
-    const { username, password } = this.state;
+    const { email, password } = this.state;
     return (
       <div className="login page">
+        <h1>Welcome Back</h1>
         <form onSubmit={(event) => {this.props.logIn(event, this.state, this.props.history)}}>
           <div className="field">
-            <label><i className="fa fa-user"/></label>
+            <label><i className="fa fa-user-circle"/></label>
             <input
-              name="username"
+              name="email"
               type="text"
-              placeholder="Username"
-              value={username}
+              placeholder="Email"
+              value={email}
               onChange={handleChange}
             />
           </div>

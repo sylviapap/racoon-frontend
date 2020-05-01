@@ -8,7 +8,7 @@ const logIn = (event, userInput, history) => {
             headers: authHeaders,
             body: JSON.stringify({
                 user: {
-                    username: userInput.username,
+                    email: userInput.email,
                     password: userInput.password
                 }
             })
