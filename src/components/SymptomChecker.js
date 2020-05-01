@@ -78,14 +78,12 @@ class SymptomChecker extends Component {
     return(
       <div className="symptom-checker page">
         <h1 className="card-title">Symptom Check</h1>
-
         {!!this.state.response.serious ? 
           <Results response={this.state.response}/>
           : 
-          <h2>Please select your sex, age, symptoms, and risk factors</h2>
+          <p>Please select your sex, age, symptoms, and risk factors</p>
         }
-        
-        <h3>Results are based on a rough implementation of the Infermedica API and are not meant to provide any sort of clinical diagnosis nor to replace any medical advice.</h3>
+        <p>Results are not meant to provide any sort of clinical diagnosis nor to replace any medical advice.</p>
         <form onSubmit={this.handleSubmit} >
           <label className="label">Sex:</label>
             <input 
@@ -127,7 +125,7 @@ class SymptomChecker extends Component {
                       {symptom.common_name}
                   </option>)}
             </select>
-            <label>Select those that apply:</label>
+            {/* <label>Select those that apply:</label>
             <select 
               multiple={true} 
               value={this.state.riskFactors} 
@@ -139,7 +137,7 @@ class SymptomChecker extends Component {
                     key={rf["id"]}>
                       {rf["question"]}
                   </option>)}
-            </select>
+            </select> */}
             <input 
               type="submit" value="Submit" />
         </form>
