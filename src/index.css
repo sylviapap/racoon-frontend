@@ -141,6 +141,10 @@ input {
   border-radius: 4px;
 }
 
+input[type=number] {
+  width: 25%;
+}
+
 select {
   margin: 1%;
   border: 1px solid #ccc;
