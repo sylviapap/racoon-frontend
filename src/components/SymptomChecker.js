@@ -11,8 +11,9 @@ const infermedicaHeaders = {
 }
 
 class SymptomChecker extends Component {
+  // state.symptoms comes from my backend
   state = {
-    symptoms: [],
+    symptoms: [], 
     fields: {
       age: ""
     },
@@ -86,6 +87,7 @@ class SymptomChecker extends Component {
         <p>Results are not meant to provide any sort of clinical diagnosis nor to replace any medical advice.</p>
         <form onSubmit={this.handleSubmit} >
           <label className="label">Sex:</label>
+          <div className="field">
             <input 
               type="radio" 
               name="sex" 
@@ -94,6 +96,8 @@ class SymptomChecker extends Component {
               checked={this.state.radio.sex === "male"}
               onChange={this.handleRadioChange} />
                 <label><i className="fa fa-fw fa-mars"/>Male</label>
+          </div>
+          <div className="field">
             <input 
               type="radio" 
               name="sex" 
@@ -102,6 +106,7 @@ class SymptomChecker extends Component {
               checked={this.state.radio.sex === "female"}
               onChange={this.handleRadioChange} />
                 <label><i className="fa fa-fw fa-venus"/>Female</label>
+            </div>
           <label className="label">Age:</label>
             <input 
               type="number"
