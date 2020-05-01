@@ -49,7 +49,6 @@ class App extends Component {
             <Route path="/post" render={(props) => <PostToMap {...props} />} />
             <Route path="/markers/:id" render={(props) => <MarkerCard {...props} />} />
             <Route exact path="/checker" component={SymptomChecker} />
-            <Redirect to="/" />
           </Switch>
           )
           : 
