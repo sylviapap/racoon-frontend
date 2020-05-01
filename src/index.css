@@ -15,6 +15,12 @@ body {
   margin: 0;
 }
 
+/******************************* Text  */
+
+h1, p, label, option {
+  margin: 1%;
+}
+
 /******************************* Map  */
 
 /* .map {
@@ -51,12 +57,13 @@ body {
 .nav-item {
   float: left;
   text-align: center;
-  padding: 1%;
+  padding: 2%;
 }
 
 .nav-item :hover {
   background: #e9e7f9;
   color: black;
+  border-radius: 4px;
 }
 
 .nav-bar a {
@@ -77,6 +84,7 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  border-radius: 4px;
 }
 
 .card {
@@ -86,25 +94,41 @@ body {
   text-decoration: none;
 }
 
-input {
-  padding: 12px;
-  margin: 1%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+.item {
+  background-color: white;
 }
+
+/************************ Forms */
 
 form {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   margin: auto;
-  width: 100%;
 }
 
-p, label {
-  width: 100%;
-  margin: auto;
+input {
+  padding: 1%;
+  margin: 1%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+select {
+  margin: 1%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/************************ Comments */
+
+.comment-card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 50%;
+  margin: 1%;
+  padding: 2%;
+  display: inline-block;
 }
 
 .comment-input {
@@ -114,19 +138,6 @@ p, label {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-}
-
-.item {
-  background-color: white;
-}
-
-.comment-card {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 50%;
-  margin: 1%;
-  padding: 2%;
-  display: inline-block;
 }
 
 .comment-username {
@@ -163,11 +174,9 @@ button:hover, input[type=submit]:hover {
 
 /******************************* Responsive layout */
 
-@media screen and (max-width: 600px) {
-  .page {
-    width: 100%;
-  }
-}
+/* @media screen and (max-width: 600px) {
+
+} */
 
 /* @keyframes App-logo-spin {
   from {
