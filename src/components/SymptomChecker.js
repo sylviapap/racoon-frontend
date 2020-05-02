@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-// import {symptoms} from '../services/symptoms'
-// import {riskFactors} from '../services/riskFactors'
+import React, {Component, Fragment} from 'react';
+import {riskFactors} from '../services/riskFactors'
+import NavBar from './NavBar'
 import Results from './Results'
 import {API_ROOT} from '../services/api'
 
@@ -19,7 +19,7 @@ class SymptomChecker extends Component {
       sex: ""
     },
     symptom_ids: [],
-    riskFactors: [],
+    riskInput: [],
     response: {}
   }
 
@@ -48,14 +48,25 @@ class SymptomChecker extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const symptomArray = this.state.symptom_ids.map(s => Object.assign({}, {"id": s, "choice_id": "present"}));
-    const riskArray = this.state.riskFactors.map(rf => Object.assign({}, {"id": rf, "choice_id": "present"}));
-    const evidence = symptomArray.concat(riskArray)
+    const symptomsAbsent = this.state.symptoms.filter(s => !this.state.symptom_ids.includes(s.infermedica_id))
+    const symptomsAbsentArray = symptomsAbsent.map(s => Object.assign({}, {"id": s.infermedica_id, "choice_id": "absent"}));
+    console.log(symptomsAbsentArray)
+
+    const riskArray = this.state.riskInput.map(rf => Object.assign({}, {"id": rf, "choice_id": "present"}));
+    const risksAbsent = riskFactors.filter(rf => !this.state.riskInput.includes(rf.id))
+    console.log(risksAbsent)
+    const risksAbsentArray = risksAbsent.map(rf => Object.assign({}, {"id": rf.id, "choice_id": "absent"}));
+    console.log(risksAbsentArray)
+
+    const symptomEvidence = symptomArray.concat(symptomsAbsentArray)
+    const riskEvidence = riskArray.concat(risksAbsentArray)
+    const evidence = symptomEvidence.concat(riskEvidence)
     console.log(evidence)
     fetch("https://api.infermedica.com/covid19/triage", {
       method: "POST",
       headers: infermedicaHeaders,
       body: JSON.stringify({
-        "sex": this.state.radio.sex,
+        "sex": this.state.fields.sex,
         "age": parseInt(this.state.fields.age),
         "evidence": evidence
       })
@@ -71,13 +82,19 @@ class SymptomChecker extends Component {
     if (this.state.response.serious) {const results = this.state.response.serious.map(a => a.common_name)
     console.log(results)}
     return(
-      <div className="symptom-checker page">
+      <Fragment>
+      <NavBar />
+      <div className="symptom-checker">
         <h1 className="card-title">Symptom Check</h1>
         {!!this.state.response.serious ? 
           <Results response={this.state.response}/>
           : 
           <p>Please fill in your information</p>
         }
+        {!!this.state.response.message ?
+        <p>Error!! {this.state.response.message}</p>
+        :
+        null}
         <form onSubmit={this.handleSubmit} >
           <label className="label">Sex:</label>
           <div className="field">
@@ -110,7 +127,18 @@ class SymptomChecker extends Component {
               name="age"
               value={this.state.fields.age} 
               onChange={this.handleChange} />
-          <label>Select symptoms: (Hold Ctrl or Cmd for multiple)</label>
+          <label>Select your symptoms:</label>
+            {/* {this.state.symptoms.map(symptom => 
+              <label>{symptom.common_name}
+                <input 
+                  type="checkbox"
+                  checked={this.state.evidence.choice_id === "present"} 
+                  value={symptom.infermedica_id}
+                  key={symptom.id}
+                  onChange={this.handleChange}/>
+                <span class="checkmark"></span>
+              </label>)
+            } */}
             <select 
               multiple={true} 
               value={this.state.symptom_ids} 
@@ -123,11 +151,11 @@ class SymptomChecker extends Component {
                       {symptom.common_name}
                   </option>)}
             </select>
-            {/* <label>Select those that apply:</label>
+            <label>Select those that apply:</label>
             <select 
               multiple={true} 
-              value={this.state.riskFactors} 
-              name="riskFactors"
+              value={this.state.riskInput} 
+              name="riskInput"
               onChange={this.handleSelect} >
                 {riskFactors.map(rf => 
                   <option 
@@ -135,12 +163,13 @@ class SymptomChecker extends Component {
                     key={rf["id"]}>
                       {rf["question"]}
                   </option>)}
-            </select> */}
+            </select>
             <input 
               type="submit" value="Submit" />
         </form>
         <p className="disclaimer">*Results are not meant to replace professional medical advice</p>
       </div>
+      </Fragment>
     )
   }
 }

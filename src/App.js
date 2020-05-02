@@ -45,7 +45,7 @@ class App extends Component {
           null}
 
       <Route 
-        path="/" 
+        exact path="/" 
         render={(props) => <GoogleMap {...props} initialMapData={this.props.map.initialMap} />} 
       />
 
