@@ -79,22 +79,21 @@ class SymptomChecker extends Component {
   }
   
   render() {
-    if (this.state.response.serious) {const results = this.state.response.serious.map(a => a.common_name)
-    console.log(results)}
+
     return(
       <Fragment>
       <NavBar />
       <div className="symptom-checker">
         <h1 className="card-title">Symptom Check</h1>
-        {!!this.state.response.serious ? 
-          <Results response={this.state.response}/>
-          : 
-          <p>Please fill in your information</p>
-        }
         {!!this.state.response.message ?
-        <p>Error!! {this.state.response.message}</p>
+        <p>Error! Please fill out all fields {console.log(this.state.response.message)}</p>
         :
         null}
+        {!!this.state.response.serious || this.state.response.description ? 
+          <Results response={this.state.response}/>
+          : 
+          null
+        }
         <form onSubmit={this.handleSubmit} >
           <label className="label">Sex:</label>
           <div className="field">

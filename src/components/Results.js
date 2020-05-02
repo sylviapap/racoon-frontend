@@ -21,14 +21,21 @@ class Results extends Component{
   }
 
   render() {
-    console.log(this.props)
     return(
-      <div className="results">Serious concerns: {this.props.response.serious.map(a => 
+      <div className="results">
+        
+        <header className="results">Preliminary Diagnosis</header>
+        {!!this.props.response.description ? 
+        <p>{this.props.response.description}</p>
+        :
+        null}
+        
+        {this.props.response.serious.map(a => 
         <div className="result-item" key={a.id}>
           <p>{a.common_name}</p>
-          <button onClick={() => this.handleClick(a.id)}>Save</button>
         </div>
         )}
+        <button onClick={() => this.handleClick()}>Save Diagnosis</button>
       </div>
     )
   }
