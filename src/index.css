@@ -17,7 +17,7 @@ body {
 
 /******************************* Text  */
 
-h1, p, option {
+h1, p {
   margin: 1%;
 }
 
@@ -94,7 +94,7 @@ header {
 .page {
   padding: 1%;
   margin: 1%;
-  position: fixed;
+  position: relative;
   background: white;
   display: flex;
   flex-direction: column;
@@ -132,7 +132,6 @@ form {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  margin: auto;
 }
 
 input {
@@ -149,6 +148,11 @@ select {
   margin: 1%;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+option {
+  margin: 1%;
+  text-align: start;
 }
 
 .field {
