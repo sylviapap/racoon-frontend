@@ -9,13 +9,19 @@ class Bookmark extends Component {
 		this.props.deleteBookmark(id);
 	}
 
+	view = () => {
+		let id = this.props.bookmark.map_marker.id;
+		this.props.history.push(`/map/markers/${id}`)
+	}
+
 	render() {
-		console.log(this.props.bookmark)
+		console.log(this.props)
 		return(
 			<div className="created-bookmark item">
 				<h1 className="bookmark-page-title">Title: {this.props.bookmark.map_marker.title}</h1>
 				<p>Address: {this.props.bookmark.map_marker.address}</p>
 				<button onClick={this.delete}>Remove</button>
+				<button onClick={this.view}>View</button>
 			</div>
 		)
 	}

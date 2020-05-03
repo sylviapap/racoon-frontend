@@ -23,7 +23,7 @@ class Profile extends Component {
         { this.props.bookmarks.length === 0 ? 
         <p className="no-markers">You have none.. go to a marker's info page to save a bookmark</p> 
         :
-        this.props.bookmarks.map(bookmark => <Bookmark key={bookmark.id} bookmark={bookmark}/>)
+        this.props.bookmarks.map(bookmark => <Bookmark key={bookmark.id} bookmark={bookmark} history={this.props.history}/>)
         }
       </div>
       <div className="created-markers card">
@@ -31,7 +31,7 @@ class Profile extends Component {
         { this.props.createdMarkers.length === 0 ?
         <p className="no-markers">You haven't posted yet... go to the map to post</p> 
         :
-        this.props.createdMarkers.map(marker => <CreatedMarker key={marker.id} marker={marker}/>) 
+        this.props.createdMarkers.map(marker => <CreatedMarker key={marker.id} marker={marker} history={this.props.history}/>) 
         }
       </div>
     </div>
