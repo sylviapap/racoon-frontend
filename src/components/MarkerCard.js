@@ -27,6 +27,14 @@ class MarkerCard extends Component {
 		.then(json => {this.setState({selectedMarker: json})})
 	}
 
+	// componentWillUpdate() {
+	// 	console.log(this.props)
+	// 	let id = parseInt(this.props.match.params.id)
+	// 	fetch(`${API_ROOT}/map_markers/${id}`)
+	// 	.then(response => response.json())
+	// 	.then(json => {this.setState({selectedMarker: json})})
+	// }
+
 	handleCommentPost = (event, comment) => {
 		const newComment = {
 			content: comment.content,
@@ -49,6 +57,7 @@ class MarkerCard extends Component {
 	}
 
 	render() {
+		console.log(this.props)
 		return(
 			<div className="marker page">
 				<i className="fa fa-times-circle return" onClick={this.props.handleReturnClick}/>
