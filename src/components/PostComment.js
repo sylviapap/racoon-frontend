@@ -24,7 +24,7 @@ class PostComment extends Component{
     })
       .then(response => response.json())
       .then(json => {console.log(json);
-        // this.props.handleCommentPost(event, json);
+        this.props.handleCommentPost(event, json);
         this.setState({content: ""})
       })
   }
