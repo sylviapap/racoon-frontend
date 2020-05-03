@@ -57,6 +57,7 @@ class GoogleMap extends Component {
     let markerId = place.id
     this.onMapClick()
     this.props.history.push(`/map/markers/${markerId}`)
+    // this.props.handleMoreInfoClick(markerId)
   }
 
   render() {
@@ -138,7 +139,7 @@ class GoogleMap extends Component {
             <p>Symptoms: {this.state.selectedPlace.symptoms}</p>
             <button 
               className="button" 
-              onClick={() => this.onMoreInfoClick(this.state.selectedPlace)} 
+              onClick={() => this.onMoreInfoClick(this.state.selectedPlace)}
               key={this.state.selectedPlace.id}>More Info</button></div>)
               :
               (<div>
