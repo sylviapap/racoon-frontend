@@ -26,7 +26,7 @@ class App extends Component {
   }
 
   handleReturnClick = () => {
-    this.props.history.push("/")
+    this.props.history.push("/map")
   }
 
   // handleMoreInfoClick = (place) => {

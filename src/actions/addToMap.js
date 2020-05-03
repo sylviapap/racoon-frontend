@@ -21,7 +21,7 @@ const addToMap = (event, markerData, history) => {
       console.log(json);
       dispatch({ type: "ADD_TO_MAP", marker: json })
       dispatch({ type: "ADD_CREATED_MARKER", marker: json })
-      history.push('/')
+      history.push('/map')
     })
   }
 }
