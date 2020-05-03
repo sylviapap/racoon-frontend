@@ -24,16 +24,25 @@ class MarkerCard extends Component {
 		// this.setState({selectedMarker: selectedMarker})
 		fetch(`${API_ROOT}/map_markers/${id}`)
 		.then(response => response.json())
-		.then(json => {this.setState({selectedMarker: json})})
+		.then(json => {console.log(json);
+			this.setState({selectedMarker: json})})
 	}
 
-	// componentWillUpdate() {
-	// 	console.log(this.props)
-	// 	let id = parseInt(this.props.match.params.id)
-	// 	fetch(`${API_ROOT}/map_markers/${id}`)
-	// 	.then(response => response.json())
-	// 	.then(json => {this.setState({selectedMarker: json})})
-	// }
+	componentDidUpdate(prevProps) {
+		console.log("update")
+		if (this.props.match.params.id !== prevProps.match.params.id) {
+			this.fetchData()
+		}
+	}
+
+	fetchData = () => {
+		let id = parseInt(this.props.match.params.id)
+		fetch(`${API_ROOT}/map_markers/${id}`)
+		.then(response => response.json())
+		.then(json => {console.log(json);
+			this.setState({selectedMarker: json})}
+		)
+	}
 
 	handleCommentPost = (event, comment) => {
 		const newComment = {
