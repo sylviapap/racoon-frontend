@@ -16,6 +16,14 @@ class MarkerCard extends Component {
 	}
 
 	componentDidMount() {
+		this.fetch()
+	}
+
+	componentDidUpdate() {
+		this.fetch()
+	}
+
+	fetch = () => {
 		let id = this.props.match.params.id
 		fetch(`${API_ROOT}/map_markers/${id}`)
 			.then(response => response.json())

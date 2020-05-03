@@ -18,7 +18,7 @@ const addBookmark = (event, markerData, history) => {
         console.log(json.error)
       } else {
         dispatch({type: "ADD_BOOKMARK", newBookmark: json})
-        history.push('/profile')
+        history.push('/map/profile')
       }
     })
   }

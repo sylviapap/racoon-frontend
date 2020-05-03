@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import { Route, Switch, withRouter, Redirect, useRouteMatch } from 'react-router-dom';
 import fetchInitialMap from './actions/fetchInitialMap'
 import getCurrentUser from './actions/getCurrentUser'
 import errorToggle from './actions/errorToggle'
 
 import GoogleMap from './containers/GoogleMap'
+import NavBar from './components/NavBar'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import Profile from './components/Profile'
@@ -45,23 +46,48 @@ class App extends Component {
           null}
 
       <Route 
+        path="/map" 
+        render={(props) => <GoogleMap {...props} initialMapData={this.props.map.initialMap} />} 
+      />
+      <Route 
         exact path="/" 
         render={(props) => <GoogleMap {...props} initialMapData={this.props.map.initialMap} />} 
       />
 
         {this.props.user.currentUser !== undefined && this.props.user.currentUser.id ?  (
           <Switch>
-            <Route path="/profile" render={(props) => <Profile {...props} handleReturnClick={this.handleReturnClick}/>}/> 
-            <Route path="/post" render={(props) => <PostToMap {...props} />} />
-            <Route path="/markers/:id" render={(props) => <MarkerCard {...props} handleReturnClick={this.handleReturnClick}/>}/>} />
-            <Route exact path="/checker" component={SymptomChecker} />
+            <Route 
+              path="/map/profile" 
+              render={(props) => 
+              <Profile {...props} 
+                handleReturnClick={this.handleReturnClick}
+                />}
+              /> 
+            <Route 
+              path="/map/post" 
+              render={(props) => 
+                <PostToMap {...props} />} 
+              />
+            <Route 
+              path="/map/markers/:id" 
+              render={(props) => 
+                <MarkerCard {...props} handleReturnClick={this.handleReturnClick}
+                />}
+              />
+            <Route 
+              exact path="/checker" 
+              component={SymptomChecker} 
+            />
           </Switch>
           )
           : 
           <Switch>
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/checker" component={SymptomChecker} />
+            <Route 
+              exact path="/checker" 
+              component={SymptomChecker} 
+            />
             {/* <Redirect to="/" /> */}
           </Switch>
         }

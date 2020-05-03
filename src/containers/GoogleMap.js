@@ -56,7 +56,7 @@ class GoogleMap extends Component {
   onMoreInfoClick = (place) => {
     let markerId = place.id
     this.onMapClick()
-    this.props.history.push(`/markers/${markerId}`)
+    this.props.history.push(`/map/markers/${markerId}`)
   }
 
   render() {

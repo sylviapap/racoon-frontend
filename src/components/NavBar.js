@@ -14,9 +14,9 @@ class NavBar extends Component {
 		// const loggedIn = !!this.props.currentUser.id
 		return(
 		<div className="nav-bar">
-			<NavLink to="/"><img src={logo} className="nav-item" alt="racoon-logo" id="racoon-logo"/></NavLink>
+			<NavLink to="/map"><img src={logo} className="nav-item" alt="racoon-logo" id="racoon-logo"/></NavLink>
 			<div className="nav-item">
-				<NavLink to="/">Map</NavLink>
+				<NavLink to="/map">Map</NavLink>
 			</div>
 			<div className="nav-item">
 			<NavLink to="/checker">Symptom Check</NavLink>
@@ -26,11 +26,11 @@ class NavBar extends Component {
 				<div className="nav-header">Welcome, {this.props.currentUser.first_name}</div>
 				
 				<div className="nav-item">
-					<NavLink to="/profile">Profile</NavLink>
+					<NavLink to="/map/profile">Profile</NavLink>
 				</div>
 
 				<div className="nav-item">
-					<NavLink to="/post">Post</NavLink>
+					<NavLink to="/map/post">Post</NavLink>
 				</div>
 
 				<div className="nav-item" onClick={this.logout}>
