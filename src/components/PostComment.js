@@ -24,7 +24,7 @@ class PostComment extends Component{
     })
       .then(response => response.json())
       .then(json => {console.log(json);
-        this.props.handleCommentPost(event, json);
+        // this.props.handleCommentPost(event, json);
         this.setState({content: ""})
       })
   }
@@ -32,7 +32,7 @@ class PostComment extends Component{
   render() {
     console.log(this.props.currentUser)
     return(
-      <form onSubmit ={this.handleSubmit}className="post-container">
+      <form onSubmit ={this.handleSubmit}>
         <textarea
           value={this.state.content}
           onChange={this.handleChange}

@@ -5,6 +5,7 @@ const fetchInitialMap = () => {
         fetch(`${API_ROOT}/map_markers`)
         .then(resp => resp.json())
         .then(json => {
+            console.log(json);
             dispatch({ type: "GET_MAP", initialMap: json})
         })
     }

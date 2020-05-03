@@ -49,10 +49,7 @@ class App extends Component {
         path="/map" 
         render={(props) => <GoogleMap {...props} initialMapData={this.props.map.initialMap} />} 
       />
-      <Route 
-        exact path="/" 
-        render={(props) => <GoogleMap {...props} initialMapData={this.props.map.initialMap} />} 
-      />
+
 
         {this.props.user.currentUser !== undefined && this.props.user.currentUser.id ?  (
           <Switch>
@@ -72,11 +69,16 @@ class App extends Component {
               path="/map/markers/:id" 
               render={(props) => 
                 <MarkerCard {...props} handleReturnClick={this.handleReturnClick}
+                initialMapData={this.props.map.initialMap}
                 />}
               />
             <Route 
               exact path="/checker" 
               component={SymptomChecker} 
+            />
+            <Route 
+              exact path="/" 
+              render={(props) => <GoogleMap {...props} initialMapData={this.props.map.initialMap} />} 
             />
           </Switch>
           )

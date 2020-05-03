@@ -94,7 +94,7 @@ header {
 .page {
   padding: 1%;
   margin: 1%;
-  position: relative;
+  position: absolute;
   background: white;
   display: flex;
   flex-direction: column;
@@ -131,6 +131,7 @@ header {
 .symptom-checker {
   margin: auto;
   padding: 1%;
+  overflow: auto;
 }
 
 
@@ -140,7 +141,6 @@ form {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  overflow: auto;
 }
 
 input {
