@@ -19,9 +19,16 @@ const userReducer = (state = intitialState, action) => {
       }
 
     case "ADD_BOOKMARK":
-      return {
-        ...state,
-        bookmarks: [...state.bookmarks, action.newBookmark]
+      let filter = state.bookmarks.filter(b => b.id === action.newBookmark.id)
+      console.log(filter.length)
+      if (filter.length) {
+        return state
+      }
+      else {
+        return {
+          ...state,
+          bookmarks: [...state.bookmarks, action.newBookmark]
+        }
       }
 
     case "ADD_CREATED_MARKER":

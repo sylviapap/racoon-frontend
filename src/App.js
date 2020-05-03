@@ -97,6 +97,8 @@ class App extends Component {
               exact path="/checker" 
               component={SymptomChecker} 
             />
+            <Route 
+              exact path="/" component={NavBar}/>
             {/* <Redirect to="/" /> */}
           </Switch>
         }
