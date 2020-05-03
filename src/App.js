@@ -28,6 +28,11 @@ class App extends Component {
   handleReturnClick = () => {
     this.props.history.push("/")
   }
+
+  // handleMoreInfoClick = (place) => {
+  //   let markerId = place.id
+  //   this.props.history.push(`/map/markers/${markerId}`)
+  // }
   
   render() {
     return (
@@ -47,7 +52,10 @@ class App extends Component {
 
       <Route 
         path="/map" 
-        render={(props) => <GoogleMap {...props} initialMapData={this.props.map.initialMap} />} 
+        render={(props) => 
+        <GoogleMap {...props} 
+          initialMapData={this.props.map.initialMap}
+          />} 
       />
 
 
@@ -68,8 +76,9 @@ class App extends Component {
             <Route 
               path="/map/markers/:id" 
               render={(props) => 
-                <MarkerCard {...props} handleReturnClick={this.handleReturnClick}
-                initialMapData={this.props.map.initialMap}
+                <MarkerCard {...props} 
+                  handleReturnClick={this.handleReturnClick}
+                  initialMapData={this.props.map.initialMap}
                 />}
               />
             <Route 
@@ -77,9 +86,7 @@ class App extends Component {
               component={SymptomChecker} 
             />
             <Route 
-              exact path="/" 
-              render={(props) => <GoogleMap {...props} initialMapData={this.props.map.initialMap} />} 
-            />
+              exact path="/" component={NavBar}/>
           </Switch>
           )
           : 
