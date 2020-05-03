@@ -67,6 +67,8 @@ class MarkerCard extends Component {
 
 	render() {
 		console.log(this.props)
+		let filter = this.props.user.currentUser.bookmarks.filter(b => b.map_marker.id === this.state.selectedMarker.id)
+		console.log(filter)
 		return(
 			<div className="marker page">
 				<i className="fa fa-times-circle return" onClick={this.props.handleReturnClick}/>
@@ -74,7 +76,11 @@ class MarkerCard extends Component {
 				<p>{this.state.selectedMarker.address}</p>
 				<h2>User's Self Reported Symptoms: </h2>
 					<p>{this.state.selectedMarker.message}</p>
-				<button onClick={this.addToBookmarks}className="add-bookmark-button">Add To Bookmarks</button>
+					{filter.length ? 
+					<button className="bookmark-btn"><i className="fa fa-folder"></i>Bookmarked</button>
+					:
+					<button onClick={this.addToBookmarks}className="add-bookmark-button">Add To Bookmarks</button>
+					}
 				<h2>Comments:</h2>
 				{this.state.selectedMarker.comments ? 
 				(this.state.selectedMarker.comments.map(comment => <Comment comment={comment} key={comment.id}/>))
