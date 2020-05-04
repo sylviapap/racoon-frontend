@@ -20,8 +20,7 @@ class GoogleMap extends Component {
       officialData: [],
       showingInfoWindow: false,
       activeMarker: {},
-      selectedPlace: {},
-      bounds: null
+      selectedPlace: {}
     }
   }
 
@@ -69,6 +68,7 @@ class GoogleMap extends Component {
   render() {
     const centerCoords = {lat: 0, lng: -98.5794797}
     console.log(this.props.history.location.pathname)
+
     return (
       <Fragment>
       <NavBar />
@@ -82,7 +82,7 @@ class GoogleMap extends Component {
         styles={styles}
         ref={(ref) => {this.map = ref}}
         initialCenter={centerCoords}
-        bounds={this.state.bounds}
+        centerAroundCurrentLocation={true}
         >
           {this.state.officialData ?
           this.state.officialData.map(object => 
