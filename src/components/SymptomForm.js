@@ -36,39 +36,65 @@ export default class SymptomForm extends Component {
     this.setState({[event.target.name]: value});
   }
 
-  // the worst function ever written 
+  // evidence example:
+  //     "evidence": [
+//     {"id": "p_16", "choice_id": "absent"},
+//     {"id": "p_17", "choice_id": "present"},
+//     {"id": "p_18", "choice_id": "absent"},
+//     {"id": "p_19", "choice_id": "absent"},
+//     {"id": "p_20", "choice_id": "absent"},
+//     {"id": "p_21", "choice_id": "absent"},
+//     {"id": "p_22", "choice_id": "absent"},
+//     {"id": "s_0", "choice_id": "absent"}, fever
+//     {"id": "s_1", "choice_id": "absent"}, cough
+//     {"id": "s_2", "choice_id": "absent"}, breath
+//     {"id": "s_15", "choice_id": "present"},
+//     {"id": "s_16", "choice_id": "present"},
+//     {"id": "s_17", "choice_id": "absent"},
+//     {"id": "s_18", "choice_id": "absent"},
+//     {"id": "s_19", "choice_id": "absent"},
+//     {"id": "s_20", "choice_id": "absent"},
+//     {"id": "s_21", "choice_id": "absent"},
+//     {"id": "p_12", "choice_id": "present"} living or caring - serious
+// ]
+
+// the worst function ever written 
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const presentSymptoms = this.state.symptom_ids.map(s => Object.assign({}, {"id": s, "choice_id": "present"}));
-    const serious = this.state.seriousSymptom_ids.map(s => Object.assign({}, {"id": s, "choice_id": "present"}));
-    const symptomsPresent = presentSymptoms.concat(serious)
+    const presentNormalSymptoms = this.state.symptom_ids.map(s => Object.assign({}, {"id": s, "choice_id": "present"}));
+    const presentSerious = this.state.seriousSymptom_ids.map(s => Object.assign({}, {"id": s, "choice_id": "present"}));
+    const symptomsPresent = presentNormalSymptoms.concat(presentSerious)
+    console.log(symptomsPresent)
+    // so far so good. this is array of objects of {id, choice_id: present}
 
-    const symptomsAbsentNormal = symptoms.filter(s => !this.state.symptom_ids.includes(s.id))
+    const symptomsAbsentNormal = symptomsNonEmergency.filter(s => !this.state.symptom_ids.includes(s.id))
     const symptomsAbsentSerious = emergencySymptoms.filter(s => !this.state.seriousSymptom_ids.includes(s.id))    
     const symptomsAbsentNormalArray = symptomsAbsentNormal.map(s => Object.assign({}, {"id": s.id, "choice_id": "absent"}));
     const symptomsAbsentSeriousArray = symptomsAbsentSerious.map(s => Object.assign({}, {"id": s.id, "choice_id": "absent"}));
     const symptomsAbsent = symptomsAbsentNormalArray.concat(symptomsAbsentSeriousArray)
-
+    console.log(symptomsAbsent)
+    // array of obj {id, choice_id: absent}
 
     const normalRisks = this.state.risk_ids.map(rf => Object.assign({}, {"id": rf, "choice_id": "present"}));
     const seriousRisks = this.state.seriousRisk_ids.map(rf => Object.assign({}, {"id": rf, "choice_id": "present"}));
+    const risksPresent = normalRisks.concat(seriousRisks)
+    console.log(risksPresent)
+    // AoO {p_id, present}
 
-    const normalRisksAbsent = riskFactors.filter(rf => !this.state.risk_ids.includes(rf.id))
+    const normalRisksAbsent = nonSeriousRisks.filter(rf => !this.state.risk_ids.includes(rf.id))
     const normalRisksAbsentArray = normalRisksAbsent.map(rf => Object.assign({}, {"id": rf.id, "choice_id": "absent"}));
     const seriousRisksAbsent = emergencyRisks.filter(rf => !this.state.seriousRisk_ids.includes(rf.id))
     const seriousRisksAbsentArray = seriousRisksAbsent.map(rf => Object.assign({}, {"id": rf.id, "choice_id": "absent"}));
+    const risksAbsent = normalRisksAbsentArray.concat(seriousRisksAbsentArray)
+    console.log(risksAbsent)
+    // AoO {p_id, absent}
 
     const symptomEvidence = symptomsPresent.concat(symptomsAbsent)
-
-    const risksPresent = normalRisks.concat(seriousRisks)
-    const risksAbsent = normalRisksAbsentArray.concat(seriousRisksAbsentArray)
     const riskEvidence = risksPresent.concat(risksAbsent)
-
     const symptomsAndRisks = symptomEvidence.concat(riskEvidence)
     
     let feverArray = []
-    
     if (this.state.fields.fever === "true") {
       feverArray.push({"id": "s_0", "choice_id": "present"})
       const type = this.state.fields.feverType
