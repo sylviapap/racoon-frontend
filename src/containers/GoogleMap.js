@@ -35,7 +35,10 @@ class GoogleMap extends Component {
     .then(json => this.setState({officialData: json}))
   }
      
-  onMarkerClick = (props, marker) => {
+  onMarkerClick = (props, marker) => {    
+    if (this.props.history.location.pathname !== '/map') {
+    this.props.history.push('/map')
+  }
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
