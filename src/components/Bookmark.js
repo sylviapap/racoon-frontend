@@ -20,7 +20,7 @@ class Bookmark extends Component {
 			<div className="created-bookmark item">
 				<h1 className="bookmark-page-title">Title: {this.props.bookmark.map_marker.title}</h1>
 				<p>Address: {this.props.bookmark.map_marker.address}</p>
-				<button onClick={this.delete}>Remove</button>
+				<button onClick={this.delete}>Remove From List</button>
 				<button onClick={this.view}>View</button>
 			</div>
 		)
