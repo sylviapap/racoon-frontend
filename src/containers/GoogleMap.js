@@ -51,6 +51,9 @@ class GoogleMap extends Component {
         activeMarker: null
       })
     }
+    if (this.props.history.location.pathname !== '/map') {
+      this.props.history.push('/map')
+    }
   }
 
   onMoreInfoClick = (place) => {
@@ -62,7 +65,7 @@ class GoogleMap extends Component {
 
   render() {
     const centerCoords = {lat: 0, lng: -98.5794797}
-    
+    console.log(this.props.history.location.pathname)
     return (
       <Fragment>
       <NavBar />
