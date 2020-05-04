@@ -17,7 +17,8 @@ class Results extends Component{
       })
     })
       .then(response => response.json())
-      .then(json => {console.log(json)})
+      .then(json => {console.log(json);
+      this.props.history.push('/')})
   }
 
   render() {
@@ -26,7 +27,7 @@ class Results extends Component{
         
         <header className="results">Preliminary Diagnosis</header>
         {!!this.props.response.description ? 
-        <div classname="infermedica-description">
+        <div className="infermedica-description">
         <p>{this.props.response.description}</p>
         <p>Recommendation: {this.props.response.label}</p>
         <p>The following symptoms are especially serious:</p>

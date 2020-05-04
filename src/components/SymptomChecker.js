@@ -51,7 +51,7 @@ class SymptomChecker extends Component {
         :
         null}
         {!!this.state.response.serious || this.state.response.description ? 
-          <Results response={this.state.response}/>
+          <Results response={this.state.response} history = {this.props.history}/>
           : 
           <SymptomForm handleSubmit={this.handleSubmit} />
         }
