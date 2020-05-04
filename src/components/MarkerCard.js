@@ -68,11 +68,13 @@ class MarkerCard extends Component {
 	render() {
 		console.log(this.props)
 		let filter = this.props.user.currentUser.bookmarks.filter(b => b.map_marker.id === this.state.selectedMarker.id)
-		console.log(filter)
+		let createdFilter = this.props.user.currentUser.created_markers.filter(m => m.id === this.state.selectedMarker.id)
+		console.log(createdFilter)
 		return(
 			<div className="marker page">
 				<i className="fa fa-times-circle return" onClick={this.props.handleReturnClick}/>
 				<h1 className="marker-page-title">{this.state.selectedMarker.title}</h1>
+				{createdFilter.length ? <p>You posted this marker!</p> : null}
 				<p>{this.state.selectedMarker.address}</p>
 				<h2>User's Self Reported Symptoms: </h2>
 					<p>{this.state.selectedMarker.message}</p>
