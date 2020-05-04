@@ -1,23 +1,23 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-// import {API_ROOT, authHeaders} from '../services/api'
+import {API_ROOT, authHeaders} from '../services/api'
 
 class Results extends Component{
 
-  handleClick = () => {
-    // fetch(`${API_ROOT}/reported_symptoms`, {
-    //   method: "POST", 
-    //   headers: authHeaders,
-    //   body: JSON.stringify({
-    //     user_id: this.props.currentUser.id,
-    //     symptom_id: symptomId
-    //   })
-    // })
-    //   .then(response => response.json())
-    //   .then(json => {console.log(json)
-    //   })
-    // symptomId = s_1 or p_1 etc 
-    console.log("clicked")
+  handleSaveClick = () => {
+    console.log(this.props)
+    fetch(`${API_ROOT}/diagnoses`, {
+      method: "POST", 
+      headers: authHeaders,
+      body: JSON.stringify({
+        user_id: this.props.currentUser.id,
+        description: this.props.response.description,
+        label: this.props.response.label,
+        triage_level: this.props.response.triage_level
+      })
+    })
+      .then(response => response.json())
+      .then(json => {console.log(json)})
   }
 
   render() {
@@ -40,7 +40,7 @@ class Results extends Component{
           {a.is_emergency ? <span className="emergency">Emergency symptom</span> : null}
         </div>
         )}
-        <button onClick={() => this.handleClick()}>Save Diagnosis</button>
+        <button onClick={() => this.handleSaveClick()}>Save Diagnosis</button>
       </div>
     )
   }
