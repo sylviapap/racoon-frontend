@@ -6,7 +6,7 @@ class CreatedMarker extends Component {
 
 	delete = () => {
 		let id = this.props.marker.id;
-		this.props.deleteCreatedMarker(id);
+		this.props.deleteCreatedMarker(id, this.props.history);
 	}
 
 	view = () => {
@@ -28,7 +28,7 @@ class CreatedMarker extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  deleteCreatedMarker: (id) => {dispatch(deleteCreatedMarker(id))}
+  deleteCreatedMarker: (id, history) => {dispatch(deleteCreatedMarker(id, history))}
 })
 
 export default connect(null, mapDispatchToProps)(CreatedMarker)

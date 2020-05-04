@@ -4,6 +4,7 @@ import Comment from './Comment'
 import PostComment from './PostComment'
 import {API_ROOT} from '../services/api'
 import addBookmark from '../actions/addBookmark'
+import deleteCreatedMarker from '../actions/deleteCreatedMarker'
 
 
 class MarkerCard extends Component {
@@ -65,16 +66,21 @@ class MarkerCard extends Component {
 		this.props.addBookmark(event, selectedMarker, this.props.history)
 	}
 
+	delete = () => {
+		let id = parseInt(this.props.match.params.id);
+		this.props.deleteCreatedMarker(id, this.props.history);
+	}
+
 	render() {
 		console.log(this.props)
 		let filter = this.props.user.currentUser.bookmarks.filter(b => b.map_marker.id === this.state.selectedMarker.id)
-		let createdFilter = this.props.user.currentUser.created_markers.filter(m => m.id === this.state.selectedMarker.id)
+		let createdFilter = this.props.user.createdMarkers.filter(m => m.id === this.state.selectedMarker.id)
 		console.log(createdFilter)
 		return(
 			<div className="marker page">
 				<i className="fa fa-times-circle return" onClick={this.props.handleReturnClick}/>
 				<h1 className="marker-page-title">{this.state.selectedMarker.title}</h1>
-				{createdFilter.length ? <p>You posted this marker!</p> : null}
+				{createdFilter.length ? <div><p>You posted this marker!</p><button onClick={this.delete}>Delete From Map</button></div> : null}
 				<p>{this.state.selectedMarker.address}</p>
 				<h2>User's Self Reported Symptoms: </h2>
 					<p>{this.state.selectedMarker.message}</p>
@@ -102,7 +108,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		addBookmark: (event, selectedMarker, history) => {dispatch(addBookmark(event, selectedMarker, history))}
+		addBookmark: (event, selectedMarker, history) => {dispatch(addBookmark(event, selectedMarker, history))},
+		deleteCreatedMarker: (id, history) => {dispatch(deleteCreatedMarker(id, history))}
 	}
     
 }

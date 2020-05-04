@@ -1,7 +1,8 @@
 import {API_ROOT, authHeaders} from '../services/api'
 
-const deleteCreatedMarker = (id) => {
+const deleteCreatedMarker = (id, history) => {
   return (dispatch) => {
+    window.confirm("Are you sure?")
     return fetch(`${API_ROOT}/map_markers/${id}`, {
       method: "DELETE",
       headers: authHeaders
@@ -10,6 +11,7 @@ const deleteCreatedMarker = (id) => {
       console.log(resp);
       dispatch({ type: "DELETE_FROM_MAP", id: id});
       dispatch({ type: "DELETE_CREATED_MARKER", id: id});
+      history.push('/map/profile')
     })
   }
 }
