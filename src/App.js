@@ -7,6 +7,7 @@ import errorToggle from './actions/errorToggle'
 
 import GoogleMap from './containers/GoogleMap'
 import NavBar from './components/NavBar'
+import Home from './components/Home'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import Profile from './components/Profile'
@@ -58,6 +59,8 @@ class App extends Component {
           />} 
       />
 
+      <Route exact path="/" component={Home} />
+
 
         {this.props.user.currentUser !== undefined && this.props.user.currentUser.id ?  (
           <Switch>
@@ -85,8 +88,6 @@ class App extends Component {
               exact path="/checker" 
               component={SymptomChecker} 
             />
-            <Route 
-              exact path="/" component={NavBar}/>
           </Switch>
           )
           : 
@@ -97,9 +98,6 @@ class App extends Component {
               exact path="/checker" 
               component={SymptomChecker} 
             />
-            <Route 
-              exact path="/" component={NavBar}/>
-            {/* <Redirect to="/" /> */}
           </Switch>
         }
         </Fragment>
