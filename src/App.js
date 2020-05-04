@@ -14,6 +14,7 @@ import Profile from './components/Profile'
 import MarkerCard from './components/MarkerCard'
 import PostToMap from './components/PostToMap'
 import SymptomChecker from './components/SymptomChecker'
+import MedicalProfile from './components/MedicalProfile'
 
 class App extends Component {   
   
@@ -87,6 +88,10 @@ class App extends Component {
             <Route 
               exact path="/checker" 
               component={SymptomChecker} 
+            />
+            <Route 
+              exact path="/medical" 
+              component={MedicalProfile} 
             />
           </Switch>
           )

@@ -18,7 +18,7 @@ class Results extends Component{
     })
       .then(response => response.json())
       .then(json => {console.log(json);
-      this.props.history.push('/')})
+      this.props.history.push('/medical')})
   }
 
   render() {
