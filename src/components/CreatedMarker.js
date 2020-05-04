@@ -9,6 +9,11 @@ class CreatedMarker extends Component {
 		this.props.deleteCreatedMarker(id);
 	}
 
+	view = () => {
+		let id = this.props.marker.id;
+		this.props.history.push(`/map/markers/${id}`)
+	}
+
 	render() {
 		console.log(this.props)
 		return(
@@ -16,6 +21,7 @@ class CreatedMarker extends Component {
 				<h1 className="marker-page-title">Title: {this.props.marker.title}</h1>
 				<p>Address: {this.props.marker.address}</p>
 				<button onClick={this.delete}>Delete From Map</button>
+				<button onClick={this.view}>View</button>
 			</div>
 		)
 	}
