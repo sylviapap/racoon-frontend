@@ -28,14 +28,16 @@ class Results extends Component{
         {!!this.props.response.description ? 
         <div classname="infermedica-description">
         <p>{this.props.response.description}</p>
-        <p>{this.props.response.label}</p>
+        <p>Recommendation: {this.props.response.label}</p>
+        <p>The following symptoms are especially serious:</p>
         </div>
         :
-        null}
+        <p>Not enough information given for a formal diagnosis. However, the following reported symptoms are serious and you should seek medical attention if they persist:</p>}
         
         {this.props.response.serious.map(a => 
         <div className="result-item" key={a.id}>
           <p>{a.common_name}</p>
+          {a.is_emergency ? <span className="emergency">Emergency symptom</span> : null}
         </div>
         )}
         <button onClick={() => this.handleClick()}>Save Diagnosis</button>

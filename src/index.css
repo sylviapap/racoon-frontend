@@ -130,8 +130,35 @@ header {
 
 .symptom-checker {
   margin: auto;
-  padding: 1%;
+  padding: 2%;
   overflow: auto;
+}
+
+.emergency {
+  color: red;
+}
+
+.result-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.sex-choice {
+  display: flex;
+  flex-direction: row;
+}
+
+.fever-choice {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.symptom-item {
+  margin: 0;
+  padding: 0;
+  margin-right: 2%;
 }
 
 
