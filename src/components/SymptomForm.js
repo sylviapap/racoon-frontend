@@ -36,27 +36,35 @@ export default class SymptomForm extends Component {
     this.setState({[event.target.name]: value});
   }
 
+  // the worst function ever written 
+
   handleSubmit = (event) => {
     event.preventDefault();
-    const symptomArray = this.state.symptom_ids.map(s => Object.assign({}, {"id": s, "choice_id": "present"}));
-    const seriousSymptomArray = this.state.seriousSymptom_ids.map(s => Object.assign({}, {"id": s, "choice_id": "present"}));
+    const presentSymptoms = this.state.symptom_ids.map(s => Object.assign({}, {"id": s, "choice_id": "present"}));
+    const serious = this.state.seriousSymptom_ids.map(s => Object.assign({}, {"id": s, "choice_id": "present"}));
+    const symptomsPresent = presentSymptoms.concat(serious)
 
-    const symptomsAbsent = emergencySymptoms.filter(s => !this.state.seriousSymptom_ids.includes(s.id))
-    const symptomsAbsentArray = symptomsAbsent.map(s => Object.assign({}, {"id": s.id, "choice_id": "absent"}));
-    console.log(symptomsAbsentArray)
+    const symptomsAbsentNormal = symptoms.filter(s => !this.state.symptom_ids.includes(s.id))
+    const symptomsAbsentSerious = emergencySymptoms.filter(s => !this.state.seriousSymptom_ids.includes(s.id))    
+    const symptomsAbsentNormalArray = symptomsAbsentNormal.map(s => Object.assign({}, {"id": s.id, "choice_id": "absent"}));
+    const symptomsAbsentSeriousArray = symptomsAbsentSerious.map(s => Object.assign({}, {"id": s.id, "choice_id": "absent"}));
+    const symptomsAbsent = symptomsAbsentNormalArray.concat(symptomsAbsentSeriousArray)
 
-    const riskArray = this.state.risk_ids.map(rf => Object.assign({}, {"id": rf, "choice_id": "present"}));
-    const seriousRiskArray = this.state.seriousRisk_ids.map(rf => Object.assign({}, {"id": rf, "choice_id": "present"}));
-    const risksAbsent = riskFactors.filter(rf => !this.state.risk_ids.includes(rf.id))
-    console.log(risksAbsent)
-    const risksAbsentArray = risksAbsent.map(rf => Object.assign({}, {"id": rf.id, "choice_id": "absent"}));
-    console.log(risksAbsentArray)
 
-    const symptomsPresent = symptomArray.concat(seriousSymptomArray)
-    const symptomEvidence = symptomsPresent.concat(symptomsAbsentArray)
+    const normalRisks = this.state.risk_ids.map(rf => Object.assign({}, {"id": rf, "choice_id": "present"}));
+    const seriousRisks = this.state.seriousRisk_ids.map(rf => Object.assign({}, {"id": rf, "choice_id": "present"}));
 
-    const risksPresent = riskArray.concat(seriousRiskArray)
-    const riskEvidence = risksPresent.concat(risksAbsentArray)
+    const normalRisksAbsent = riskFactors.filter(rf => !this.state.risk_ids.includes(rf.id))
+    const normalRisksAbsentArray = normalRisksAbsent.map(rf => Object.assign({}, {"id": rf.id, "choice_id": "absent"}));
+    const seriousRisksAbsent = emergencyRisks.filter(rf => !this.state.seriousRisk_ids.includes(rf.id))
+    const seriousRisksAbsentArray = seriousRisksAbsent.map(rf => Object.assign({}, {"id": rf.id, "choice_id": "absent"}));
+
+    const symptomEvidence = symptomsPresent.concat(symptomsAbsent)
+
+    const risksPresent = normalRisks.concat(seriousRisks)
+    const risksAbsent = normalRisksAbsentArray.concat(seriousRisksAbsentArray)
+    const riskEvidence = risksPresent.concat(risksAbsent)
+
     const symptomsAndRisks = symptomEvidence.concat(riskEvidence)
     
     let feverArray = []
