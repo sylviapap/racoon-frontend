@@ -151,6 +151,10 @@ class GoogleMap extends Component {
               (<div>
                 <h3>{this.state.selectedPlace.country}</h3>
                 <p>Confirmed cases: {this.state.selectedPlace.confirmed}</p>
+                <p>Critical cases: {this.state.selectedPlace.critical}</p>
+                <p>Deaths: {this.state.selectedPlace.deaths}</p>
+                <p>Recovered: {this.state.selectedPlace.recovered}</p>
+                <p>Last Updated: {Date(this.state.selectedPlace.lastUpdate)}</p>
               </div>)}
           </div>
         </InfoWindowRef>
