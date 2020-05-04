@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {riskFactors} from '../services/riskFactors'
+import {symptoms} from '../services/symptoms'
 import {symptomsNonEmergency} from '../services/symptomsNonEmergency'
 import {emergencySymptoms} from '../services/emergencySymptoms'
 import NavBar from './NavBar'
@@ -15,7 +16,6 @@ const infermedicaHeaders = {
 }
 
 class SymptomChecker extends Component {
-  // state.symptoms comes from my backend
   state = {
     fields: {
       age: "",
@@ -24,7 +24,9 @@ class SymptomChecker extends Component {
       feverType: ""
     },
     symptom_ids: [],
+    seriousSymptom_ids: [],
     risk_ids: [],
+    seriousRisk_ids: [],
     response: {},
     choices: {
       s_2: false,    
@@ -64,60 +66,59 @@ class SymptomChecker extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const symptomArray = this.state.symptom_ids.map(s => Object.assign({}, {"id": s, "choice_id": "present"}));
-    // const symptomsAbsent = this.state.symptoms.filter(s => !this.state.symptom_ids.includes(s.infermedica_id))
-    // const symptomsAbsentArray = symptomsAbsent.map(s => Object.assign({}, {"id": s.infermedica_id, "choice_id": "absent"}));
-    // console.log(symptomsAbsentArray)
+    const seriousSymptomArray = this.state.seriousSymptom_ids.map(s => Object.assign({}, {"id": s, "choice_id": "present"}));
+
+    const symptomsAbsent = emergencySymptoms.filter(s => !this.state.seriousSymptom_ids.includes(s.id))
+    const symptomsAbsentArray = symptomsAbsent.map(s => Object.assign({}, {"id": s.id, "choice_id": "absent"}));
+    console.log(symptomsAbsentArray)
 
     const riskArray = this.state.risk_ids.map(rf => Object.assign({}, {"id": rf, "choice_id": "present"}));
-    // const risksAbsent = riskFactors.filter(rf => !this.state.risk_ids.includes(rf.id))
-    // console.log(risksAbsent)
-    // const risksAbsentArray = risksAbsent.map(rf => Object.assign({}, {"id": rf.id, "choice_id": "absent"}));
-    // console.log(risksAbsentArray)
+    const seriousRiskArray = this.state.seriousRisk_ids.map(rf => Object.assign({}, {"id": rf, "choice_id": "present"}));
+    const risksAbsent = riskFactors.filter(rf => !this.state.risk_ids.includes(rf.id))
+    console.log(risksAbsent)
+    const risksAbsentArray = risksAbsent.map(rf => Object.assign({}, {"id": rf.id, "choice_id": "absent"}));
+    console.log(risksAbsentArray)
 
-    // const symptomEvidence = symptomArray.concat(symptomsAbsentArray)
-    // const riskEvidence = riskArray.concat(risksAbsentArray)
+    const symptomsPresent = symptomArray.concat(seriousSymptomArray)
+    const symptomEvidence = symptomsPresent.concat(symptomsAbsentArray)
+
+    const risksPresent = riskArray.concat(seriousRiskArray)
+    const riskEvidence = risksPresent.concat(risksAbsentArray)
     // const evidence = symptomEvidence.concat(riskEvidence)
-    const evidence = []
+    const symptomsAndRisks = symptomEvidence.concat(riskEvidence)
+    
+    let feverArray = []
     
     if (this.state.fields.fever) {
-      evidence.push({"id": "s_0", "choice_id": "present"})
+      feverArray.push({"id": "s_0", "choice_id": "present"})
       const type = this.state.fields.feverType
-      evidence.push({"id": `${type}`, "choice_id": "present"})
+      feverArray.push({"id": `${type}`, "choice_id": "present"})
     }
-    console.log(symptomArray)
-    console.log(riskArray)
 
-
+    const evidence = symptomsAndRisks.concat(feverArray)
+    console.log(symptomsAndRisks)
     console.log(evidence)
 
-    // fetch("https://api.infermedica.com/covid19/triage", {
-    //   method: "POST",
-    //   headers: infermedicaHeaders,
-    //   body: JSON.stringify({
-    //     "sex": this.state.fields.sex,
-    //     "age": parseInt(this.state.fields.age),
-    //     "evidence": evidence
-    //   })
-    // })
-    // .then(response => response.json())
-    // .then(json => {
-    //   console.log(json)
-    //   this.setState({response: json})
-    // })
+    fetch("https://api.infermedica.com/covid19/triage", {
+      method: "POST",
+      headers: infermedicaHeaders,
+      body: JSON.stringify({
+        "sex": this.state.fields.sex,
+        "age": parseInt(this.state.fields.age),
+        "evidence": evidence
+      })
+    })
+    .then(response => response.json())
+    .then(json => {
+      console.log(json)
+      this.setState({response: json})
+    })
   }
   
   handleCheckboxChange = (event) => {
     const newChoices = { ...this.state.choices, [event.target.name]: event.target.checked };
     this.setState({ choices: newChoices });
   }
-
-  // handleMultipleCheck = (event) => {
-  //   console.log(event.target.checked)
-  //   const value = [];
-  //   const newSymptom = {[event.target.name]: event.target.value };
-  //   value.push(newSymptom)
-  //   this.setState({ symptoms: value });
-  // }
 
   render() {
 
@@ -211,8 +212,8 @@ class SymptomChecker extends Component {
           <label>Select serious symptoms (can select multiple):</label>
             <select 
               multiple={true} 
-              value={this.state.symptom_ids} 
-              name="symptom_ids"
+              value={this.state.seriousSymptom_ids} 
+              name="seriousSymptom_ids"
               onChange={this.handleSelect} >
                 {emergencySymptoms.map(symptom => 
                   <option 
@@ -236,34 +237,22 @@ class SymptomChecker extends Component {
                   </option>)}
             </select>
 
-            <label>Select if any of the following serious risk factors apply:</label>
+          <div>
+            <label>Select any that apply to you:</label>
+            <select 
+              multiple={true} 
+              value={this.state.seriousRisk_ids} 
+              name="seriousRisk_ids"
+              onChange={this.handleSelect} >
+                {emergencyRisks.map(rf => 
+                  <option 
+                    value={rf["id"]}>
+                      {rf["question"]}
+                  </option>)}
+            </select>
+          </div>
 
-            <div className="field">
-              <label>I live with or have provided care to, without the use of a protective mask or gloves, a person suspected of having COVID-19</label>
-                <input
-                  name="p_12"
-                  type="checkbox"
-                  checked={this.state.p_12}
-                  onChange={this.handleCheckboxChange} />
-
-              <label>I have shared the same closed environment (e.g., classroom, workspace, gym) with or traveled in close proximity (1 m or 3 feet) to a person suspected of having COVID-19</label>
-                <input
-                  name="p_13"
-                  type="checkbox"
-                  checked={this.state.p_13}
-                  onChange={this.handleCheckboxChange} />
-
-              <label>I had face-to-face contact within 1 meter (3 feet) for longer than 15 minutes with a person suspected of having COVID-19</label>
-                <input
-                  name="p_14"
-                  type="checkbox"
-                  checked={this.state.p_14}
-                  onChange={this.handleCheckboxChange} />
-            </div>
-            
-
-            
-            <label>Select other potentially relevant risk factors:</label>
+          <label>Select other potentially relevant risk factors:</label>
 
             <select 
               multiple={true} 

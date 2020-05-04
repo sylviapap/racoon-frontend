@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 class Results extends Component{
 
-  handleClick = (symptomId) => {
+  handleClick = () => {
     // fetch(`${API_ROOT}/reported_symptoms`, {
     //   method: "POST", 
     //   headers: authHeaders,
@@ -17,7 +17,7 @@ class Results extends Component{
     //   .then(json => {console.log(json)
     //   })
     // symptomId = s_1 or p_1 etc 
-    console.log(symptomId, "clicked")
+    console.log("clicked")
   }
 
   render() {
@@ -26,7 +26,10 @@ class Results extends Component{
         
         <header className="results">Preliminary Diagnosis</header>
         {!!this.props.response.description ? 
+        <div classname="infermedica-description">
         <p>{this.props.response.description}</p>
+        <p>{this.props.response.label}</p>
+        </div>
         :
         null}
         
