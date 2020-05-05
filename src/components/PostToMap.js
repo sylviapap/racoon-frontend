@@ -72,6 +72,7 @@ class PostToMap extends Component{
   render() {
     return(
       <div className="post-container page">
+        <i className="fa fa-times-circle return" onClick={this.props.handleReturnClick}/>
       <form onSubmit ={this.handleSubmit}className="post-form">
         <label>Title</label>
         <input name="title" type="text" value={this.state.fields.title} onChange={this.handleChange}/>

@@ -75,7 +75,7 @@ class App extends Component {
             <Route 
               path="/map/post" 
               render={(props) => 
-                <PostToMap {...props} />} 
+                <PostToMap {...props} handleReturnClick={this.handleReturnClick} />} 
               />
             <Route 
               path="/map/markers/:id" 

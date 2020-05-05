@@ -36,8 +36,9 @@ class SymptomChecker extends Component {
     return(
       <Fragment>
       <NavBar />
+      <header className="checker"><h1>Symptom Checker</h1></header>
       <div className="symptom-checker">
-        <h1 className="card-title">Symptom Check</h1>
+        
         {!!this.state.response.message ?
         <p>Error! Please make sure you have selected your sex, age as a whole number, and at least one symptom {console.log(this.state.response.message)}</p>
         :

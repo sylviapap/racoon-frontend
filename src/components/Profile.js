@@ -5,8 +5,6 @@ import Bookmark from './Bookmark'
 
 class Profile extends Component {
 
-
-
   render() {
     let name = this.props.currentUser.first_name
     let titleName = name.charAt(0).toUpperCase() + name.substr(1).toLowerCase()

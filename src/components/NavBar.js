@@ -14,7 +14,8 @@ class NavBar extends Component {
 		// const loggedIn = !!this.props.currentUser.id
 		return(
 		<div className="nav-bar">
-			<NavLink to="/map"><img src={logo} className="nav-item" alt="racoon-logo" id="racoon-logo"/></NavLink>
+			<div className="nav-logo">
+			<NavLink to="/"><img className="racoon-logo" src={logo} alt="racoon-logo" id="racoon-logo"/></NavLink></div>
 			<div className="nav-item">
 				<NavLink to="/map">Map</NavLink>
 			</div>
@@ -23,14 +24,14 @@ class NavBar extends Component {
 			</div>
 		{ this.props.currentUser !== undefined && this.props.currentUser.id ?
 			<Fragment>
-				<div className="nav-header">Welcome, {this.props.currentUser.first_name.charAt(0).toUpperCase()+this.props.currentUser.first_name.substr(1).toLowerCase()}</div>
+				<div className="nav-header">Welcome, <NavLink to="/medical">{this.props.currentUser.first_name.charAt(0).toUpperCase()+this.props.currentUser.first_name.substr(1).toLowerCase()}</NavLink></div>
 				
 				<div className="nav-item">
 					<NavLink to="/map/profile">Bookmarks</NavLink>
 				</div>
 
 				<div className="nav-item">
-					<NavLink to="/medical">My Health Info</NavLink>
+					<NavLink to="/medical">Profile</NavLink>
 				</div>
 
 				<div className="nav-item">

@@ -47,8 +47,7 @@ class MedicalProfile extends Component {
     return(
       <Fragment>
       <NavBar />
-    <div className="profile page">
-      <h1 className="welcome">My Info</h1>
+      <header className="welcome"><h1 className="welcome">My Health Profile</h1></header>
       <div className="medical-info">
         <p>Medical Information For: {titleFirstName} {titleLastName}</p>
         <p>Saved Diagnoses:</p><ul>{this.props.currentUser.diagnoses.map(d => <li>{d.description}</li>)}</ul>
@@ -70,8 +69,6 @@ class MedicalProfile extends Component {
           </select>
         <input className="symptom-submit" type="submit" value="Submit"/>
       </form>
-
-    </div>
     </Fragment>
     )
   }
