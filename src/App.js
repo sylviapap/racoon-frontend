@@ -10,7 +10,7 @@ import GoogleMap from './containers/GoogleMap'
 import Home from './components/Home'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
-import Profile from './components/Profile'
+import SideBar from './components/SideBar'
 import MarkerCard from './components/MarkerCard'
 import PostToMap from './components/PostToMap'
 import SymptomChecker from './components/SymptomChecker'
@@ -63,9 +63,9 @@ class App extends Component {
         {this.props.user.currentUser !== undefined && this.props.user.currentUser.id ?  (
           <Switch>
             <Route 
-              path="/map/profile" 
+              path="/map/my-markers" 
               render={(props) => 
-              <Profile {...props} 
+              <SideBar {...props} 
                 handleReturnClick={this.handleReturnClick}
                 />}
               /> 

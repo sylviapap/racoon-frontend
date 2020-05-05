@@ -11,7 +11,7 @@ class PostToMap extends Component{
       longitude: [],
       title: [], 
       address: [],
-      message: []
+      message: ""
     },
     symptomChoices: [],
     symptomsToAdd: []
@@ -58,7 +58,8 @@ class PostToMap extends Component{
         latitude: [],
         longitude: [],
         title: [], 
-        address: []
+        address: [],
+        message: ""
     }});
   }
 
@@ -80,15 +81,15 @@ class PostToMap extends Component{
         <span className="info">Please allow the browser to access your location and wait for coordinates to appear. You may select symptoms, which will then be saved to your profile, and all saved symptoms from your profile will be posted to your marker. You can add/remove symptoms separately in your profile, and changes will reflect in the updated marker.</span>
       <form onSubmit ={this.handleSubmit}className="post-form">
         <label>Title (optional)</label>
-        <input name="title" type="text" value={this.state.fields.title} onChange={this.handleChange}/>
+          <input name="title" type="text" value={this.state.fields.title} onChange={this.handleChange}/>
         <label>Message/caption (optional)</label>
-        <input name="message" type="text" value={this.state.fields.message} onChange={this.handleChange}/>
+          <input name="message" type="text" value={this.state.fields.message} onChange={this.handleChange}/>
         <label>Address (optional)</label>
-        <input name="address" type="text" value={this.state.fields.address} onChange={this.handleChange}/>
+          <input name="address" type="text" value={this.state.fields.address} onChange={this.handleChange}/>
         <label>Latitude</label>
-        <input name="latitude" type="number" value={this.state.fields.latitude} onChange={this.handleChange}/>
+          <input name="latitude" type="number" value={this.state.fields.latitude} onChange={this.handleChange}/>
         <label>Longitude</label>
-        <input name="longitude" type="number" value={this.state.fields.longitude} onChange={this.handleChange}/>
+          <input name="longitude" type="number" value={this.state.fields.longitude} onChange={this.handleChange}/>
 
         <label>Select your symptoms: (Hold Ctrl or Cmd to select multiple)</label>
             <select 
@@ -123,4 +124,5 @@ const mapDispatchToProps = (dispatch) => {
     addToMap: (event, markerData, history) => {dispatch(addToMap(event, markerData, history))}
   }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(PostToMap)

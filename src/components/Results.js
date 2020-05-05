@@ -18,7 +18,6 @@ class Results extends Component{
   render() {
     return(
       <div className="results">
-        
         <header className="results">Preliminary Diagnosis</header>
         {!!this.props.response.description ? 
         <div className="infermedica-description">
@@ -39,7 +38,6 @@ class Results extends Component{
         {!!this.props.currentUser ? (<button onClick={this.handleSaveClick}>Save Diagnosis</button>)
         :
         (<p><a className="results" href="/login">Log In</a> to save this diagnosis</p>)}
-        
       </div>
     )
   }

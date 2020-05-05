@@ -26,7 +26,7 @@ const logIn = (event, userInput, history) => {
                 dispatch({type: "SET_CREATED_MARKERS", createdMarkers: json.user.created_markers})
                 dispatch({ type: "NO_ERROR" })
                 localStorage.setItem('token', json.token);
-                history.push('/map/profile')
+                history.push('/map')
             }
         })
     }

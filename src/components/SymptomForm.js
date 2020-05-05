@@ -34,37 +34,15 @@ export default class SymptomForm extends Component {
     this.setState({[event.target.name]: value});
   }
 
-  // evidence example:
-  //     "evidence": [
-//     {"id": "p_16", "choice_id": "absent"},
-//     {"id": "p_17", "choice_id": "present"},
-//     {"id": "p_18", "choice_id": "absent"},
-//     {"id": "p_19", "choice_id": "absent"},
-//     {"id": "p_20", "choice_id": "absent"},
-//     {"id": "p_21", "choice_id": "absent"},
-//     {"id": "p_22", "choice_id": "absent"},
-//     {"id": "s_0", "choice_id": "absent"}, fever
-//     {"id": "s_1", "choice_id": "absent"}, cough
-//     {"id": "s_2", "choice_id": "absent"}, breath
-//     {"id": "s_15", "choice_id": "present"},
-//     {"id": "s_16", "choice_id": "present"},
-//     {"id": "s_17", "choice_id": "absent"},
-//     {"id": "s_18", "choice_id": "absent"},
-//     {"id": "s_19", "choice_id": "absent"},
-//     {"id": "s_20", "choice_id": "absent"},
-//     {"id": "s_21", "choice_id": "absent"},
-//     {"id": "p_12", "choice_id": "present"} living or caring - serious
-// ]
-
-// the worst function ever written 
-
   handleSubmit = (event) => {
+    // the worst function ever written - if you are reading this please don't judge me i will refactor eventually
+
     event.preventDefault();
     const presentNormalSymptoms = this.state.symptom_ids.map(s => Object.assign({}, {"id": s, "choice_id": "present"}));
     const presentSerious = this.state.seriousSymptom_ids.map(s => Object.assign({}, {"id": s, "choice_id": "present"}));
     const symptomsPresent = presentNormalSymptoms.concat(presentSerious)
     console.log(symptomsPresent)
-    // so far so good. this is array of objects of {id, choice_id: present}
+    // array of objects of {s_id, choice_id: present}
 
     const symptomsAbsentNormal = symptomsNonEmergency.filter(s => !this.state.symptom_ids.includes(s.id))
     const symptomsAbsentSerious = emergencySymptoms.filter(s => !this.state.seriousSymptom_ids.includes(s.id))    
@@ -72,7 +50,7 @@ export default class SymptomForm extends Component {
     const symptomsAbsentSeriousArray = symptomsAbsentSerious.map(s => Object.assign({}, {"id": s.id, "choice_id": "absent"}));
     const symptomsAbsent = symptomsAbsentNormalArray.concat(symptomsAbsentSeriousArray)
     console.log(symptomsAbsent)
-    // array of obj {id, choice_id: absent}
+    // array of obj {s_id, choice_id: absent}
 
     const normalRisks = this.state.risk_ids.map(rf => Object.assign({}, {"id": rf, "choice_id": "present"}));
     const seriousRisks = this.state.seriousRisk_ids.map(rf => Object.assign({}, {"id": rf, "choice_id": "present"}));
@@ -92,6 +70,7 @@ export default class SymptomForm extends Component {
     const riskEvidence = risksPresent.concat(risksAbsent)
     const symptomsAndRisks = symptomEvidence.concat(riskEvidence)
     
+    // handles the 'fever yes or no' options
     let feverArray = []
     if (this.state.fields.fever === "true") {
       feverArray.push({"id": "s_0", "choice_id": "present"})
@@ -102,11 +81,13 @@ export default class SymptomForm extends Component {
       feverArray.push({"id": "s_0", "choice_id": "absent"})
     }
 
+    // combines everything
     const evidence = symptomsAndRisks.concat(feverArray)
     console.log(evidence)
 
     this.props.handleSubmit(event, this.state.fields.sex, this.state.fields.age, evidence)
   }
+
   render() {
     return (
       <div>

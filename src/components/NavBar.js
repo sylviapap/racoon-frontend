@@ -11,7 +11,6 @@ class NavBar extends Component {
 	}
 
   render() {
-		// const loggedIn = !!this.props.currentUser.id
 		return(
 		<div className="nav-bar">
 			<div className="nav-logo">
@@ -27,7 +26,7 @@ class NavBar extends Component {
 				<div className="nav-header">Welcome, <NavLink to="/medical">{this.props.currentUser.first_name.charAt(0).toUpperCase()+this.props.currentUser.first_name.substr(1).toLowerCase()}</NavLink></div>
 				
 				<div className="nav-item">
-					<NavLink to="/map/profile">My Markers</NavLink>
+					<NavLink to="/map/my-markers">My Markers</NavLink>
 				</div>
 
 				<div className="nav-item">

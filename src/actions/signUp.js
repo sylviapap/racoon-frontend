@@ -23,7 +23,7 @@ const signUp = (event, userInput, history) => {
           dispatch({ type: "SET_CURRENT_USER", user: json.user })
           dispatch({ type: "NO_ERROR" })
           localStorage.setItem('token', json.token);
-          history.push('/map/profile')
+          history.push('/map')
         }
       })
     }

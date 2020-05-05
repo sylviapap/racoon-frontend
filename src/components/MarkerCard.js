@@ -7,7 +7,6 @@ import addBookmark from '../actions/addBookmark'
 import deleteBookmark from '../actions/deleteBookmark'
 import deleteCreatedMarker from '../actions/deleteCreatedMarker'
 
-
 class MarkerCard extends Component {
 
 	state = {
