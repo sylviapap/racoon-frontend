@@ -22,7 +22,7 @@ const addSymptom = (event, userId, symptomId, history) => {
 		})
     .then(json => {
       console.log(json);
-      dispatch({ type: "ADD_SYMPTOM", symptom: json })
+      dispatch({ type: "ADD_SYMPTOM", symptom: json.symptom })
       history.push('/medical')
     })
   }

@@ -38,6 +38,7 @@ class MedicalProfile extends Component {
     let last = this.props.currentUser.last_name
     let titleFirstName = first.charAt(0).toUpperCase() + first.substr(1).toLowerCase()
     let titleLastName = last.charAt(0).toUpperCase() + last.substr(1).toLowerCase()
+    console.log(this.props)
     return(
       <Fragment>
       <NavBar />
@@ -46,7 +47,7 @@ class MedicalProfile extends Component {
       <div className="medical-info">
         <p>Medical Information For: {titleFirstName} {titleLastName}</p>
         <p>Saved Diagnoses:</p><ul>{this.props.currentUser.diagnoses.map(d => <li>{d.description}</li>)}</ul>
-        <p>Saved Symptoms:</p><ul>{this.props.symptoms.map(s => <li>{s.symptom.common_name}</li>)}</ul>
+        <p>Saved Symptoms:</p><ul>{this.props.symptoms.map(s => <li>{s.common_name}</li>)}</ul>
       </div>
       <form onSubmit ={this.handleSubmit}className="post-form">
         <label>Save symptoms to your information: (Hold Ctrl or Cmd to select multiple)</label>
