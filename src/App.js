@@ -1,12 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch, withRouter, Redirect, useRouteMatch } from 'react-router-dom';
-import fetchInitialMap from './actions/fetchInitialMap'
+import { Route, Switch, withRouter } from 'react-router-dom';
+import fetchMyMap from './actions/fetchMyMap'
+import fetchOfficialMap from './actions/fetchOfficialMap'
 import getCurrentUser from './actions/getCurrentUser'
 import errorToggle from './actions/errorToggle'
 
 import GoogleMap from './containers/GoogleMap'
-import NavBar from './components/NavBar'
 import Home from './components/Home'
 import Login from './components/Login'
 import SignUp from './components/SignUp'
@@ -19,8 +19,9 @@ import MedicalProfile from './components/MedicalProfile'
 class App extends Component {   
   
   componentDidMount() {
+    this.props.fetchMyMap();
+    this.props.fetchOfficialMap();
     this.props.getCurrentUser();
-    this.props.fetchInitialMap();
   }
 
   handleErrorClick = () => {
@@ -51,7 +52,8 @@ class App extends Component {
         path="/map" 
         render={(props) => 
         <GoogleMap {...props} 
-          initialMapData={this.props.map.initialMap}
+          myMapData={this.props.map.myMap}
+          officialMapData={this.props.map.officialMap}
           />} 
       />
 
@@ -77,7 +79,7 @@ class App extends Component {
               render={(props) => 
                 <MarkerCard {...props} 
                   handleReturnClick={this.handleReturnClick}
-                  initialMapData={this.props.map.initialMap}
+                  myMapData={this.props.map.myMap}
                 />}
               />
             <Route 
@@ -113,7 +115,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getCurrentUser: () => { dispatch(getCurrentUser()) },
-    fetchInitialMap: () => { dispatch(fetchInitialMap()) },
+    fetchMyMap: () => { dispatch(fetchMyMap()) },
+    fetchOfficialMap: () => { dispatch(fetchOfficialMap()) },
     errorToggle: () => { dispatch(errorToggle())}
   }
 }

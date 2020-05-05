@@ -1,27 +1,34 @@
 const intitialState = {
-  initialMap: []
+  myMap: [],
+  officialMap: []
 }
 
 const mapReducer = (state = intitialState, action) => {
   switch(action.type) {
-    case "GET_MAP":
+    case "GET_MY_MAP":
       return {
         ...state, 
-        initialMap: action.initialMap
+        myMap: action.myMap
+      }
+
+    case "OFFICIAL_MAP":
+      return {
+        ...state, 
+        officialMap: action.officialMap
       }
 
     case "ADD_TO_MAP":
       return {
         ...state,
-        initialMap: [...state.initialMap, action.marker]
+        myMap: [...state.myMap, action.marker]
       }
 
     case "DELETE_FROM_MAP":
-      const initialMap = state.initialMap.filter(marker => marker.id !== action.id)
-      console.log(initialMap)
+      const myMap = state.myMap.filter(marker => marker.id !== action.id)
+      console.log(myMap)
       return {
         ...state,
-        initialMap
+        myMap
       }
       
     default:

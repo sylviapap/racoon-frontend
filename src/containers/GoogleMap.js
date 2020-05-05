@@ -14,24 +14,10 @@ const containerStyle = {
 }
 
 class GoogleMap extends Component {
-  constructor() {
-    super()
-    this.state = {
-      officialData: [],
-      showingInfoWindow: false,
-      activeMarker: {},
-      selectedPlace: {}
-    }
-  }
-
-  componentDidMount() {
-    this.fetchOfficialData()
-  }
-
-  fetchOfficialData = () => {
-    fetch(`https://covid19-api.com/country/all`)
-    .then(response => response.json())
-    .then(json => this.setState({officialData: json}))
+  state = {
+    showingInfoWindow: false,
+    activeMarker: {},
+    selectedPlace: {}
   }
      
   onMarkerClick = (props, marker) => {    
@@ -82,10 +68,10 @@ class GoogleMap extends Component {
         initialCenter={centerCoords}
         center={centerCoords}
         >
-          {this.state.officialData ?
-          this.state.officialData.map(object => 
+          {this.props.officialMapData ?
+          this.props.officialMapData.map(object => 
           <Circle
-          key={this.state.officialData.indexOf(object)}
+          key={this.props.officialMapData.indexOf(object)}
           radius={Math.sqrt(object.confirmed) * 1000}
           center={{
             lat: parseFloat(object.latitude) || 0,
@@ -112,8 +98,8 @@ class GoogleMap extends Component {
 
         
               
-        { this.props.initialMapData ? 
-        (this.props.initialMapData.map(object =>
+        { this.props.myMapData ? 
+        (this.props.myMapData.map(object =>
         <Marker 
           onClick={this.onMarkerClick}
           position={{
