@@ -50,7 +50,7 @@ class MedicalProfile extends Component {
       <header className="welcome"><h1 className="welcome">My Health Profile</h1></header>
       <div className="medical-info">
         <p>Medical Information For: {titleFirstName} {titleLastName}</p>
-        <p>Saved Diagnoses:</p><ul>{this.props.currentUser.diagnoses.map(d => <li key={d.id}>{d.description}</li>)}</ul>
+        <p>Saved Diagnoses:</p><ul>{this.props.diagnoses.map(d => <div key={d.id}><li >{d.description}</li><span className="info">[Saved: {new Date(d.created_at).toString()}]</span></div>)}</ul>
         <p>Saved Symptoms:</p><ul>{this.props.reportedSymptoms.map(s => <li key={s.id}>{s.symptom.common_name}<button onClick={() => this.deleteSymptom(s.id)}>Delete</button></li>)}</ul>
       </div>
       <form onSubmit ={this.handleSubmit}className="post-form">
@@ -77,7 +77,8 @@ class MedicalProfile extends Component {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.user.currentUser,
-    reportedSymptoms: state.user.reportedSymptoms
+    reportedSymptoms: state.user.reportedSymptoms,
+    diagnoses: state.user.diagnoses
   }
 }
 

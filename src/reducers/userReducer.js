@@ -2,7 +2,8 @@ const intitialState = {
   currentUser: {},
   bookmarks: [],
   createdMarkers: [],
-  reportedSymptoms: []
+  reportedSymptoms: [],
+  diagnoses: []
 }
 
 const userReducer = (state = intitialState, action) => {
@@ -25,6 +26,12 @@ const userReducer = (state = intitialState, action) => {
         reportedSymptoms: action.reportedSymptoms
       }
 
+    case "SET_DIAGNOSES":
+      return {
+        ...state, 
+        diagnoses: action.diagnoses
+      }
+
     case "ADD_BOOKMARK":
       let filter = state.bookmarks.filter(b => b.id === action.newBookmark.id)
       console.log(filter.length)
@@ -35,6 +42,19 @@ const userReducer = (state = intitialState, action) => {
         return {
           ...state,
           bookmarks: [...state.bookmarks, action.newBookmark]
+        }
+      }
+
+    case "ADD_DIAGNOSIS":
+      let diagnosisFilter = state.diagnoses.filter(d => d.id === action.newDiagnosis.id)
+      console.log(diagnosisFilter.length)
+      if (diagnosisFilter.length) {
+        return state
+      }
+      else {
+        return {
+          ...state,
+          diagnoses: [...state.diagnoses, action.newDiagnosis]
         }
       }
 

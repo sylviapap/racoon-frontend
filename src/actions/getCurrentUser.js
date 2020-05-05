@@ -21,6 +21,7 @@ const getCurrentUser = () => {
 				dispatch({ type: "SET_CURRENT_USER", user: json.user })
 				dispatch({ type: "NO_ERROR" })
 				dispatch({type: "SET_SYMPTOMS", reportedSymptoms: json.user.reported_symptoms})
+				dispatch({type: "SET_DIAGNOSES", diagnoses: json.user.diagnoses})
 				dispatch({type: "SET_BOOKMARKS", bookmarks: json.user.bookmarks})
 				dispatch({type: "SET_CREATED_MARKERS", createdMarkers: json.user.created_markers})
 			} 

@@ -1,24 +1,19 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {API_ROOT, authHeaders} from '../services/api'
+import addDiagnosis from '../actions/addDiagnosis'
 
 class Results extends Component{
 
   handleSaveClick = () => {
     console.log(this.props)
-    fetch(`${API_ROOT}/diagnoses`, {
-      method: "POST", 
-      headers: authHeaders,
-      body: JSON.stringify({
-        user_id: this.props.currentUser.id,
-        description: this.props.response.description,
-        label: this.props.response.label,
-        triage_level: this.props.response.triage_level
-      })
-    })
-      .then(response => response.json())
-      .then(json => {console.log(json);
-      this.props.history.push('/medical')})
+    const data = {
+      user_id: this.props.currentUser.id,
+      description: this.props.response.description,
+      label: this.props.response.label,
+      triage_level: this.props.response.triage_level
+    }
+    this.props.addDiagnosis(data, this.props.history)
   }
 
   render() {
@@ -42,7 +37,7 @@ class Results extends Component{
         </div>
         )}
 
-        {!!this.props.currentUser ? (<button onClick={() => this.handleSaveClick()}>Save Diagnosis</button>)
+        {!!this.props.currentUser ? (<button onClick={this.handleSaveClick}>Save Diagnosis</button>)
         :
         (<p><a className="results" href="/login">Log In</a> to save this diagnosis</p>)}
         
@@ -53,8 +48,15 @@ class Results extends Component{
 
 const mapStateToProps = (state) => {
   return {
-		currentUser: state.user.currentUser
+    currentUser: state.user.currentUser,
+    diagnoses: state.user.diagnoses
 	}
 }
 
-export default connect(mapStateToProps)(Results)
+const mapDispatchToProps = (dispatch) => {
+  return{
+    addDiagnosis: (data, history) => {dispatch(addDiagnosis(data, history))}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Results)
