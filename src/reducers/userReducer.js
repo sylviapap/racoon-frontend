@@ -1,7 +1,8 @@
 const intitialState = {
   currentUser: {},
   bookmarks: [],
-  createdMarkers: []
+  createdMarkers: [],
+  symptoms: []
 }
 
 const userReducer = (state = intitialState, action) => {
@@ -16,6 +17,12 @@ const userReducer = (state = intitialState, action) => {
       return {
         ...state, 
         bookmarks: action.bookmarks
+      }
+
+    case "SET_SYMPTOMS":
+      return {
+        ...state, 
+        symptoms: action.symptoms
       }
 
     case "ADD_BOOKMARK":
@@ -61,6 +68,12 @@ const userReducer = (state = intitialState, action) => {
       return {
         ...state, 
         currentUser: {}
+      }
+
+    case "ADD_SYMPTOM":
+      return {
+        ...state,
+        symptoms: [...state.symptoms, action.symptom]
       }
 
     default:

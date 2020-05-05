@@ -1,14 +1,7 @@
 import React, {Component, Fragment} from 'react';
-import {riskFactors} from '../services/riskFactors'
-import {symptoms} from '../services/symptoms'
-import {symptomsNonEmergency} from '../services/symptomsNonEmergency'
-import {emergencySymptoms} from '../services/emergencySymptoms'
 import NavBar from './NavBar'
 import Results from './Results'
 import SymptomForm from './SymptomForm'
-import {API_ROOT} from '../services/api'
-import { nonSeriousRisks } from '../services/nonSeriousRisks';
-import { emergencyRisks } from '../services/emergencyRisks';
 
 const infermedicaHeaders = {
   "App-Id": process.env.REACT_APP_INFERMEDICA_APP_ID,
@@ -23,7 +16,6 @@ class SymptomChecker extends Component {
 
   handleSubmit = (event, sex, age, evidence) => {
     event.preventDefault();
-
     fetch("https://api.infermedica.com/covid19/triage", {
       method: "POST",
       headers: infermedicaHeaders,
@@ -47,11 +39,11 @@ class SymptomChecker extends Component {
       <div className="symptom-checker">
         <h1 className="card-title">Symptom Check</h1>
         {!!this.state.response.message ?
-        <p>Error! Please fill out all fields {console.log(this.state.response.message)}</p>
+        <p>Error! Please make sure you have selected your sex, age as a whole number, and at least one symptom {console.log(this.state.response.message)}</p>
         :
         null}
         {!!this.state.response.serious || this.state.response.description ? 
-          <Results response={this.state.response} history = {this.props.history}/>
+          <Results response={this.state.response} history={this.props.history}/>
           : 
           <SymptomForm handleSubmit={this.handleSubmit} />
         }
