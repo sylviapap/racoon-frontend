@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import NavBar from './NavBar'
 import {API_ROOT} from '../services/api'
 import addSymptom from '../actions/addSymptom'
+import deleteSymptom from '../actions/deleteSymptom'
 
 class MedicalProfile extends Component {
   state = {
@@ -33,6 +34,10 @@ class MedicalProfile extends Component {
     this.state.symptomsToAdd.map(s => this.props.addSymptom(event, userId, s, this.props.history))
   }
 
+  deleteSymptom = (id) => {
+    this.props.deleteSymptom(id)
+  }
+
   render() {
     let first = this.props.currentUser.first_name
     let last = this.props.currentUser.last_name
@@ -47,7 +52,7 @@ class MedicalProfile extends Component {
       <div className="medical-info">
         <p>Medical Information For: {titleFirstName} {titleLastName}</p>
         <p>Saved Diagnoses:</p><ul>{this.props.currentUser.diagnoses.map(d => <li>{d.description}</li>)}</ul>
-        <p>Saved Symptoms:</p><ul>{this.props.symptoms.map(s => <li>{s.common_name}</li>)}</ul>
+        <p>Saved Symptoms:</p><ul>{this.props.reportedSymptoms.map(s => <li>{s.symptom.common_name}<button onClick={() => this.deleteSymptom(s.id)}>Delete</button></li>)}</ul>
       </div>
       <form onSubmit ={this.handleSubmit}className="post-form">
         <label>Save symptoms to your information: (Hold Ctrl or Cmd to select multiple)</label>
@@ -75,13 +80,14 @@ class MedicalProfile extends Component {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.user.currentUser,
-    symptoms: state.user.symptoms
+    reportedSymptoms: state.user.reportedSymptoms
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return{
-    addSymptom: (event, userId, symptomId, history) => {dispatch(addSymptom(event, userId, symptomId, history))}
+    addSymptom: (event, userId, symptomId, history) => {dispatch(addSymptom(event, userId, symptomId, history))},
+    deleteSymptom: (id) => {dispatch(deleteSymptom(id))}
   }
 }
 

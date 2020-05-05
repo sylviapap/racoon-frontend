@@ -2,7 +2,7 @@ const intitialState = {
   currentUser: {},
   bookmarks: [],
   createdMarkers: [],
-  symptoms: []
+  reportedSymptoms: []
 }
 
 const userReducer = (state = intitialState, action) => {
@@ -22,7 +22,7 @@ const userReducer = (state = intitialState, action) => {
     case "SET_SYMPTOMS":
       return {
         ...state, 
-        symptoms: action.symptoms
+        reportedSymptoms: action.reportedSymptoms
       }
 
     case "ADD_BOOKMARK":
@@ -58,6 +58,13 @@ const userReducer = (state = intitialState, action) => {
         createdMarkers
       }
 
+    case "DELETE_SYMPTOM":
+      const reportedSymptoms = state.reportedSymptoms.filter(sym => sym.id !== action.id)
+      return {
+        ...state,
+        reportedSymptoms
+      }
+
     case "SET_CREATED_MARKERS":
       return {
         ...state, 
@@ -73,7 +80,7 @@ const userReducer = (state = intitialState, action) => {
     case "ADD_SYMPTOM":
       return {
         ...state,
-        symptoms: [...state.symptoms, action.symptom]
+        reportedSymptoms: [...state.reportedSymptoms, action.reportedSymptom]
       }
 
     default:
