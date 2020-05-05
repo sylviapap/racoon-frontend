@@ -4,6 +4,7 @@ import Comment from './Comment'
 import PostComment from './PostComment'
 import {API_ROOT} from '../services/api'
 import addBookmark from '../actions/addBookmark'
+import deleteBookmark from '../actions/deleteBookmark'
 import deleteCreatedMarker from '../actions/deleteCreatedMarker'
 
 
@@ -18,11 +19,6 @@ class MarkerCard extends Component {
 	componentDidMount() {
 		console.log(this.props)
 		let id = parseInt(this.props.match.params.id)
-		// console.log(id)
-		// console.log(this.props.initialMapData)
-		// let selectedMarker = this.props.initialMapData.find(m => m.id == id)
-		// console.log(selectedMarker)
-		// this.setState({selectedMarker: selectedMarker})
 		fetch(`${API_ROOT}/map_markers/${id}`)
 		.then(response => response.json())
 		.then(json => {console.log(json);
@@ -66,6 +62,12 @@ class MarkerCard extends Component {
 		this.props.addBookmark(event, markerData, this.props.history)
 	}
 
+	removeBookmark = () => {
+		let mapMarkerId = parseInt(this.props.match.params.id);
+		let selectedBookmark = this.props.user.bookmarks.find(b => b.map_marker.id === mapMarkerId)
+		this.props.deleteBookmark(selectedBookmark.id);
+	}
+
 	delete = () => {
 		let id = parseInt(this.props.match.params.id);
 		this.props.deleteCreatedMarker(id, this.props.history);
@@ -73,7 +75,7 @@ class MarkerCard extends Component {
 
 	render() {
 		console.log(this.props)
-		let filter = this.props.user.currentUser.bookmarks.filter(b => b.map_marker.id === this.state.selectedMarker.id)
+		let filter = this.props.user.bookmarks.filter(b => b.map_marker.id === this.state.selectedMarker.id)
 		let createdFilter = this.props.user.createdMarkers.filter(m => m.id === this.state.selectedMarker.id)
 		console.log(createdFilter)
 		return(
@@ -85,9 +87,9 @@ class MarkerCard extends Component {
 				<h2>User's Self Reported Symptoms: </h2>
 					<p>{this.state.selectedMarker.message}</p>
 					{filter.length ? 
-					<button className="bookmark-btn"><i className="fa fa-folder"></i>Bookmarked</button>
+					<button onClick={this.removeBookmark}className="bookmark-btn"><i className="fa fa-folder"></i>Remove Bookmark</button>
 					:
-					<button onClick={this.addToBookmarks}className="add-bookmark-button">Add To Bookmarks</button>
+					<button onClick={this.addToBookmarks}className="add-bookmark-button"><i className="fa fa-flag"></i>Add To Bookmarks</button>
 					}
 				<h2>Comments:</h2>
 				{this.state.selectedMarker.comments ? 
@@ -109,6 +111,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		addBookmark: (event, markerData, history) => {dispatch(addBookmark(event, markerData, history))},
+		deleteBookmark: (id) => {dispatch(deleteBookmark(id))},
 		deleteCreatedMarker: (id, history) => {dispatch(deleteCreatedMarker(id, history))}
 	}
     
