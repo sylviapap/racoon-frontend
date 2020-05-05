@@ -263,7 +263,7 @@ img.racoon-logo {
 /************************ Symptom Checker */
 
 header.checker{
-  background-image: url(sitting8.png), url(Group60.png), url(sitting4.png);
+  background-image: url(sitting8.png), url(standing.png), url(sitting4.png);
   background-position-x: 5%, 20%, 90%;
   background-size: 70px, 60px, 70px;
   background-position-y: 100%, 100%, 100%;
@@ -441,7 +441,7 @@ button:hover, input[type=submit]:hover {
 
 header {
   background: #879CE5;
-  background-image: url(Humaaans.png);
+  background-image: url(sitting.png);
   background-repeat: no-repeat;
   height: 100px;
   background-size: contain;
