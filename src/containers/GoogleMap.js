@@ -125,7 +125,7 @@ class GoogleMap extends Component {
           comments={object.comments}
           id={object.id}
           key={object.id}
-          symptoms={object.message}
+          symptoms={object.creator.symptoms.map(s => s.common_name)}
           message="COVID-19 Self-Report"
           icon={cough}
           /> )
