@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import {API_ROOT, authHeaders} from '../services/api'
 import addDiagnosis from '../actions/addDiagnosis'
 
 class Results extends Component{

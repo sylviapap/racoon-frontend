@@ -27,6 +27,7 @@ const getCurrentUser = () => {
 			} 
 			else {
 				console.log(json, "not logged in")
+				dispatch({ type: "SET_CURRENT_USER", user: json })
 			}
 		})
 	}

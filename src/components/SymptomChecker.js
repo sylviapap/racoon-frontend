@@ -1,4 +1,6 @@
 import React, {Component, Fragment} from 'react';
+import { connect } from 'react-redux';
+
 import NavBar from './NavBar'
 import Results from './Results'
 import SymptomForm from './SymptomForm'
@@ -33,15 +35,16 @@ class SymptomChecker extends Component {
   }
 
   render() {
-    console.log(!!this.props.currentUser)
+    console.log(!!this.props.currentUser.id)
     return(
       <Fragment>
       <NavBar />
       <header className="checker"><h1>Symptom Checker</h1></header>
       <div className="symptom-checker">
-        {!this.props.currentUser ? null
-          :
-        (<p><a className="results" href="/login">Log In</a> now or your results will not be saved!</p>)}
+        {!this.props.currentUser.id ? 
+        (<p><a className="results" href="/login">Log In</a> now or your results will not be saved!</p>)
+        :
+        null}
 
         {!!this.state.response.serious || this.state.response.description ? 
           <Results response={this.state.response} history={this.props.history}/>
@@ -62,4 +65,10 @@ class SymptomChecker extends Component {
   }
 }
 
-export default SymptomChecker
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.user.currentUser	
+  }
+}
+
+export default connect(mapStateToProps)(SymptomChecker)

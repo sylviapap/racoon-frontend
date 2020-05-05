@@ -49,6 +49,7 @@ li {
 header {
   display: flex;
   flex-direction: row;
+  text-align: center;
 }
 
 .disclaimer {
@@ -64,6 +65,12 @@ a {
 span.info {
   font-size: xx-small;
   font-style: italic;
+}
+
+/******************************* Errors */
+
+h1.error-header {
+  margin: auto;
 }
 
 /******************************* Login/signup */
@@ -425,14 +432,14 @@ button:hover, input[type=submit]:hover {
 .warning-message {
   padding: 1%;
   margin: auto;
-  margin-top: 2%;
+  margin-top: 5%;
   margin-bottom: 2%;
   background: white;
   display: flex;
   flex-direction: column;
   border-radius: 4px;
   overflow-y: auto;
-  width: 50%;
+  width: 35%;
 }
 
 
