@@ -78,9 +78,15 @@ const userReducer = (state = intitialState, action) => {
       }
 
     case "ADD_SYMPTOM":
-      return {
-        ...state,
-        reportedSymptoms: [...state.reportedSymptoms, action.reportedSymptom]
+      let symptomfilter = state.reportedSymptoms.filter(s => s.id === action.reportedSymptom.id)
+      if (symptomfilter.length) {
+        return state
+      }
+      else {
+        return {
+          ...state,
+          reportedSymptoms: [...state.reportedSymptoms, action.reportedSymptom]
+        }
       }
 
     default:

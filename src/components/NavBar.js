@@ -26,7 +26,11 @@ class NavBar extends Component {
 				<div className="nav-header">Welcome, {this.props.currentUser.first_name.charAt(0).toUpperCase()+this.props.currentUser.first_name.substr(1).toLowerCase()}</div>
 				
 				<div className="nav-item">
-					<NavLink to="/map/profile">Profile</NavLink>
+					<NavLink to="/map/profile">Bookmarks</NavLink>
+				</div>
+
+				<div className="nav-item">
+					<NavLink to="/medical">My Health Info</NavLink>
 				</div>
 
 				<div className="nav-item">

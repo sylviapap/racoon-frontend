@@ -14,12 +14,7 @@ class Profile extends Component {
     return(
     <div className="profile page">
       <i className="fa fa-times-circle return" onClick={this.props.handleReturnClick}/>
-      <h1 className="welcome">My Info</h1>
-      {!!this.props.currentUser ? 
-        <p>Profile For: {titleName} {this.props.currentUser.last_name}</p>
-      :
-        <p>You are not logged in</p>
-      }
+      <h1 className="welcome"></h1>
 
       <div className="bookmarks card">
         <h2>Your Bookmarks</h2>
