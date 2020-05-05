@@ -27,15 +27,15 @@ class NavBar extends Component {
 				<div className="nav-header">Welcome, <NavLink to="/medical">{this.props.currentUser.first_name.charAt(0).toUpperCase()+this.props.currentUser.first_name.substr(1).toLowerCase()}</NavLink></div>
 				
 				<div className="nav-item">
-					<NavLink to="/map/profile">Bookmarks</NavLink>
+					<NavLink to="/map/profile">My Markers</NavLink>
 				</div>
 
 				<div className="nav-item">
-					<NavLink to="/medical">Profile</NavLink>
+					<NavLink to="/medical">Health Profile</NavLink>
 				</div>
 
 				<div className="nav-item">
-					<NavLink to="/map/post">Post</NavLink>
+					<NavLink to="/map/post">Post to Map</NavLink>
 				</div>
 
 				<div className="nav-item" onClick={this.logout}>

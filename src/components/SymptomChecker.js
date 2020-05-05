@@ -39,9 +39,9 @@ class SymptomChecker extends Component {
       <NavBar />
       <header className="checker"><h1>Symptom Checker</h1></header>
       <div className="symptom-checker">
-        {!!this.props.currentUser ? null
+        {!this.props.currentUser ? null
           :
-        <p><a className="results" href="/login">Log In</a> now or your results will not be saved!</p>}
+        (<p><a className="results" href="/login">Log In</a> now or your results will not be saved!</p>)}
 
         {!!this.state.response.serious || this.state.response.description ? 
           <Results response={this.state.response} history={this.props.history}/>

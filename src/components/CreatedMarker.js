@@ -20,6 +20,8 @@ class CreatedMarker extends Component {
 			<div className="created-marker item">
 				<h1 className="marker-page-title">Title: {this.props.marker.title}</h1>
 				<p>Address: {this.props.marker.address}</p>
+				<p>Coordinates: {this.props.marker.latitude}, {this.props.marker.longitude}</p>
+				<p>Message: {this.props.marker.message}</p>
 				<button onClick={this.delete}>Delete From Map</button>
 				<button onClick={this.view}>View</button>
 			</div>

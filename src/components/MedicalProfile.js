@@ -50,8 +50,8 @@ class MedicalProfile extends Component {
       <header className="welcome"><h1 className="welcome">My Health Profile</h1></header>
       <div className="medical-info">
         <p>Medical Information For: {titleFirstName} {titleLastName}</p>
-        <p>Saved Diagnoses:</p><ul>{this.props.currentUser.diagnoses.map(d => <li>{d.description}</li>)}</ul>
-        <p>Saved Symptoms:</p><ul>{this.props.reportedSymptoms.map(s => <li>{s.symptom.common_name}<button onClick={() => this.deleteSymptom(s.id)}>Delete</button></li>)}</ul>
+        <p>Saved Diagnoses:</p><ul>{this.props.currentUser.diagnoses.map(d => <li key={d.id}>{d.description}</li>)}</ul>
+        <p>Saved Symptoms:</p><ul>{this.props.reportedSymptoms.map(s => <li key={s.id}>{s.symptom.common_name}<button onClick={() => this.deleteSymptom(s.id)}>Delete</button></li>)}</ul>
       </div>
       <form onSubmit ={this.handleSubmit}className="post-form">
         <label>Save symptoms to your information: (Hold Ctrl or Cmd to select multiple)</label>

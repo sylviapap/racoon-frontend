@@ -10,7 +10,8 @@ class PostToMap extends Component{
       latitude: [],
       longitude: [],
       title: [], 
-      address: []
+      address: [],
+      message: []
     },
     symptomChoices: [],
     symptomsToAdd: []
@@ -47,7 +48,8 @@ class PostToMap extends Component{
       latitude: this.state.fields.latitude,
       longitude: this.state.fields.longitude,
       title: this.state.fields.title, 
-      address: this.state.fields.address    
+      address: this.state.fields.address,
+      message: this.state.fields.message  
     }
     this.props.addToMap(event, markerData, this.props.history);
     this.state.symptomsToAdd.map(s => this.props.addSymptom(event, userId, s, this.props.history))
@@ -77,8 +79,10 @@ class PostToMap extends Component{
         <i className="fa fa-times-circle return" onClick={this.props.handleReturnClick}/>
         <span className="info">Please allow the browser to access your location and wait for coordinates to appear. You may select symptoms, which will then be saved to your profile, and all saved symptoms from your profile will be posted to your marker. You can add/remove symptoms separately in your profile, and changes will reflect in the updated marker.</span>
       <form onSubmit ={this.handleSubmit}className="post-form">
-        <label>Caption (optional)</label>
+        <label>Title (optional)</label>
         <input name="title" type="text" value={this.state.fields.title} onChange={this.handleChange}/>
+        <label>Message/caption (optional)</label>
+        <input name="message" type="text" value={this.state.fields.message} onChange={this.handleChange}/>
         <label>Address (optional)</label>
         <input name="address" type="text" value={this.state.fields.address} onChange={this.handleChange}/>
         <label>Latitude</label>

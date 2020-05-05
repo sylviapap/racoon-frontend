@@ -12,7 +12,8 @@ class MarkerCard extends Component {
 
 	state = {
 		selectedMarker: {
-			comments: []
+			comments: [],
+			creator: []
 		}
 	}
 
@@ -75,9 +76,11 @@ class MarkerCard extends Component {
 
 	render() {
 		console.log(this.props)
+		console.log(this.state)
+		console.log(!!this.state.selectedMarker.creator.id)
+
 		let filter = this.props.user.bookmarks.filter(b => b.map_marker.id === this.state.selectedMarker.id)
 		let createdFilter = this.props.user.createdMarkers.filter(m => m.id === this.state.selectedMarker.id)
-		console.log(createdFilter)
 		return(
 			<div className="marker page">
 				<i className="fa fa-times-circle return" onClick={this.props.handleReturnClick}/>
@@ -85,7 +88,8 @@ class MarkerCard extends Component {
 				{createdFilter.length ? <div><p>You posted this marker!</p><button onClick={this.delete}>Delete From Map</button></div> : null}
 				<p>{this.state.selectedMarker.address}</p>
 				<h2>User's Self Reported Symptoms: </h2>
-					<p>{this.state.selectedMarker.message}</p>
+				{!!this.state.selectedMarker.creator.id ? (<ul>{this.state.selectedMarker.creator.symptoms.map(s => <li key={s.id}>{s.common_name}</li>)}</ul>) : null}
+				
 					{filter.length ? 
 					<button onClick={this.removeBookmark}className="bookmark-btn"><i className="fa fa-folder"></i>Remove Bookmark</button>
 					:

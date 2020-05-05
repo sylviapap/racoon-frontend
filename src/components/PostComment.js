@@ -37,7 +37,9 @@ class PostComment extends Component{
           value={this.state.content}
           onChange={this.handleChange}
           placeholder="Write a comment"
-          className="comment-input"/>
+          className="comment-input"
+          maxLength="50"/>
+        <span className="info">Comments are posted under user's first name, max: 50 characters</span>
         <input className="post" type="submit" value="Post Comment"/>
       </form>
     )
