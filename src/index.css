@@ -15,6 +15,14 @@ body {
   margin: 0;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 /******************************* Text  */
 
 h1, p {
@@ -40,6 +48,74 @@ header {
   font-size: x-small;
   text-align: right;
 }
+
+/******************************* Home */
+
+.home-description {
+  text-align: justify;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.home-page-container {
+  padding: 10%;
+}
+
+.letter-r {
+  color: #4464D7;
+}
+
+.letter-a {
+  color: rgba(31, 40, 207, 0.1);
+}
+
+.letter-c {
+  color: rgb(126, 151, 243);
+}
+
+.letter-o {
+  color: #879CE5;
+}
+
+.letter-n {
+  color: rgb(64, 90, 184);
+}
+
+.home-letters {
+  display: flex;
+  justify-content: space-between;
+  font-size: xxx-large;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  font-style: italic;
+}
+
+.main-square {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 75%;
+}
+
+a.home {
+  background-color: #4464D7;
+  color: white;
+  font-family: helvetica;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 1em 1.5em;
+  margin: 2%;
+}
+
+a:hover.home {
+  text-decoration: underline;
+}
+
 
 /******************************* Nav Bar */
 
