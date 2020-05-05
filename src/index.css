@@ -49,6 +49,54 @@ header {
   text-align: right;
 }
 
+a {
+  text-decoration: none;
+}
+
+/******************************* Login/signup */
+
+
+
+.login-page, .signup-page {
+  background: #4464D7;
+  color: white;
+  padding: 1%;
+  margin: 25%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  align-items: center;
+  text-align: center;
+}
+
+.btn-login {
+  background-color: #4A72FF;
+  color: white;
+  margin: 10%;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.btn-login:hover, #btn-signup:hover {
+  background-color: #c9d5fb;
+  color: black;
+}
+
+a.signup {
+  color: white;
+  border-bottom-style: solid;
+  border-bottom-width: thin;
+}
+
+a.signup:hover {
+  text-decoration: underline;
+}
+
+p.or {
+  font-size: smaller;
+}
 /******************************* Home */
 
 .home-description {
@@ -215,6 +263,7 @@ header.checker{
   padding: 2%;
   overflow: auto;
   background: rgba(236, 189, 131, 0.2);
+  border-radius: 4px;
 }
 
 .emergency {
@@ -244,6 +293,16 @@ header.checker{
   margin-right: 2%;
 }
 
+a.results {
+  text-decoration: none;
+  color: black;
+  border-bottom-style: solid;
+  border-bottom-width: thin;
+}
+
+a.results:hover {
+  text-decoration: underline;
+}
 
 /************************ Forms */
 
@@ -331,10 +390,11 @@ i {
 button, input[type=submit] {
   background-color: #4A72FF;
   color: white;
-  margin: auto;
+  margin: 10%;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  padding: 10px;
 }
 
 button:hover, input[type=submit]:hover {

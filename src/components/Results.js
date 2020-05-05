@@ -41,7 +41,11 @@ class Results extends Component{
           {a.is_emergency ? <span className="emergency">Emergency symptom</span> : null}
         </div>
         )}
-        <button onClick={() => this.handleSaveClick()}>Save Diagnosis</button>
+
+        {!!this.props.currentUser ? (<button onClick={() => this.handleSaveClick()}>Save Diagnosis</button>)
+        :
+        (<p><a className="results" href="/login">Log In</a> to save this diagnosis</p>)}
+        
       </div>
     )
   }

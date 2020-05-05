@@ -22,7 +22,8 @@ class SignUp extends Component{
     const { firstname, lastname, password, password_confirmation, email } = this.state;
 
     return (
-      <div className="signup page">
+      <div className="signup-page">
+        <h1>Welcome</h1>
         <form onSubmit={(event) => {this.props.signUp(event, this.state, this.props.history)}}>
           <div className="field">
             <label><i className="fa fa-user"/></label>
@@ -74,8 +75,10 @@ class SignUp extends Component{
               placeholder="Confirm Password"
               />          
           </div>
-          <input type="submit" className="button" value="Sign Up"/>
+          <input type="submit" id="btn-signup" value="Sign Up"/>
         </form>
+        <p>Already have an account?</p> <a className="signup" href="/login">Log In</a>
+        <p className="or">Or continue as <a className="signup" href="/map">Guest</a></p>
       </div>
       );
     }
