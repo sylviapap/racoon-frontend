@@ -21,6 +21,7 @@ class Login extends Component {
     const { handleChange } = this;
     const { email, password } = this.state;
     return (
+      <div className="login container">
       <div className="login-page">
         <h1>Welcome Back</h1>
         <form onSubmit={(event) => {this.props.logIn(event, this.state, this.props.history)}}>
@@ -50,6 +51,7 @@ class Login extends Component {
         </form>
         <p>Need an account?</p> <a className="signup" href="/signup">Sign Up</a>
         <p className="or">Or continue as <a className="signup" href="/map">Guest</a></p>
+        </div>
         </div>
         );
       }

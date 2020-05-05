@@ -23,6 +23,14 @@ body {
   width: 100%;
 }
 
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  height: -webkit-fill-available;
+}
+
 /******************************* Text  */
 
 p {
@@ -53,20 +61,22 @@ a {
   text-decoration: none;
 }
 
+img {
+  width: 20px;
+}
+
 /******************************* Login/signup */
-
-
 
 .login-page, .signup-page {
   background: #4464D7;
   color: white;
   padding: 1%;
-  margin: 25%;
   display: flex;
   flex-direction: column;
   border-radius: 4px;
   align-items: center;
   text-align: center;
+  width: 50%;
 }
 
 .btn-login {

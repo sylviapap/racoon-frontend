@@ -22,6 +22,7 @@ class SignUp extends Component{
     const { firstname, lastname, password, password_confirmation, email } = this.state;
 
     return (
+      <div className="signup container">
       <div className="signup-page">
         <h1>Welcome</h1>
         <form onSubmit={(event) => {this.props.signUp(event, this.state, this.props.history)}}>
@@ -79,6 +80,7 @@ class SignUp extends Component{
         </form>
         <p>Already have an account?</p> <a className="signup" href="/login">Log In</a>
         <p className="or">Or continue as <a className="signup" href="/map">Guest</a></p>
+      </div>
       </div>
       );
     }

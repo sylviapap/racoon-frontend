@@ -59,11 +59,11 @@ class MarkerCard extends Component {
 
 	addToBookmarks = (event) => {
 		let id = parseInt(this.props.match.params.id)
-		let selectedMarker = {
+		let markerData = {
 			user_id: this.props.user.currentUser.id,
 			map_marker_id: id
 		}
-		this.props.addBookmark(event, selectedMarker, this.props.history)
+		this.props.addBookmark(event, markerData, this.props.history)
 	}
 
 	delete = () => {
@@ -108,7 +108,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		addBookmark: (event, selectedMarker, history) => {dispatch(addBookmark(event, selectedMarker, history))},
+		addBookmark: (event, markerData, history) => {dispatch(addBookmark(event, markerData, history))},
 		deleteCreatedMarker: (id, history) => {dispatch(deleteCreatedMarker(id, history))}
 	}
     

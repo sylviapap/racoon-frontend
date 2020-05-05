@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Map, GoogleApiWrapper, Marker, Circle } from 'google-maps-react';
 import InfoWindowRef  from '../components/InfoWindowRef'
 import NavBar  from '../components/NavBar'
-import cough from '../cough.png'
+import mask from '../mask.png'
 import {styles} from '../services/mapStyles'
 
 // latitude = vertical! north, up and down
@@ -127,7 +127,8 @@ class GoogleMap extends Component {
           key={object.id}
           symptoms={object.creator.symptoms.map(s => s.common_name)}
           message="COVID-19 Self-Report"
-          icon={cough}
+          icon={mask}
+          styles={{width: "20px"}}
           /> )
           )
           :

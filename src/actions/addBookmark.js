@@ -7,15 +7,12 @@ const addBookmark = (event, markerData, history) => {
     return fetch(`${API_ROOT}/bookmarks`, {
       method: "POST", 
       headers: authHeaders,
-      body: JSON.stringify({
-        user_id: markerData.user_id,
-        map_marker_id: markerData.map_marker_id      
-        })
+      body: JSON.stringify(markerData)
     })
     .then(response => response.json())
     .then(json => { console.log(json);
-      if(json.error){
-        console.log(json.error)
+      if(json.error || json.message) {
+        console.log("error", json)
       } else {
         dispatch({type: "ADD_BOOKMARK", newBookmark: json})
         history.push('/map/profile')
