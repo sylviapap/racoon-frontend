@@ -18,7 +18,7 @@ class CreatedMarker extends Component {
 		console.log(this.props)
 		return(
 			<div className="created-marker item">
-				<h1 className="marker-page-title">Title: {this.props.marker.title}</h1>
+				<h2 className="marker-page-title">Title: {this.props.marker.title}</h2>
 				<p>Address: {this.props.marker.address}</p>
 				<p>Coordinates: {this.props.marker.latitude}, {this.props.marker.longitude}</p>
 				<p>Message: {this.props.marker.message}</p>

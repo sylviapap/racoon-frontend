@@ -6,26 +6,22 @@ import Bookmark from './Bookmark'
 class Profile extends Component {
 
   render() {
-    let name = this.props.currentUser.first_name
-    let titleName = name.charAt(0).toUpperCase() + name.substr(1).toLowerCase()
-
     return(
     <div className="profile page">
       <i className="fa fa-times-circle return" onClick={this.props.handleReturnClick}/>
-      <h1 className="welcome"></h1>
-
+      <h1 className="bookmarks">Your Saved and Created Markers</h1>
       <div className="bookmarks card">
-        <h2>Your Bookmarks</h2>
+        <h2>Bookmarks</h2>
         { this.props.bookmarks.length === 0 ? 
-        <p className="no-markers">You have none...</p> 
+        <p className="no-markers">You have none... click on a map marker to save to your list!</p> 
         :
         this.props.bookmarks.map(bookmark => <Bookmark key={bookmark.id} bookmark={bookmark} history={this.props.history}/>)
         }
       </div>
       <div className="created-markers card">
-        <h2>Your Posts</h2>
+        <h2>Markers You've Posted</h2>
         { this.props.createdMarkers.length === 0 ?
-        <p className="no-markers">You haven't posted yet...</p> 
+        <p className="no-markers">No posts. Go <a href="/map/post">here</a> to post now</p> 
         :
         this.props.createdMarkers.map(marker => <CreatedMarker key={marker.id} marker={marker} history={this.props.history}/>) 
         }

@@ -1,8 +1,6 @@
-import React, { Component, Fragment } from 'react'
-import NavBar from './NavBar'
+import React from 'react'
 
-export default class Home extends Component {
-  render() {
+const Home = () => {
     return (
       <div className="home-page-container">
       <div className="home-page">
@@ -42,4 +40,5 @@ export default class Home extends Component {
       </div>
     )
   }
-}
+
+export default Home

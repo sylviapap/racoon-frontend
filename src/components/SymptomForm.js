@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import {riskFactors} from '../services/riskFactors'
-import {symptoms} from '../services/symptoms'
-import {symptomsNonEmergency} from '../services/symptomsNonEmergency'
-import {emergencySymptoms} from '../services/emergencySymptoms'
+import { symptomsNonEmergency } from '../services/symptomsNonEmergency'
+import { emergencySymptoms } from '../services/emergencySymptoms'
 import { nonSeriousRisks } from '../services/nonSeriousRisks';
 import { emergencyRisks } from '../services/emergencyRisks';
 
