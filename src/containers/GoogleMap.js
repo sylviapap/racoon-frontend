@@ -62,12 +62,10 @@ class GoogleMap extends Component {
     let markerId = place.id
     this.onMapClick()
     this.props.history.push(`/map/markers/${markerId}`)
-    // this.props.handleMoreInfoClick(markerId)
   }
 
   render() {
-    const centerCoords = {lat: 0, lng: -98.5794797}
-    console.log(this.props.history.location.pathname)
+    const centerCoords = {lat: 20, lng: -40}
 
     return (
       <Fragment>
@@ -78,11 +76,11 @@ class GoogleMap extends Component {
         google={this.props.google}
         onClick={this.onMapClick}
         zoom={2}
-        minZoom={1.75}
+        minZoom={2}
         styles={styles}
         ref={(ref) => {this.map = ref}}
         initialCenter={centerCoords}
-        centerAroundCurrentLocation={true}
+        center={centerCoords}
         >
           {this.state.officialData ?
           this.state.officialData.map(object => 
@@ -106,6 +104,7 @@ class GoogleMap extends Component {
           recovered={object.recovered}
           critical={object.critical}
           deaths={object.deaths}
+          lastUpdate={object.lastUpdate}
           />)
           :
           null
@@ -155,7 +154,7 @@ class GoogleMap extends Component {
                 <p>Critical cases: {this.state.selectedPlace.critical}</p>
                 <p>Deaths: {this.state.selectedPlace.deaths}</p>
                 <p>Recovered: {this.state.selectedPlace.recovered}</p>
-                <p>Last Updated: {Date(this.state.selectedPlace.lastUpdate)}</p>
+                <span className="info">Last Updated: {new Date(this.state.selectedPlace.lastUpdate).toString()}</span>
               </div>)}
           </div>
         </InfoWindowRef>

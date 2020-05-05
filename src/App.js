@@ -30,11 +30,6 @@ class App extends Component {
   handleReturnClick = () => {
     this.props.history.push("/map")
   }
-
-  // handleMoreInfoClick = (place) => {
-  //   let markerId = place.id
-  //   this.props.history.push(`/map/markers/${markerId}`)
-  // }
   
   render() {
     return (
