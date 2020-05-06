@@ -6,8 +6,8 @@ import Results from './Results'
 import SymptomForm from './SymptomForm'
 
 const infermedicaHeaders = {
-  "App-Id": process.env.REACT_APP_INFERMEDICA_APP_ID,
-  "App-Key": process.env.REACT_APP_INFERMEDICA_APP_KEY,
+  "App-Id": REACT_APP_INFERMEDICA_APP_ID,
+  "App-Key": REACT_APP_INFERMEDICA_APP_KEY,
   "Content-Type": "application/json"
 }
 
