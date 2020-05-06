@@ -16,7 +16,7 @@ import PostToMap from './components/PostToMap'
 import SymptomChecker from './components/SymptomChecker'
 import MedicalProfile from './components/MedicalProfile'
 
-class App extends Component {   
+class App extends Component {  
   
   componentDidMount() {
     this.props.fetchMyMap();
