@@ -1,6 +1,6 @@
 import {API_ROOT, authHeaders} from '../services/api'
 
-const addSymptom = (event, userId, symptomId, history) => {
+const addSymptom = (event, userId, symptomId) => {
   return (dispatch) => {
     return fetch(`${API_ROOT}/reported_symptoms`, {
       method: "POST", 
@@ -23,7 +23,6 @@ const addSymptom = (event, userId, symptomId, history) => {
     .then(json => {
       console.log(json);
       dispatch({ type: "ADD_SYMPTOM", reportedSymptom: json })
-      history.push('/medical')
     })
   }
 }

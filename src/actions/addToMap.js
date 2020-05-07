@@ -1,6 +1,6 @@
 import {API_ROOT, authHeaders} from '../services/api'
 
-const addToMap = (event, markerData, history) => {
+const addToMap = (event, markerData) => {
   return (dispatch) => {
     return fetch(`${API_ROOT}/map_markers`, {
       method: "POST", 
@@ -21,7 +21,6 @@ const addToMap = (event, markerData, history) => {
       console.log(json);
       dispatch({ type: "ADD_TO_MAP", marker: json })
       dispatch({ type: "ADD_CREATED_MARKER", marker: json })
-      history.push('/map')
     })
   }
 }

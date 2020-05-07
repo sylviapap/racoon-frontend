@@ -31,7 +31,8 @@ class MedicalProfile extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     let userId = this.props.currentUser.id
-    this.state.symptomsToAdd.map(s => this.props.addSymptom(event, userId, s, this.props.history))
+    this.state.symptomsToAdd.map(s => this.props.addSymptom(event, userId, s))
+    this.props.history.push('/medical')
   }
 
   deleteSymptom = (id) => {
@@ -84,7 +85,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return{
-    addSymptom: (event, userId, symptomId, history) => {dispatch(addSymptom(event, userId, symptomId, history))},
+    addSymptom: (event, userId, symptomId) => {dispatch(addSymptom(event, userId, symptomId))},
     deleteSymptom: (id) => {dispatch(deleteSymptom(id))}
   }
 }

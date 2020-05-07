@@ -123,9 +123,9 @@ class GoogleMap extends Component {
         <InfoWindowRef
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}>
-          <div className="info-window">
+          <div className="info-window" key={this.state.selectedPlace.id}>
           {this.state.selectedPlace.name === "Marker" ? 
-            (<div><h3>{this.state.selectedPlace.message}</h3>
+            (<div key={this.state.selectedPlace.id}><h3>{this.state.selectedPlace.message}</h3>
             <h3>{this.state.selectedPlace.title}</h3>
             <p>Address: {this.state.selectedPlace.address}</p>
             <p>Symptoms: </p><ul>{this.state.selectedPlace.symptoms.map(s => <li key={s.id}>{s.common_name}</li>)}</ul>

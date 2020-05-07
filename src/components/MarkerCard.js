@@ -14,14 +14,15 @@ class MarkerCard extends Component {
 			address: "",
 			comments: [],
 			creator: {}
-		}
+		},
+		newComments: []
 	}
 
 	componentDidMount() {
-		let id = parseInt(this.props.match.params.id)
-		let marker = this.props.myMapData.filter(marker => marker.id === id)
-		console.log(marker)
-		this.setState({selectedMarker: marker[0]})
+		// let id = parseInt(this.props.match.params.id)
+		// let marker = this.props.myMapData.filter(marker => marker.id === id)
+		// console.log(marker)
+		// this.setState({selectedMarker: marker[0]})
 	}
 
 	componentDidUpdate(prevProps) {
@@ -39,8 +40,12 @@ class MarkerCard extends Component {
 			user: this.props.currentUser,
 			id: comment.id
 		}
+		// this.setState(prevState => {
+		// 	prevState.selectedMarker.comments.push(newComment); 
+		// 	return prevState
+		// })
 		this.setState(prevState => {
-			prevState.selectedMarker.comments.push(newComment); 
+			prevState.newComments.push(newComment); 
 			return prevState
 		})
 	}
@@ -56,7 +61,10 @@ class MarkerCard extends Component {
 
 	removeBookmark = () => {
 		let mapMarkerId = parseInt(this.props.match.params.id);
-		let selectedBookmark = this.props.user.bookmarks.find(b => b.map_marker.id === mapMarkerId)
+		console.log(mapMarkerId)
+		console.log(this.props.bookmarks)
+		let selectedBookmark = this.props.bookmarks.find(b => b.map_marker.id === mapMarkerId)
+		console.log(selectedBookmark)
 		this.props.deleteBookmark(selectedBookmark.id);
 	}
 
@@ -68,34 +76,48 @@ class MarkerCard extends Component {
 	render() {
 		console.log(this.props)
 		console.log(this.state)
-		// console.log(!!this.state.selectedMarker.creator.id)
 
-		let filter = this.props.bookmarks.filter(b => b.map_marker_id === this.state.selectedMarker.id)
-		let createdFilter = this.props.createdMarkers.filter(m => m.id === this.state.selectedMarker.id)
+		let id = parseInt(this.props.match.params.id)
+		let marker = this.props.myMapData.filter(marker => marker.id === id)[0]
+		console.log(marker)
+		
+		if (marker) {
+			let bookmarkFilter = this.props.bookmarks.filter(b => b.map_marker.id === marker.id)
+			let createdFilter = this.props.createdMarkers.filter(m => m.id === marker.id)
+			console.log(bookmarkFilter)
 		return(
-			<div className="marker page">
+			<div className="marker page" key={marker.id}>
 				<i className="fa fa-times-circle return" onClick={this.props.handleReturnClick}/>
-				<h1 className="marker-page-title">{this.state.selectedMarker.title}</h1>
+				<h1 className="marker-page-title">{marker.title}</h1>
 				{createdFilter.length ? <div><p>You posted this marker!</p><button onClick={this.delete}>Delete From Map</button></div> : null}
-				<p>{this.state.selectedMarker.address}</p>
+				<p>{marker.address}</p>
 				<h2>User's Self Reported Symptoms: </h2>
-				{!!this.state.selectedMarker.creator.id ? (<ul>{this.state.selectedMarker.creator.symptoms.map(s => <li key={s.id}>{s.common_name}</li>)}</ul>) : null}
+				{!!marker.creator.id ? (<ul>{marker.creator.symptoms.map(s => <li key={s.id}>{s.common_name}</li>)}</ul>) : null}
 				
-					{filter.length ? 
+					{bookmarkFilter.length !== 0 ? 
 					<button onClick={this.removeBookmark}className="bookmark-btn"><i className="fa fa-folder"></i>Remove Bookmark</button>
 					:
 					<button onClick={this.addToBookmarks}className="add-bookmark-button"><i className="fa fa-flag"></i>Add To Bookmarks</button>
 					}
 				<h2>Comments:</h2>
-				{this.state.selectedMarker.comments ? 
-				(this.state.selectedMarker.comments.map(comment => <Comment comment={comment} key={comment.id}/>))
+				{marker.comments ? 
+				(marker.comments.map(comment => <Comment comment={comment} key={comment.id}/>))
 				:
 				<p>Looks like no comments  yet...be the first!</p>
 			}
-			<PostComment handleCommentPost={this.handleCommentPost} markerId={this.state.selectedMarker.id} />
+			{this.state.newComments.length !== 0 ? 
+				(this.state.newComments.map(comment => <Comment comment={comment} key={comment.id}/>))
+				:
+				null
+			}
+			<PostComment handleCommentPost={this.handleCommentPost} markerId={marker.id} />
 
 			</div>
 		)
+		}
+		else {
+			return null
+		}
 	}
 }
 

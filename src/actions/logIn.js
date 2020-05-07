@@ -21,10 +21,10 @@ const logIn = (event, userInput, history) => {
             } 
 			else {
                 console.log(json);
-                dispatch({ type: "SET_CURRENT_USER", user: json.user })
-                dispatch({type: "SET_BOOKMARKS", bookmarks: json.user.bookmarks})
-                dispatch({type: "SET_CREATED_MARKERS", createdMarkers: json.user.created_markers})
-                dispatch({ type: "NO_ERROR" })
+                // dispatch({ type: "SET_CURRENT_USER", user: json.user })
+                // dispatch({type: "SET_BOOKMARKS", bookmarks: json.user.data.relationships.bookmarks})
+                // dispatch({type: "SET_CREATED_MARKERS", createdMarkers: json.user.data.relationships.created_markers})
+                // dispatch({ type: "NO_ERROR" })
                 localStorage.setItem('token', json.token);
                 history.push('/map')
             }

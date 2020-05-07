@@ -51,8 +51,9 @@ class PostToMap extends Component{
       address: this.state.fields.address,
       message: this.state.fields.message  
     }
-    this.props.addToMap(event, markerData, this.props.history);
     this.state.symptomsToAdd.map(s => this.props.addSymptom(event, userId, s, this.props.history))
+    this.props.addToMap(event, markerData);
+    this.props.history.push('/map/my-markers')
     this.setState({ 
       fields: {
         latitude: [],
@@ -121,7 +122,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return{
     addSymptom: (event, userId, symptomId, history) => {dispatch(addSymptom(event, userId, symptomId, history))},
-    addToMap: (event, markerData, history) => {dispatch(addToMap(event, markerData, history))}
+    addToMap: (event, markerData) => {dispatch(addToMap(event, markerData))}
   }
 }
 
