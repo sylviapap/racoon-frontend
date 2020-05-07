@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Comment from './Comment'
 import PostComment from './PostComment'
-import {API_ROOT} from '../services/api'
 import addBookmark from '../actions/addBookmark'
 import deleteBookmark from '../actions/deleteBookmark'
 import deleteCreatedMarker from '../actions/deleteCreatedMarker'
@@ -11,40 +10,33 @@ class MarkerCard extends Component {
 
 	state = {
 		selectedMarker: {
+			title: "",
+			address: "",
 			comments: [],
-			creator: []
+			creator: {}
 		}
 	}
 
 	componentDidMount() {
-		console.log(this.props)
 		let id = parseInt(this.props.match.params.id)
-		fetch(`${API_ROOT}/map_markers/${id}`)
-		.then(response => response.json())
-		.then(json => {console.log(json);
-			this.setState({selectedMarker: json})})
+		let marker = this.props.myMapData.filter(marker => marker.id === id)
+		console.log(marker)
+		this.setState({selectedMarker: marker[0]})
 	}
 
 	componentDidUpdate(prevProps) {
 		console.log("update")
 		if (this.props.match.params.id !== prevProps.match.params.id) {
-			this.fetchData()
+			let id = parseInt(this.props.match.params.id)
+			let marker = this.props.myMapData.filter(marker => marker.id === id)
+			this.setState({selectedMarker: marker})
 		}
-	}
-
-	fetchData = () => {
-		let id = parseInt(this.props.match.params.id)
-		fetch(`${API_ROOT}/map_markers/${id}`)
-		.then(response => response.json())
-		.then(json => {console.log(json);
-			this.setState({selectedMarker: json})}
-		)
 	}
 
 	handleCommentPost = (event, comment) => {
 		const newComment = {
 			content: comment.content,
-			user: this.props.user.currentUser,
+			user: this.props.currentUser,
 			id: comment.id
 		}
 		this.setState(prevState => {
@@ -56,7 +48,7 @@ class MarkerCard extends Component {
 	addToBookmarks = (event) => {
 		let id = parseInt(this.props.match.params.id)
 		let markerData = {
-			user_id: this.props.user.currentUser.id,
+			user_id: this.props.currentUser.id,
 			map_marker_id: id
 		}
 		this.props.addBookmark(event, markerData, this.props.history)
@@ -76,10 +68,10 @@ class MarkerCard extends Component {
 	render() {
 		console.log(this.props)
 		console.log(this.state)
-		console.log(!!this.state.selectedMarker.creator.id)
+		// console.log(!!this.state.selectedMarker.creator.id)
 
-		let filter = this.props.user.bookmarks.filter(b => b.map_marker.id === this.state.selectedMarker.id)
-		let createdFilter = this.props.user.createdMarkers.filter(m => m.id === this.state.selectedMarker.id)
+		let filter = this.props.bookmarks.filter(b => b.map_marker_id === this.state.selectedMarker.id)
+		let createdFilter = this.props.createdMarkers.filter(m => m.id === this.state.selectedMarker.id)
 		return(
 			<div className="marker page">
 				<i className="fa fa-times-circle return" onClick={this.props.handleReturnClick}/>
@@ -108,7 +100,11 @@ class MarkerCard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return state
+  return {
+		currentUser: state.user.currentUser,
+		bookmarks: state.user.bookmarks,
+		createdMarkers: state.user.createdMarkers
+	}
 }
 
 const mapDispatchToProps = (dispatch) => {
