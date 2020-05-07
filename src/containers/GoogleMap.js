@@ -21,6 +21,7 @@ class GoogleMap extends Component {
   }
      
   onMarkerClick = (props, marker) => {    
+    console.log(props)
     if (this.props.history.location.pathname !== '/map') {
     this.props.history.push('/map')
   }
@@ -110,7 +111,7 @@ class GoogleMap extends Component {
           comments={object.comments}
           id={object.id}
           key={object.id}
-          symptoms={object.creator.symptoms}
+          creatorSymptoms={object.creator.symptoms}
           message="COVID-19 Self-Report"
           icon={logo}
           styles={{width: "20px"}}
@@ -128,7 +129,7 @@ class GoogleMap extends Component {
             (<div key={this.state.selectedPlace.id}><h3>{this.state.selectedPlace.message}</h3>
             <h3>{this.state.selectedPlace.title}</h3>
             <p>Address: {this.state.selectedPlace.address}</p>
-            <p>Symptoms: </p><ul>{this.state.selectedPlace.symptoms.map(s => <li key={s.id}>{s.common_name}</li>)}</ul>
+            <p>Symptoms: </p><ul>{this.state.selectedPlace.creatorSymptoms.map(s => <li key={s.id}>{s.common_name}</li>)}</ul>
             <button 
               className="button" 
               onClick={() => this.onMoreInfoClick(this.state.selectedPlace)}

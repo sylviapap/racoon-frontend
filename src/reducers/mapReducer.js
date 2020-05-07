@@ -3,7 +3,7 @@ const intitialState = {
     address: "init",
     comments: [],
     created_at: "init",
-    creator: {},
+    creator: {symptoms: []},
     id: 1,
     latitude: 0,
     longitude: 0,
