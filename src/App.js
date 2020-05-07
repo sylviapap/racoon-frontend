@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import fetchMyMap from './actions/fetchMyMap'
 import fetchOfficialMap from './actions/fetchOfficialMap'
 import getCurrentUser from './actions/getCurrentUser'
@@ -16,6 +16,7 @@ import MarkerCard from './components/MarkerCard'
 import PostToMap from './components/PostToMap'
 import SymptomChecker from './components/SymptomChecker'
 import MedicalProfile from './components/MedicalProfile'
+import NoAuth from './components/NoAuth'
 
 class App extends Component {  
   
@@ -35,6 +36,8 @@ class App extends Component {
   }
   
   render() {
+    const loggedIn = this.props.user.currentUser !== undefined && this.props.user.currentUser.id
+
     return (
       <Fragment>
         {this.props.error.error ? 
@@ -57,51 +60,61 @@ class App extends Component {
           myMapData={this.props.map.myMap}
           officialMapData={this.props.map.officialMap}
           />} 
-      />
+        />
 
-      <Route exact path="/" component={Home} />
+      <Route 
+        exact path="/checker" 
+        component={SymptomChecker} 
+        />
+
+      <Route exact path="/">
+        <Home loggedIn={loggedIn} user={this.props.user.currentUser}/>
+      </Route>
+      <Route exact path="/map/no-auth" component={NoAuth} />
 
 
-        {this.props.user.currentUser !== undefined && this.props.user.currentUser.id ?  (
+        {loggedIn ?  (
           <Switch>
             <Route 
-              path="/map/my-markers" 
+              exact path="/map/my-markers" 
               render={(props) => 
               <SideBar {...props} 
                 handleReturnClick={this.handleReturnClick}
                 />}
               /> 
             <Route 
-              path="/map/post" 
+              exact path="/map/post" 
               render={(props) => 
                 <PostToMap {...props} handleReturnClick={this.handleReturnClick} />} 
               />
             <Route 
-              path="/map/markers/:id" 
+              exact path="/map/markers/:id" 
               render={(props) => 
                 <MarkerCard {...props} 
                   handleReturnClick={this.handleReturnClick}
                   myMapData={this.props.map.myMap}
                 />}
               />
-            <Route 
-              exact path="/checker" 
-              component={SymptomChecker} 
-            />
+
             <Route 
               exact path="/medical" 
               component={MedicalProfile} 
             />
+
+            <Route exact path="/checker" />
+            <Route exact path="/map" />
+
+            <Redirect to="/" />          
           </Switch>
           )
           : 
           <Switch>
-            <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/login" component={Login} />
-            <Route 
-              exact path="/checker" 
-              component={SymptomChecker} 
-            />
+            <Route path="/signup" component={SignUp} />
+            <Route path="/login" component={Login} />
+            <Route path="/checker" />
+            <Route exact path="/map" />
+            <Route exact path="/" />
+            <Redirect to="/map/no-auth" />
           </Switch>
         }
         </Fragment>
