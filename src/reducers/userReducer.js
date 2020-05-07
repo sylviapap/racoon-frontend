@@ -1,9 +1,7 @@
 const intitialState = {
   currentUser: {},
   bookmarks: [],
-  createdMarkers: [],
-  reportedSymptoms: [],
-  diagnoses: []
+  createdMarkers: []
 }
 
 const userReducer = (state = intitialState, action) => {
@@ -20,18 +18,6 @@ const userReducer = (state = intitialState, action) => {
         bookmarks: action.bookmarks
       }
 
-    case "SET_SYMPTOMS":
-      return {
-        ...state, 
-        reportedSymptoms: action.reportedSymptoms
-      }
-
-    case "SET_DIAGNOSES":
-      return {
-        ...state, 
-        diagnoses: action.diagnoses
-      }
-
     case "ADD_BOOKMARK":
       let filter = state.bookmarks.filter(b => b.id === action.newBookmark.id)
       console.log(filter.length)
@@ -42,19 +28,6 @@ const userReducer = (state = intitialState, action) => {
         return {
           ...state,
           bookmarks: [...state.bookmarks, action.newBookmark]
-        }
-      }
-
-    case "ADD_DIAGNOSIS":
-      let diagnosisFilter = state.diagnoses.filter(d => d.id === action.newDiagnosis.id)
-      console.log(diagnosisFilter.length)
-      if (diagnosisFilter.length) {
-        return state
-      }
-      else {
-        return {
-          ...state,
-          diagnoses: [...state.diagnoses, action.newDiagnosis]
         }
       }
 
@@ -78,13 +51,6 @@ const userReducer = (state = intitialState, action) => {
         createdMarkers
       }
 
-    case "DELETE_SYMPTOM":
-      const reportedSymptoms = state.reportedSymptoms.filter(sym => sym.id !== action.id)
-      return {
-        ...state,
-        reportedSymptoms
-      }
-
     case "SET_CREATED_MARKERS":
       return {
         ...state, 
@@ -95,18 +61,6 @@ const userReducer = (state = intitialState, action) => {
       return {
         ...state, 
         currentUser: {}
-      }
-
-    case "ADD_SYMPTOM":
-      let symptomfilter = state.reportedSymptoms.filter(s => s.id === action.reportedSymptom.id)
-      if (symptomfilter.length) {
-        return state
-      }
-      else {
-        return {
-          ...state,
-          reportedSymptoms: [...state.reportedSymptoms, action.reportedSymptom]
-        }
       }
 
     default:

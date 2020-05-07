@@ -6,7 +6,7 @@ const fetchSymptomList = () => {
     .then(resp => resp.json())
     .then(json => {
       console.log(json);
-      dispatch({ type: "GET_SYMPTOMS", symptomChoices: json})
+      dispatch({ type: "GET_SYMPTOM_CHOICES", symptomChoices: json})
       })
   }
 }

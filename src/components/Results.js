@@ -46,7 +46,7 @@ class Results extends Component{
 const mapStateToProps = (state) => {
   return {
     currentUser: state.user.currentUser,
-    diagnoses: state.user.diagnoses
+    diagnoses: state.medical.diagnoses
 	}
 }
 

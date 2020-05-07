@@ -71,8 +71,8 @@ class MedicalProfile extends Component {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.user.currentUser,
-    reportedSymptoms: state.user.reportedSymptoms,
-    diagnoses: state.user.diagnoses,
+    reportedSymptoms: state.medical.reportedSymptoms,
+    diagnoses: state.medical.diagnoses,
     symptomChoices: state.medical.symptomChoices
   }
 }
