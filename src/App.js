@@ -4,6 +4,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import fetchMyMap from './actions/fetchMyMap'
 import fetchOfficialMap from './actions/fetchOfficialMap'
 import getCurrentUser from './actions/getCurrentUser'
+import fetchSymptomList from './actions/fetchSymptomList'
 import errorToggle from './actions/errorToggle'
 
 import GoogleMap from './containers/GoogleMap'
@@ -22,6 +23,7 @@ class App extends Component {
     this.props.fetchMyMap();
     this.props.fetchOfficialMap();
     this.props.getCurrentUser();
+    this.props.fetchSymptomList();
   }
 
   handleErrorClick = () => {
@@ -117,7 +119,8 @@ const mapDispatchToProps = (dispatch) => {
     getCurrentUser: () => { dispatch(getCurrentUser()) },
     fetchMyMap: () => { dispatch(fetchMyMap()) },
     fetchOfficialMap: () => { dispatch(fetchOfficialMap()) },
-    errorToggle: () => { dispatch(errorToggle())}
+    errorToggle: () => { dispatch(errorToggle())},
+    fetchSymptomList: () => {dispatch(fetchSymptomList())}
   }
 }
 

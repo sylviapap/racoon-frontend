@@ -7,14 +7,7 @@ import deleteSymptom from '../actions/deleteSymptom'
 
 class MedicalProfile extends Component {
   state = {
-    symptomChoices: [],
     symptomsToAdd: []
-  }
-
-  componentDidMount() {
-    fetch(`${API_ROOT}/symptoms`)
-      .then(resp => resp.json())
-      .then(json => this.setState({symptomChoices: json}))
   }
 
   handleSelect = (event) => {
@@ -61,7 +54,7 @@ class MedicalProfile extends Component {
             value={this.state.symptomsToAdd} 
             name="symptomsToAdd"
             onChange={this.handleSelect} >
-              {this.state.symptomChoices.map(symptom => 
+              {this.props.symptomChoices.map(symptom => 
                 <option 
                   value={symptom.id} 
                   key={symptom.id}>
@@ -79,7 +72,8 @@ const mapStateToProps = (state) => {
   return {
     currentUser: state.user.currentUser,
     reportedSymptoms: state.user.reportedSymptoms,
-    diagnoses: state.user.diagnoses
+    diagnoses: state.user.diagnoses,
+    symptomChoices: state.medical.symptomChoices
   }
 }
 

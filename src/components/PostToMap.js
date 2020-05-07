@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import addToMap from '../actions/addToMap'
-import {API_ROOT} from '../services/api'
 import addSymptom from '../actions/addSymptom'
 
 class PostToMap extends Component{
@@ -13,15 +12,11 @@ class PostToMap extends Component{
       address: [],
       message: ""
     },
-    symptomChoices: [],
     symptomsToAdd: []
   }
 
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(this.showPosition);
-    fetch(`${API_ROOT}/symptoms`)
-      .then(resp => resp.json())
-      .then(json => this.setState({symptomChoices: json}))
   }
 
   showPosition = (position) => {
@@ -98,7 +93,7 @@ class PostToMap extends Component{
               value={this.state.symptomsToAdd} 
               name="symptomsToAdd"
               onChange={this.handleSelect} >
-                {this.state.symptomChoices.map(symptom => 
+                {this.props.symptomChoices.map(symptom => 
                   <option 
                     value={symptom.id} 
                     key={symptom.id}>
@@ -115,7 +110,8 @@ class PostToMap extends Component{
 
 const mapStateToProps = (state) => {
   return {
-		currentUser: state.user.currentUser
+    currentUser: state.user.currentUser,
+    symptomChoices: state.medical.symptomChoices
 	}
 }
 
