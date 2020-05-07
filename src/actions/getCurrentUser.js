@@ -1,5 +1,8 @@
 import {API_ROOT, authHeaders} from '../services/api'
 
+// json.user.data.id = string
+// json.user.data.attributes.id = number
+
 const getCurrentUser = () => {
 	return (dispatch) => {
 		return fetch(`${API_ROOT}/current-user`, {
@@ -17,17 +20,28 @@ const getCurrentUser = () => {
 		})
 		.then(json => { 
 			if(json.user !== undefined) {
-				console.log(json.user);
-				dispatch({ type: "SET_CURRENT_USER", user: json.user })
-				dispatch({ type: "NO_ERROR" })
-				dispatch({type: "SET_SYMPTOMS", reportedSymptoms: json.user.reported_symptoms})
-				dispatch({type: "SET_DIAGNOSES", diagnoses: json.user.diagnoses})
-				dispatch({type: "SET_BOOKMARKS", bookmarks: json.user.bookmarks})
-				dispatch({type: "SET_CREATED_MARKERS", createdMarkers: json.user.created_markers})
+				console.log("json", json);
+				console.log("json.user", json.user);
+				dispatch({ 
+					type: "SET_CURRENT_USER", 
+					user: json.user })
+				dispatch({ 
+					type: "NO_ERROR" })
+				dispatch({
+					type: "SET_SYMPTOMS", 
+					reportedSymptoms: json.user.reported_symptoms})
+				dispatch({
+					type: "SET_DIAGNOSES", 
+					diagnoses: json.user.diagnoses})
+				dispatch({
+					type: "SET_BOOKMARKS", 
+					bookmarks: json.user.bookmarks})
+				dispatch({
+					type: "SET_CREATED_MARKERS", 
+					createdMarkers: json.user.created_markers})
 			} 
 			else {
 				console.log(json, "not logged in")
-				dispatch({ type: "SET_CURRENT_USER", user: json })
 			}
 		})
 	}
