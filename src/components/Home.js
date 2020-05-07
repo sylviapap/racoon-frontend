@@ -1,10 +1,11 @@
 import React from 'react'
 
-const Home = () => {
+const Home = (props) => {
     return (
       <div className="home-page-container">
       <div className="home-page">
-        <div className="main-square">Welcome to
+        <div className="main-square">
+    {props.loggedIn ? (<div><p>Hello, {props.user.first_name.charAt(0).toUpperCase()+props.user.first_name.substr(1).toLowerCase()}</p><p>Welcome back to</p></div>) : <p>Welcome to</p>}
         <div className="home-letters">
         <span className="letter-r">R</span>
         <span className="letter-a">A</span>
@@ -23,19 +24,20 @@ const Home = () => {
         <span className="letter-a">A</span>
         </div>
 
-        <p>virus (COVID-19
-        )</p></div>
+        <p>virus</p>
+        <span>(COVID-19)</span>
+        </div>
         
         <div className="row">
-          <a href="/map" className="home">Map</a>
+          <a href="/map" className="home">View the Map</a>
         </div>
         <div className="row">
           <a href="/checker" className="home">Symptom Checker</a>
         </div>
-        
-        <div className="row">
+        {!props.loggedIn ? (<div className="row">
           <a href="/signup" className="home">Sign Up</a> or <a href="/login" className="home">Log In</a>
-        </div>
+        </div>) : null}
+        
       </div>
       </div>
     )

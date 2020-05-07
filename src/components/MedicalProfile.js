@@ -1,7 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {connect} from 'react-redux';
 import NavBar from './NavBar'
-import {API_ROOT} from '../services/api'
 import addSymptom from '../actions/addSymptom'
 import deleteSymptom from '../actions/deleteSymptom'
 
