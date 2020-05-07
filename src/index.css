@@ -1,9 +1,9 @@
-/* :root {
-  --main-spacing: 15px;
-} */
-
 * {
   box-sizing: border-box;
+}
+
+html { 
+  height: 100%;
 }
 
 body {
@@ -13,6 +13,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
 }
 
 .row {
@@ -32,10 +37,6 @@ body {
 }
 
 /******************************* Text  */
-
-p {
-  margin: 1%;
-}
 
 ul {
   list-style-type: none;
@@ -73,7 +74,7 @@ h1.error-header {
   margin: auto;
 }
 
-/******************************* Login/signup */
+/******************************* Auth */
 
 .login-page, .signup-page {
   background: #4464D7;
@@ -117,8 +118,21 @@ p.or {
 }
 /******************************* Home */
 
-.home-description {
-  text-align: justify;
+.home-page-container {
+  background: url(mapscreen.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+}
+
+.home-page-background {
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
+  display: flex;
+  flex-direction: column;
 }
 
 .home-page {
@@ -126,10 +140,31 @@ p.or {
   flex-direction: column;
   text-align: center;
   align-items: center;
+  background: white;
+  width: 50%;
+  margin: auto;
+  padding: 3%;
 }
 
-.home-page-container {
-  padding: 10%;
+.main-square {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+span.welcome {
+  font-style: italic;
+}
+
+.home-description {
+  text-align: center;
+  font-variant: small-caps;
+}
+
+.description-italic {
+  text-align: center;
+  font-variant: small-caps;
+  font-style: italic;
 }
 
 .letter-r {
@@ -156,16 +191,7 @@ p.or {
   display: flex;
   justify-content: space-between;
   font-size: xxx-large;
-  padding-top: 5%;
-  padding-bottom: 5%;
   font-style: italic;
-}
-
-.main-square {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 75%;
 }
 
 a.home {
