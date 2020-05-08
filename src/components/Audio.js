@@ -1,15 +1,28 @@
 import React, { Component, Fragment } from 'react'
 import NavBar from './NavBar'
 
-const audioRecorder = null
+const options = {mimeType: 'audio/webm'};
 
 class Audio extends Component {
 
   state = {
-    recording: false
+    audioRecorder: null,
+    stopped: true,
+    recordedChunks: [],
+    href: "",
+    download: ""
   }
 
-  handleRecord = () => {
+  stop = () => {
+    this.setState({
+      stopped: true,
+      href: URL.createObjectURL(new Blob(this.state.recordedChunks)),
+      download: 'acetest.wav'
+    })
+  }
+
+  handleStart = () => {
+    this.setState({stopped: false})
     navigator.mediaDevices.getUserMedia({ audio: true, video: false })
       .then(this.handleSuccess);
   }
@@ -22,85 +35,22 @@ class Audio extends Component {
   }
 
   handleSuccess = (stream) => {
-    const player = document.getElementById('player');
-    const context = new AudioContext();
-    const source = context.createMediaStreamSource(stream);
-    const processor = context.createScriptProcessor(1024, 1, 1);
-    const options = {mimeType: 'audio/webm'};
-    const recordedChunks = [];
     const mediaRecorder = new MediaRecorder(stream, options);
-    const downloadLink = document.getElementById('download');
-    let shouldStop = false;
-    let stopped = false;
 
     mediaRecorder.addEventListener('dataavailable', function(e) {
       if (e.data.size > 0) {
-        recordedChunks.push(e.data);
+        this.state.recordedChunks.push(e.data);
       }
-
-      if(shouldStop === true && stopped === false) {
-        mediaRecorder.stop();
-        stopped = true;
-      }
-    });
-
-    mediaRecorder.addEventListener('stop', function() {
-      downloadLink.href = URL.createObjectURL(new Blob(recordedChunks));
-      downloadLink.download = 'acetest.wav';
     });
 
     mediaRecorder.start();
-
-    source.connect(processor);
-    processor.connect(context.destination);
-    processor.onaudioprocess = function(e) {
-      // Do something with the data, e.g. convert it to WAV
-      console.log(e.inputBuffer);
-    };
-
-    audioRecorder.exportWAV();
-    mediaRecorder.setupDownload = function(blob, filename){
-      var url = (window.URL || window.webkitURL).createObjectURL(blob);
-      var link = document.getElementById("save");
-      link.href = url;
-      link.download = filename || 'output.wav';
-    }
-
-    if (window.URL) {
-      player.srcObject = stream;
-    } else {
-      player.src = stream;
-    }
-  };
-
-  toggleRecording = (e) => {
-    if (this.state.recording) {
-      // stop recording
-      audioRecorder.stop();
-      this.setState({recording: false})
-    } 
-    else {
-      // start recording
-      if (!audioRecorder)
-          return;
-      this.setState({recording: true})
-      audioRecorder.clear();
-      audioRecorder.record();
+    if (this.state.stopped) {
+      mediaRecorder.stop();
     }
   }
-
-  saveRecording = () => {
-
-  }
-
-  // doneEncoding = (blob) => {
-  //   mediaRecorder.setupDownload(blob, "myRecording" + ((recIndex < 10) ? "0" : "") + recIndex + ".wav" );
-  //   recIndex++;
-  // }
-
-  
 
   render() {
+
     return (
       <Fragment >
       <NavBar />
@@ -110,8 +60,13 @@ class Audio extends Component {
         <audio id="player" controls></audio>
 
         <div id="controls">
-          <i className="fa fa-microphone" onClick={this.toggleRecording} />
-          <i className="fa fa-save" onClick={this.saveRecording}/>
+          <button id="start" onClick={this.handleStart}><i className="fa fa-microphone"/>Start</button>
+
+          <button id="stop" onClick={this.stop}><i className="fa fa-microphone"/>Stop</button>
+
+          <button onClick={this.saveRecording}><i className="fa fa-save"/></button>
+
+          <a href={this.state.href} download={this.state.download} id="download">Download</a>
         </div>
       </div>
       </Fragment>
