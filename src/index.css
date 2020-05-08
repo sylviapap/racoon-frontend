@@ -92,16 +92,17 @@ h1.error-header {
   width: 50%;
 }
 
-.btn {
+.btn-login {
   background-color: #4A72FF;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   padding: 10px;
+  margin: auto;
 }
 
-.btn:hover, #btn:hover {
+.btn-login:hover, #btn-signup:hover {
   background-color: #c9d5fb;
   color: black;
 }
@@ -366,11 +367,10 @@ a.results:hover {
 form {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
 }
 
 input {
-  padding: 1%;
+  padding: 4%;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
@@ -395,16 +395,14 @@ option {
 .field {
   display: flex;
   flex-direction: row;
-  padding: 2%;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 2px;
 }
 
 label {
-  padding: 2%;
-  margin-right: auto;
-  margin-left: 0;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  padding: 1px;
+  margin: 1px;
 }
 
 i {
@@ -451,6 +449,8 @@ button, input[type=submit] {
   border-radius: 4px;
   cursor: pointer;
   padding: 10px;
+  width: fit-content;
+  margin: auto;
 }
 
 button:hover, input[type=submit]:hover {

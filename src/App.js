@@ -112,6 +112,7 @@ class App extends Component {
             <Route exact path="/checker" />
             <Route path="/audio" />
             <Route exact path="/map" />
+            <Route exact path='/' />
 
             <Redirect to="/map" />          
           </Switch>
