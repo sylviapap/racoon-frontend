@@ -121,6 +121,14 @@ p.or {
 }
 /******************************* Home */
 
+p.welcome {
+  font: -webkit-control;
+}
+
+span.welcome-name {
+  font: -webkit-control;
+}
+
 .home-page-container {
   background: url(mapscreen.png) no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -205,11 +213,12 @@ a.home {
   text-transform: uppercase;
   padding: 1em 1.5em;
   margin: 2%;
-  width: 75%;
+  width: 100%;
 }
 
 a:hover.home {
-  text-decoration: underline;
+  background-color: rgba(74, 114, 255, 0.3);
+  color: black;
 }
 
 

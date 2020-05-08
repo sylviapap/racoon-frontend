@@ -8,15 +8,15 @@ const Home = (props) => {
         <div className="main-square">
     {props.loggedIn ? (
       <div className="logged-in">
-        <span className="welcome">
+        <span className="welcome-name">
           Hello, {props.user.first_name.charAt(0).toUpperCase()+props.user.first_name.substr(1).toLowerCase()}
         </span>
-        <p className="home-description">
+        <p className="welcome">
           Welcome back to
         </p>
       </div>) 
       : 
-      <p className="guest">Welcome to</p>
+      <p className="welcome">Welcome to</p>
     }
         <div className="home-letters">
         <span className="letter-r">R</span>
