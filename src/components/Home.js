@@ -47,7 +47,7 @@ const Home = (props) => {
           <a href="/checker" className="home">Check Symptoms</a>
         </div>
         {!props.loggedIn ? (<div className="row">
-          <a href="/signup" className="home">Sign Up</a> or <a href="/login" className="home">Log In</a>
+          <a href="/signup" className="home">Sign Up</a><a href="/login" className="home">Log In</a>
         </div>) : null}
         
       </div>

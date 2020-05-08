@@ -202,6 +202,7 @@ a.home {
   text-transform: uppercase;
   padding: 1em 1.5em;
   margin: 2%;
+  width: 75%;
 }
 
 a:hover.home {
