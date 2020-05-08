@@ -4,7 +4,8 @@ import {API_ROOT, authHeaders} from '../services/api'
 
 class PostComment extends Component{
   state = {
-    content: ""
+    content: "",
+    user_first_name: ""
   }
 
   handleChange = (event) => {
@@ -25,7 +26,7 @@ class PostComment extends Component{
       .then(response => response.json())
       .then(json => {console.log(json);
         this.props.handleCommentPost(event, json);
-        this.setState({content: ""})
+        this.setState({content: "", user_first_name: ""})
       })
   }
 

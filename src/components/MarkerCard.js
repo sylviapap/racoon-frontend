@@ -18,18 +18,11 @@ class MarkerCard extends Component {
 		newComments: []
 	}
 
-	componentDidMount() {
-		// let id = parseInt(this.props.match.params.id)
-		// let marker = this.props.myMapData.filter(marker => marker.id === id)
-		// console.log(marker)
-		// this.setState({selectedMarker: marker[0]})
-	}
-
 	componentDidUpdate(prevProps) {
 		console.log("update")
 		if (this.props.match.params.id !== prevProps.match.params.id) {
 			let id = parseInt(this.props.match.params.id)
-			let marker = this.props.myMapData.filter(marker => marker.id === id)
+			let marker = this.props.myMap.filter(marker => marker.id === id)
 			this.setState({selectedMarker: marker})
 		}
 	}
@@ -37,13 +30,9 @@ class MarkerCard extends Component {
 	handleCommentPost = (event, comment) => {
 		const newComment = {
 			content: comment.content,
-			user: this.props.currentUser,
+			user_first_name: this.props.currentUser.first_name,
 			id: comment.id
 		}
-		// this.setState(prevState => {
-		// 	prevState.selectedMarker.comments.push(newComment); 
-		// 	return prevState
-		// })
 		this.setState(prevState => {
 			prevState.newComments.push(newComment); 
 			return prevState
@@ -78,7 +67,7 @@ class MarkerCard extends Component {
 		console.log(this.state)
 
 		let id = parseInt(this.props.match.params.id)
-		let marker = this.props.myMapData.filter(marker => marker.id === id)[0]
+		let marker = this.props.myMap.filter(marker => marker.id === id)[0]
 		console.log(marker)
 		
 		if (marker) {
@@ -126,7 +115,8 @@ const mapStateToProps = (state) => {
   return {
 		currentUser: state.user.currentUser,
 		bookmarks: state.user.bookmarks,
-		createdMarkers: state.user.createdMarkers
+		createdMarkers: state.user.createdMarkers,
+		myMap: state.map.myMap
 	}
 }
 

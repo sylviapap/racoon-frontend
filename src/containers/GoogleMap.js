@@ -1,9 +1,14 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+
 import { Map, GoogleApiWrapper, Marker, Circle } from 'google-maps-react';
 import InfoWindowRef  from '../components/InfoWindowRef'
 import NavBar  from '../components/NavBar'
 import logo from '../racoon-logo-small.png'
 import {styles} from '../services/mapStyles'
+
+import fetchMyMap from '../actions/fetchMyMap'
+import fetchOfficialMap from '../actions/fetchOfficialMap'
 
 // latitude = vertical! north, up and down
 
@@ -18,6 +23,14 @@ class GoogleMap extends Component {
     showingInfoWindow: false,
     activeMarker: {},
     selectedPlace: {}
+  }
+
+  componentWillMount() {
+    this.props.fetchMyMap();
+  }
+
+  componentDidMount() {
+    this.props.fetchOfficialMap();
   }
      
   onMarkerClick = (props, marker) => {    
@@ -53,6 +66,7 @@ class GoogleMap extends Component {
 
   render() {
     const centerCoords = {lat: 20, lng: -40}
+    console.log(this.props)
 
     return (
       <Fragment>
@@ -69,10 +83,10 @@ class GoogleMap extends Component {
         initialCenter={centerCoords}
         center={centerCoords}
         >
-          {this.props.officialMapData ?
-          this.props.officialMapData.map(object => 
+          {this.props.officialMap ?
+          this.props.officialMap.map(object => 
           <Circle
-          key={this.props.officialMapData.indexOf(object)}
+          key={this.props.officialMap.indexOf(object)}
           radius={Math.sqrt(object.confirmed) * 1000}
           center={{
             lat: parseFloat(object.latitude) || 0,
@@ -99,8 +113,8 @@ class GoogleMap extends Component {
 
         
               
-        { this.props.myMapData ? 
-        (this.props.myMapData.map(object =>
+        { this.props.myMap ? 
+        (this.props.myMap.map(object =>
         <Marker 
           onClick={this.onMarkerClick}
           position={{
@@ -151,6 +165,18 @@ class GoogleMap extends Component {
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: process.env.REACT_APP_API_KEY
-})(GoogleMap);
+const mapStateToProps = (state) => {
+  return {
+    myMap: state.map.myMap,
+    officialMap: state.map.officialMap,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchMyMap: () => { dispatch(fetchMyMap()) },
+    fetchOfficialMap: () => { dispatch(fetchOfficialMap()) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GoogleApiWrapper({apiKey: process.env.REACT_APP_API_KEY})(GoogleMap))

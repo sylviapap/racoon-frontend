@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
-import fetchMyMap from './actions/fetchMyMap'
-import fetchOfficialMap from './actions/fetchOfficialMap'
+
 import getCurrentUser from './actions/getCurrentUser'
 import fetchSymptomList from './actions/fetchSymptomList'
 import errorToggle from './actions/errorToggle'
@@ -21,10 +20,11 @@ import NoAuth from './components/NoAuth'
 
 class App extends Component {  
   
-  componentDidMount() {
-    this.props.fetchMyMap();
-    this.props.fetchOfficialMap();
+  componentWillMount() {
     this.props.getCurrentUser();
+  }
+  
+  componentDidMount() {
     this.props.fetchSymptomList();
   }
 
@@ -37,7 +37,7 @@ class App extends Component {
   }
   
   render() {
-    const loggedIn = this.props.user.currentUser !== undefined && this.props.user.currentUser.id
+    const loggedIn = this.props.currentUser !== undefined && this.props.currentUser.id
     console.log(!!loggedIn)
 
     return (
@@ -55,14 +55,7 @@ class App extends Component {
           : 
           null}
 
-      <Route 
-        path="/map" 
-        render={(props) => 
-        <GoogleMap {...props} 
-          myMapData={this.props.map.myMap}
-          officialMapData={this.props.map.officialMap}
-          />} 
-        />
+      <Route path="/map" component={GoogleMap} />
 
       <Route 
         exact path="/checker" 
@@ -70,7 +63,7 @@ class App extends Component {
         />
 
       <Route exact path="/">
-        <Home loggedIn={loggedIn} user={this.props.user.currentUser}/>
+        <Home loggedIn={loggedIn} user={this.props.currentUser}/>
       </Route>
       <Route path="/audio" component={Audio} />
       <Route 
@@ -92,7 +85,7 @@ class App extends Component {
                 />}
               /> 
             <Route 
-              exact path="/map/post" 
+              path="/map/post" 
               render={(props) => 
                 <PostToMap {...props} handleReturnClick={this.handleReturnClick} />} 
               />
@@ -101,7 +94,6 @@ class App extends Component {
               render={(props) => 
                 <MarkerCard {...props} 
                   handleReturnClick={this.handleReturnClick}
-                  myMapData={this.props.map.myMap}
                 />}
               />
 
@@ -113,9 +105,8 @@ class App extends Component {
             <Route exact path="/checker" />
             <Route path="/audio" />
             <Route exact path="/map" />
+            <Route path="/map/post" />
             <Route exact path='/' />
-
-            <Redirect to="/" />          
           </Switch>
           )
           : 
@@ -127,7 +118,6 @@ class App extends Component {
               <Route path="/checker" />
               <Route exact path="/map" />
               <Route exact path="/" />
-              <Redirect to="/" />
           </Switch>
           <Switch>
             <Redirect from='/map/markers/:id' to='/map/no-auth' />
@@ -145,14 +135,15 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return state
+  return {
+    currentUser: state.user.currentUser,
+    error: state.error
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getCurrentUser: () => { dispatch(getCurrentUser()) },
-    fetchMyMap: () => { dispatch(fetchMyMap()) },
-    fetchOfficialMap: () => { dispatch(fetchOfficialMap()) },
     errorToggle: () => { dispatch(errorToggle())},
     fetchSymptomList: () => {dispatch(fetchSymptomList())}
   }

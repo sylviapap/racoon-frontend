@@ -43,7 +43,7 @@ class SymptomChecker extends Component {
       <NavBar />
       <header className="checker"><h1 className="checker">Symptom Checker</h1></header>
       <div className="symptom-checker">
-        <img src={doctor} className="doctor" />
+        <img src={doctor} className="doctor" alt="doctor" />
 
         {!this.props.currentUser.id ? 
         (<p className="symptoms-warning">Must be <a className="results" href="/login">Logged In</a> to save results</p>)
