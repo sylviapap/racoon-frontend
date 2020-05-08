@@ -92,7 +92,7 @@ class MarkerCard extends Component {
 				{createdFilter.length ? <div><p>You posted this marker!</p><button onClick={this.delete}>Delete From Map</button></div> : null}
 				<p>{marker.address}</p>
 				<h2>User's Self Reported Symptoms: </h2>
-				{!!marker.creator.id ? (<ul>{marker.creator.symptoms.map(s => <li key={s.id}>{s.common_name}</li>)}</ul>) : null}
+				{!!marker.creator ? (<ul>{marker.creator.symptoms.map(s => <li key={s.id}>{s.common_name}</li>)}</ul>) : null}
 				
 					{bookmarkFilter.length !== 0 ? 
 					<button onClick={this.removeBookmark}className="bookmark-btn"><i className="fa fa-folder"></i>Remove Bookmark</button>
