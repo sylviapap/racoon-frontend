@@ -7,7 +7,8 @@ const SideBar = (props) => {
   return(
   <div className="profile page">
     <i className="fa fa-times-circle return" onClick={props.handleReturnClick}/>
-    <h1 className="bookmarks">Your Saved and Created Markers</h1>
+			<header className="marker"><h1 className="bookmarks">Your Markers</h1></header>
+    
     <div className="bookmarks card">
       <h2>Bookmarks</h2>
       { props.bookmarks.length === 0 ? 

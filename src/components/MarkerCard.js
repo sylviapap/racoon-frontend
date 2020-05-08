@@ -88,9 +88,10 @@ class MarkerCard extends Component {
 		return(
 			<div className="marker page" key={marker.id}>
 				<i className="fa fa-times-circle return" onClick={this.props.handleReturnClick}/>
+				<header className="marker"><h1 className="marker">Marker Info</h1></header>
 				<h1 className="marker-page-title">{marker.title}</h1>
 				{createdFilter.length ? <div><p>You posted this marker!</p><button onClick={this.delete}>Delete From Map</button></div> : null}
-				<p>{marker.address}</p>
+				<span>Address: {marker.address}</span>
 				<h2>User's Self Reported Symptoms: </h2>
 				{!!marker.creator ? (<ul>{marker.creator.symptoms.map(s => <li key={s.id}>{s.common_name}</li>)}</ul>) : null}
 				

@@ -114,7 +114,7 @@ class App extends Component {
             <Route exact path="/map" />
             <Route exact path='/' />
 
-            <Redirect to="/map" />          
+            {/* <Redirect to="/map" />           */}
           </Switch>
           )
           : 
@@ -124,7 +124,7 @@ class App extends Component {
             <Route path="/checker" />
             <Route exact path="/map" />
             <Route exact path="/" />
-            <Redirect to="/map/no-auth" />
+            {/* <Redirect to="/map/no-auth" /> */}
           </Switch>
         }
         </Fragment>

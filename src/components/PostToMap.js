@@ -74,6 +74,7 @@ class PostToMap extends Component{
     return(
       <div className="post-container page">
         <i className="fa fa-times-circle return" onClick={this.props.handleReturnClick}/>
+			  <header className="marker"><h1 className="post">Post To Map</h1></header>
         <span className="info">Please allow the browser to access your location and wait for coordinates to appear. You may select symptoms, which will then be saved to your profile, and all saved symptoms from your profile will be posted to your marker. You can add/remove symptoms separately in your profile, and changes will reflect in the updated marker.</span>
       <form onSubmit ={this.handleSubmit}className="post-form">
         <label>Title (optional)</label>

@@ -44,13 +44,7 @@ ul {
 }
 
 li {
-  margin: 4%;
-}
-
-header {
-  display: flex;
-  flex-direction: row;
-  text-align: center;
+  margin: 1%;
 }
 
 .disclaimer {
@@ -417,7 +411,7 @@ i {
   width: 50%;
   margin: 1%;
   padding: 2%;
-  display: inline-block;
+  display: flex;
 }
 
 .comment-input {
@@ -438,6 +432,12 @@ i {
   float: right;
   width: 50%;
   margin: 20px 0px 0px 0px;
+}
+
+span.comment-time {
+  margin-top: auto;
+  font-size: xx-small;
+  font-style: italic;
 }
 
 /******************************* Buttons */
@@ -494,7 +494,7 @@ a.warning:hover {
 
 
 
-/******************************* Full screen non map pages - my info, checker */
+/******************************* headers */
 
 header {
   background: #879CE5;
@@ -507,6 +507,14 @@ header {
   background-size: 70px;
   background-position-y: 100%;
   background-position-x: 5%;
+  text-align: center;
+}
+
+header.marker {
+  background-image: url(sitting5.png), url(standing4.png), url(half-stand.png);
+  background-position-x: 5%, 20%, 100%;
+  background-size: 70px, 60px, 30px;
+  background-position-y: 100%, 100%, 100%;
 }
 
 /******************************* Audio */
