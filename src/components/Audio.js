@@ -55,7 +55,7 @@ class Audio extends Component {
             <i className="fa fa-microphone"/>Stop
           </button>
           
-          <a className="btn" href={this.state.href} download='test.wav' onClick={this.saveRecording}><i className="fa fa-save"/>Download</a>
+          <a className="download-btn record" href={this.state.href} download='test.wav' onClick={this.saveRecording}><i className="fa fa-save"/>Download</a>
 
         </div>
       </div>

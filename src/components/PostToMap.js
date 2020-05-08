@@ -88,7 +88,7 @@ class PostToMap extends Component{
         <label>Longitude</label>
           <input name="longitude" type="number" value={this.state.fields.longitude} onChange={this.handleChange}/>
 
-        <label>Select your symptoms: (Hold Ctrl or Cmd to select multiple)</label>
+        <label>Any symptoms saved to your health profile will appear on your post, but you can select additional ones here:</label>
             <select 
               multiple={true} 
               value={this.state.symptomsToAdd} 

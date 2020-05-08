@@ -19,23 +19,24 @@ class NavBar extends Component {
 				<NavLink to="/map">Map</NavLink>
 			</div>
 			<div className="nav-item">
-			<NavLink to="/checker">Symptom Check</NavLink>
+			<NavLink to="/checker">Symptoms</NavLink>
 			</div>
 		{ this.props.currentUser !== undefined && this.props.currentUser.id ?
 			<Fragment>
 				<div className="nav-header">Welcome, <NavLink to="/medical">{this.props.currentUser.first_name.charAt(0).toUpperCase()+this.props.currentUser.first_name.substr(1).toLowerCase()}</NavLink></div>
-				
+
 				<div className="nav-item">
-					<NavLink to="/map/my-markers">My Markers</NavLink>
+					<NavLink to="/map/post">Post</NavLink>
 				</div>
 
 				<div className="nav-item">
-					<NavLink to="/medical">Health Profile</NavLink>
+					<NavLink to="/map/my-markers">Bookmarks</NavLink>
 				</div>
 
 				<div className="nav-item">
-					<NavLink to="/map/post">Post to Map</NavLink>
+					<NavLink to="/medical">Profile</NavLink>
 				</div>
+
 
 				<div className="nav-item" onClick={this.logout}>
 					<NavLink to="/">Logout</NavLink>

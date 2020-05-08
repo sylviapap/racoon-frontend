@@ -164,7 +164,7 @@ export default class SymptomForm extends Component {
           : null}
           
           <div>
-          <label>Have you experienced any of the following serious symptoms? (select all that apply)</label>
+          <label>Have you experienced any of the following serious symptoms? (Hold CMD/CTRL to select all that apply)</label>
             <select 
               multiple={true} 
               value={this.state.seriousSymptom_ids} 

@@ -46,14 +46,14 @@ class SymptomChecker extends Component {
         <img src={doctor} className="doctor" />
 
         {!this.props.currentUser.id ? 
-        (<p className="symptoms-warning"><a className="results" href="/login">Log In</a> now or your results will not be saved!</p>)
+        (<p className="symptoms-warning">Must be <a className="results" href="/login">Logged In</a> to save results</p>)
         :
         null}
 
         {!!this.state.response.serious || this.state.response.description ? 
           <Results response={this.state.response} history={this.props.history}/>
           : 
-          <div><span className="checker info">Please enter your sex, age, if you have a fever, and at least one other symptom. Results might not give a formal diagnosis if not enough information is given.</span>
+          <div className="checker-main"><span className="checker info">Please enter your sex, age, if you have a fever, and at least one other symptom. Results might not give a formal diagnosis if not enough information is given.</span>
           <SymptomForm handleSubmit={this.handleSubmit} /></div>
         }
         

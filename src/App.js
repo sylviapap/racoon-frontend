@@ -45,7 +45,7 @@ class App extends Component {
         {this.props.error.error ? 
         <div className="warning-window">
           <div className="warning-message">
-          <header>
+          <header className="error-header">
             <h1 className="error-header">Error</h1>
             <i className="fa fa-times close" onClick={this.handleErrorClick} />
           </header>
@@ -78,6 +78,7 @@ class App extends Component {
         render={(props) => 
           <NoAuth {...props} 
             handleReturnClick={this.handleReturnClick}
+            loggedIn={loggedIn}
           />}/>
 
 
@@ -114,18 +115,28 @@ class App extends Component {
             <Route exact path="/map" />
             <Route exact path='/' />
 
-            {/* <Redirect to="/map" />           */}
+            <Redirect to="/" />          
           </Switch>
           )
           : 
-          <Switch>
-            <Route path="/signup" component={SignUp} />
-            <Route path="/login" component={Login} />
-            <Route path="/checker" />
-            <Route exact path="/map" />
-            <Route exact path="/" />
-            {/* <Redirect to="/map/no-auth" /> */}
+          (
+          <Fragment>
+            <Switch>
+              <Route path="/signup" component={SignUp} />
+              <Route path="/login" component={Login} />
+              <Route path="/checker" />
+              <Route exact path="/map" />
+              <Route exact path="/" />
+              <Redirect to="/" />
           </Switch>
+          <Switch>
+            <Redirect from='/map/markers/:id' to='/map/no-auth' />
+            <Redirect from='/medical' to='/map/no-auth' />
+            <Route path='/map/no-auth' />
+          </Switch>
+          </Fragment>
+          )
+
         }
         </Fragment>
     );
