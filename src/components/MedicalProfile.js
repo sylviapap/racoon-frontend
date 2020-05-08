@@ -40,12 +40,14 @@ class MedicalProfile extends Component {
     return(
       <Fragment>
       <NavBar />
+      <div className="medical-profile">
       <header className="welcome"><h1 className="welcome">My Health Profile</h1></header>
       <div className="medical-info">
-        <p>Medical Information For: {titleFirstName} {titleLastName}</p>
+        <h2>Medical Information For: {titleFirstName} {titleLastName}</h2>
+        <div className="card">
         <p>Saved Diagnoses:</p><ul>{this.props.diagnoses.map(d => <div key={d.id}><li >{d.description}</li><span className="info">[Saved: {new Date(d.created_at).toString()}]</span></div>)}</ul>
-        <p>Saved Symptoms:</p><ul>{this.props.reportedSymptoms.map(s => <li key={s.id}>{s.symptom.common_name}<button onClick={() => this.deleteSymptom(s.id)}>Delete</button></li>)}</ul>
-      </div>
+        <p>Saved Symptoms:</p><ul>{this.props.reportedSymptoms.map(s => <li key={s.id} className="symptoms">{s.symptom.common_name}<button onClick={() => this.deleteSymptom(s.id)} className="symptoms-delete"><i className="fa fa-trash"></i>Delete</button></li>)}</ul>
+      </div></div>
       <form onSubmit ={this.handleSubmit}className="post-form">
         <label>Save symptoms to your information: (Hold Ctrl or Cmd to select multiple)</label>
           <select 
@@ -62,6 +64,7 @@ class MedicalProfile extends Component {
           </select>
         <input className="symptom-submit" type="submit" value="Submit"/>
       </form>
+      </div>
     </Fragment>
     )
   }

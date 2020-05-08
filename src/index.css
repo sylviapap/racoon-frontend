@@ -374,7 +374,6 @@ input[type=number] {
 }
 
 select {
-  margin: 1%;
   border: 1px solid #ccc;
   border-radius: 4px;
   overflow: auto;
@@ -397,6 +396,7 @@ option {
 label {
   padding: 1px;
   margin: 1px;
+  font-variant: all-small-caps;
 }
 
 i {
@@ -515,6 +515,35 @@ header.marker {
   background-position-x: 5%, 20%, 100%;
   background-size: 70px, 60px, 30px;
   background-position-y: 100%, 100%, 100%;
+}
+
+/******************************* Medical Profile */
+
+.medical-profile {
+  display: flex;
+  flex-direction: column;
+}
+
+.medical-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;  
+}
+
+form.post-form {
+  width: 75%;
+  margin: auto;
+}
+
+li.symptoms {
+  display: flex;
+  text-align: initial;
+}
+
+button.symptoms-delete {
+  margin-right: 0;
+  height: 50%;
 }
 
 /******************************* Audio */
