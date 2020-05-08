@@ -18,7 +18,7 @@ const Home = (props) => {
       : 
       <p className="welcome">Welcome to</p>
     }
-        <div className="home-letters">
+        <div className="home-letters" id="box">
         <span className="letter-r">R</span>
         <span className="letter-a">A</span>
         <span className="letter-c">C</span>

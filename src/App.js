@@ -73,7 +73,12 @@ class App extends Component {
         <Home loggedIn={loggedIn} user={this.props.user.currentUser}/>
       </Route>
       <Route path="/audio" component={Audio} />
-      <Route exact path="/map/no-auth" component={NoAuth} />
+      <Route 
+        exact path="/map/no-auth" 
+        render={(props) => 
+          <NoAuth {...props} 
+            handleReturnClick={this.handleReturnClick}
+          />}/>
 
 
         {loggedIn ?  (
@@ -108,7 +113,7 @@ class App extends Component {
             <Route path="/audio" />
             <Route exact path="/map" />
 
-            {/* <Redirect to="/map" />           */}
+            <Redirect to="/map" />          
           </Switch>
           )
           : 
@@ -118,7 +123,7 @@ class App extends Component {
             <Route path="/checker" />
             <Route exact path="/map" />
             <Route exact path="/" />
-            <Route path="/map/no-auth" />
+            <Redirect to="/map/no-auth" />
           </Switch>
         }
         </Fragment>

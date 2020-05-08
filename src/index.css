@@ -130,7 +130,7 @@ span.welcome-name {
 }
 
 .home-page-container {
-  background: url(mapscreen.png) no-repeat center center fixed; 
+  background: url(background.png) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -465,6 +465,7 @@ button:hover, input[type=submit]:hover {
   z-index: 1;
   height: 100%;
   width: 100%;
+  text-align: center;
 }
 
 .warning-message {
@@ -478,6 +479,17 @@ button:hover, input[type=submit]:hover {
   border-radius: 4px;
   overflow-y: auto;
   width: 35%;
+}
+
+a.warning {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+a.warning:hover {
+  font-weight: bolder;
+  text-decoration: underline;
 }
 
 
@@ -524,13 +536,4 @@ canvas {
 
 /* @media screen and (max-width: 600px) {
 
-} */
-
-/* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 } */

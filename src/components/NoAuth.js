@@ -1,10 +1,12 @@
 import React from 'react'
 
-const NoAuth = () => {
+const NoAuth = (props) => {
     return (
-      <div className="no-auth page">
-        <p>Please log in or sign up to view this page</p>
-      </div>
+      <div className="warning-window">
+        <div className="warning-message">
+        <i className="fa fa-times-circle return" onClick={props.handleReturnClick}/>
+        <span className="warning">Please <a href="/login" className="warning">Log In</a> or <a href="/signup" className="warning">Sign Up</a> to view this page</span>
+      </div></div>
     )
   }
 
