@@ -1,52 +1,34 @@
 import React, { Component, Fragment } from 'react'
 import NavBar from './NavBar'
-
-const options = {mimeType: 'audio/webm'};
+import { ReactMic } from 'react-mic';
 
 class Audio extends Component {
 
   state = {
-    audioRecorder: null,
-    stopped: true,
-    recordedChunks: [],
-    href: "",
-    download: ""
+    record: false,
+    blob: [],
+    href: ""
+  }
+ 
+  startRecording = () => {
+    this.setState({ record: true });
+  }
+ 
+  stopRecording = () => {
+    this.setState({ record: false });
+  }
+ 
+  onData(recordedBlob) {
+    console.log('chunk of real-time data is: ', recordedBlob);
+  }
+ 
+  onStop = (recordedBlob) => {
+    this.setState({blob: recordedBlob, href: URL.createObjectURL(recordedBlob.blob)})
+    console.log('recordedBlob', recordedBlob);
   }
 
-  stop = () => {
-    this.setState({
-      stopped: true,
-      href: URL.createObjectURL(new Blob(this.state.recordedChunks)),
-      download: 'acetest.wav'
-    })
-  }
-
-  handleStart = () => {
-    this.setState({stopped: false})
-    navigator.mediaDevices.getUserMedia({ audio: true, video: false })
-      .then(this.handleSuccess);
-  }
-
-  handleAudio = (event) => {
-    const player = document.getElementById('player');
-    const file = event.target.files[0];
-    const url = URL.createObjectURL(file);
-    player.src = url;
-  }
-
-  handleSuccess = (stream) => {
-    const mediaRecorder = new MediaRecorder(stream, options);
-
-    mediaRecorder.addEventListener('dataavailable', function(e) {
-      if (e.data.size > 0) {
-        this.state.recordedChunks.push(e.data);
-      }
-    });
-
-    mediaRecorder.start();
-    if (this.state.stopped) {
-      mediaRecorder.stop();
-    }
+  saveRecording = () => {
+    console.log("saved?")
   }
 
   render() {
@@ -55,18 +37,26 @@ class Audio extends Component {
       <Fragment >
       <NavBar />
       <header className="welcome"><h1 className="welcome">Record a Cough</h1></header>
-      <div className="medical-info audio">
-        <input type="file" accept="audio/*" capture id="recorder" onChange={this.handleAudio}/>
-        <audio id="player" controls></audio>
+      <div className="medical-info audio-page">
+      <ReactMic
+          record={this.state.record}
+          className="sound-wave"
+          onStop={this.onStop}
+          onData={this.onData}
+          strokeColor="#000000"
+          backgroundColor="#c9d5fb" />
 
-        <div id="controls">
-          <button id="start" onClick={this.handleStart}><i className="fa fa-microphone"/>Start</button>
+        <div className="audio-buttons-container">
 
-          <button id="stop" onClick={this.stop}><i className="fa fa-microphone"/>Stop</button>
+          <button onClick={this.startRecording} type="button">
+            <i className="fa fa-microphone"/>Start
+          </button>
+          <button onClick={this.stopRecording} type="button">
+            <i className="fa fa-microphone"/>Stop
+          </button>
+          
+          <a className="btn" href={this.state.href} download='test.wav' onClick={this.saveRecording}><i className="fa fa-save"/>Download</a>
 
-          <button onClick={this.saveRecording}><i className="fa fa-save"/></button>
-
-          <a href={this.state.href} download={this.state.download} id="download">Download</a>
         </div>
       </div>
       </Fragment>
