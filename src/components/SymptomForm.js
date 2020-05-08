@@ -116,11 +116,12 @@ export default class SymptomForm extends Component {
               type="number"
               min="1"
               step="1"
-              className="form-control" 
+              className="form-control age" 
               id="input-age"
               name="age"
               value={this.state.fields.age} 
-              onChange={this.handleChange} />
+              onChange={this.handleChange}
+              autoComplete="off" />
 
 <div className="fever-choice">
           <label className="symptom-item">
@@ -159,7 +160,7 @@ export default class SymptomForm extends Component {
           : 
           null}
 
-          {this.state.fields.feverType === "s_4" || this.state.seriousSymptom_ids.length ? <div className="emergency-symptoms-warning">You have selected an emergency symptom! It is likely you need emergency medical attention before completing the symptom checker.</div>
+          {this.state.fields.feverType === "s_4" || this.state.seriousSymptom_ids.length ? <div className="emergency symptoms-warning">You have selected an emergency symptom! You might need immediate medical attention</div>
           : null}
           
           <div>
@@ -219,7 +220,7 @@ export default class SymptomForm extends Component {
                   </option>)}
             </select>
             <input 
-              type="submit" value="Submit" />
+              type="submit" value="Submit" className="symptom-checker" />
         </form>
       </div>
     )

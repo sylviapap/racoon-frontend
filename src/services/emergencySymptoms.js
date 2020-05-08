@@ -73,5 +73,20 @@ export const emergencySymptoms = [
       "question": "Are you coughing up blood?",
       "seriousness": "emergency",
       "sex_filter": "both"
+  },
+  {
+      "category": "Signs and symptoms",
+      "children": [],
+      "common_name": "Not responding normally",
+      "extras": {},
+      "id": "s_11",
+      "image_source": null,
+      "image_url": null,
+      "name": "Not responding normally",
+      "parent_id": null,
+      "parent_relation": null,
+      "question": "Is the person responding normally?",
+      "seriousness": "emergency",
+      "sex_filter": "both"
   }
 ]

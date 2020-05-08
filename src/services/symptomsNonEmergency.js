@@ -118,5 +118,20 @@ export const symptomsNonEmergency = [
       "question": "Sore throat",
       "seriousness": "normal",
       "sex_filter": "both"
-  }
+  },
+    {
+        "category": "Signs and symptoms",
+        "children": [],
+        "common_name": "Impaired taste or smell",
+        "extras": {},
+        "id": "s_24",
+        "image_source": null,
+        "image_url": null,
+        "name": "Impaired taste or smell",
+        "parent_id": null,
+        "parent_relation": null,
+        "question": "Impaired taste or smell",
+        "seriousness": "normal",
+        "sex_filter": "both"
+    }
 ]

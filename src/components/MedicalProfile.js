@@ -43,13 +43,13 @@ class MedicalProfile extends Component {
       <div className="medical-profile">
       <header className="welcome"><h1 className="welcome">My Health Profile</h1></header>
       <div className="medical-info">
-        <h2>Medical Information For: {titleFirstName} {titleLastName}</h2>
-        <div className="card">
-        <p>Saved Diagnoses:</p><ul>{this.props.diagnoses.map(d => <div key={d.id}><li >{d.description}</li><span className="info">[Saved: {new Date(d.created_at).toString()}]</span></div>)}</ul>
-        <p>Saved Symptoms:</p><ul>{this.props.reportedSymptoms.map(s => <li key={s.id} className="symptoms">{s.symptom.common_name}<button onClick={() => this.deleteSymptom(s.id)} className="symptoms-delete"><i className="fa fa-trash"></i>Delete</button></li>)}</ul>
+        <h2>Name: {titleFirstName} {titleLastName}</h2>
+        <div className="medical-card card">
+        <span className="saved">Saved Diagnoses:</span><ul>{this.props.diagnoses.map(d => <div key={d.id}><li >{d.description ? d.description : `Inconclusive`}</li><span className="info">[Saved: {new Date(d.created_at).toString()}]</span></div>)}</ul>
+        <span className="saved">Saved Symptoms:</span><ul>{this.props.reportedSymptoms.map(s => <li key={s.id} className="symptoms">{s.symptom.common_name}<button onClick={() => this.deleteSymptom(s.id)} className="symptoms-delete"><i className="fa fa-trash"></i>Delete</button></li>)}</ul>
       </div></div>
       <form onSubmit ={this.handleSubmit}className="post-form">
-        <label>Save symptoms to your information: (Hold Ctrl or Cmd to select multiple)</label>
+        <label>Add symptoms to your information: (Hold Ctrl or Cmd to select multiple)</label>
           <select 
             multiple={true} 
             value={this.state.symptomsToAdd} 
@@ -64,6 +64,7 @@ class MedicalProfile extends Component {
           </select>
         <input className="symptom-submit" type="submit" value="Submit"/>
       </form>
+      <a href="/audio" className="record btn">Go to Audio Record</a>
       </div>
     </Fragment>
     )

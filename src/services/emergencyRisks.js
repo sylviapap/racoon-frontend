@@ -12,39 +12,39 @@ export const emergencyRisks = [
       "sex_filter": "both"
   },
   {
-      "category": "Risk factors",
-      "common_name": "Living or caring for COVID-19 suspected person",
-      "extras": {},
-      "id": "p_12",
-      "image_source": null,
-      "image_url": null,
-      "name": "Living or caring for COVID-19 suspected person",
-      "question": "I live with or have provided care to, without the use of a protective mask or gloves, a person suspected of having COVID-19",
-      "seriousness": "serious",
-      "sex_filter": "both"
-  },
-  {
-      "category": "Risk factors",
-      "common_name": "Traveling or staying with COVID-19 suspected person",
-      "extras": {},
-      "id": "p_13",
-      "image_source": null,
-      "image_url": null,
-      "name": "Traveling or staying with COVID-19 suspected person",
-      "question": "I have shared the same closed environment (e.g., classroom, workspace, gym) with or traveled in close proximity (1 m or 3 feet) to a person suspected of having COVID-19.",
-      "seriousness": "serious",
-      "sex_filter": "both"
-  },
-  {
-      "category": "Risk factors",
-      "common_name": "Prolonged direct contact with a person suspected of having COVID-19",
-      "extras": {},
-      "id": "p_14",
-      "image_source": null,
-      "image_url": null,
-      "name": "Prolonged direct contact with a person suspected of having COVID-19",
-      "question": "I had face-to-face contact within 1 meter (3 feet) for longer than 15 minutes with a person suspected of having COVID-19",
-      "seriousness": "serious",
-      "sex_filter": "both"
-  }
+    "category": "Risk factors",
+    "common_name": "Caring for COVID-19 suspected person without protection",
+    "extras": {},
+    "id": "p_25",
+    "image_source": null,
+    "image_url": null,
+    "name": "Caring for COVID-19 suspected person without protection",
+    "question": "I have provided direct care to such a person, without the use of a protective mask and gloves",
+    "seriousness": "serious",
+    "sex_filter": "both"
+},
+{
+    "category": "Risk factors",
+    "common_name": "Direct physical contact with a person suspected of having COVID-19",
+    "extras": {},
+    "id": "p_26",
+    "image_source": null,
+    "image_url": null,
+    "name": "Direct physical contact with a person suspected of having COVID-19",
+    "question": "I had direct physical contact with such a person",
+    "seriousness": "serious",
+    "sex_filter": "both"
+},
+{
+    "category": "Risk factors",
+    "common_name": "Prolonged direct contact with a person suspected of having COVID-19",
+    "extras": {},
+    "id": "p_27",
+    "image_source": null,
+    "image_url": null,
+    "name": "Prolonged direct contact with a person suspected of having COVID-19",
+    "question": "I had face-to-face contact with such a person within 1 meter (3 feet) for longer than 15 minutes",
+    "seriousness": "serious",
+    "sex_filter": "both"
+},
 ]

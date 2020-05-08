@@ -18,7 +18,7 @@ class Results extends Component{
   render() {
     return(
       <div className="results">
-        <header className="results">Preliminary Diagnosis</header>
+        <h1>Preliminary Diagnosis</h1>
         {!!this.props.response.description ? 
         <div className="infermedica-description">
         <p>{this.props.response.description}</p>
@@ -30,8 +30,8 @@ class Results extends Component{
         
         {this.props.response.serious.map(a => 
         <div className="result-item" key={a.id}>
-          <p>{a.common_name}</p>
-          {a.is_emergency ? <span className="emergency">Emergency symptom</span> : null}
+          <span>{a.common_name}</span>
+          {a.is_emergency ? <span className="emergency"> Emergency symptom</span> : null}
         </div>
         )}
 

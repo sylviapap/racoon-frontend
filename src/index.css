@@ -58,7 +58,7 @@ a {
 }
 
 a.btn {
-  font-size: x-small;
+  font-size: smaller;
 }
 
 span.info {
@@ -96,7 +96,7 @@ h1.error-header {
   margin: auto;
 }
 
-.btn-login:hover, #btn-signup:hover {
+.btn-login:hover, #btn-signup:hover, a.record:hover {
   background-color: #c9d5fb;
   color: black;
 }
@@ -227,6 +227,7 @@ a:hover.home {
   flex-direction: row;
   align-items: center;
   font-size: medium;
+  font-variant: all-small-caps;
 }
 
 .nav-logo{
@@ -316,6 +317,9 @@ header.checker{
   overflow: auto;
   background: rgba(236, 189, 131, 0.2);
   border-radius: 4px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .emergency {
@@ -356,6 +360,38 @@ a.results:hover {
   text-decoration: underline;
 }
 
+input.age {
+  padding: 8px;
+}
+
+.symptoms-warning {
+  text-align: center;
+  padding: 1%;
+  font-size: larger;
+  font-variant: all-small-caps;
+}
+
+input.symptom-checker {
+  margin-top: 1%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+img.doctor {
+  background-color: #fbf2e6;
+  margin: 1%;
+}
+
+span.checker {
+  font-size: x-small;
+  width: 30%;
+  text-align: center;
+}
+
+h1.checker {
+  margin: 0;
+}
+
 /************************ Forms */
 
 form {
@@ -370,7 +406,7 @@ input {
 }
 
 input[type=number] {
-  width: 25%;
+  width: min-content;
 }
 
 select {
@@ -450,7 +486,6 @@ button, input[type=submit] {
   cursor: pointer;
   padding: 10px;
   width: fit-content;
-  margin: auto;
 }
 
 button:hover, input[type=submit]:hover {
@@ -534,6 +569,8 @@ header.marker {
 form.post-form {
   width: 75%;
   margin: auto;
+  padding: 1%;
+  align-items: center;
 }
 
 li.symptoms {
@@ -543,10 +580,34 @@ li.symptoms {
 
 button.symptoms-delete {
   margin-right: 0;
-  height: 50%;
+  width: min-content;
+  padding: 2%;
+  margin-left: auto;
+}
+
+span.saved {
+  font-variant: small-caps;
+}
+
+input.symptom-submit {
+  margin-top: 1%;
+}
+
+.medical-card {
+  width: 50%;
 }
 
 /******************************* Audio */
+
+a.record {
+  background-color: #4A72FF;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px;
+  margin: auto;
+}
 
 canvas {
   width: 75%;
