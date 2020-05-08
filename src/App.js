@@ -23,7 +23,7 @@ class App extends Component {
   componentWillMount() {
     this.props.getCurrentUser();
   }
-  
+
   componentDidMount() {
     this.props.fetchSymptomList();
   }
@@ -98,7 +98,7 @@ class App extends Component {
               />
 
             <Route 
-              exact path="/medical" 
+              path="/medical" 
               component={MedicalProfile} 
             />
 
@@ -120,8 +120,9 @@ class App extends Component {
               <Route exact path="/" />
           </Switch>
           <Switch>
-            <Redirect from='/map/markers/:id' to='/map/no-auth' />
-            <Redirect from='/medical' to='/map/no-auth' />
+            {/* This redirect is very weird - make sure to only go to a map marker page by clicking on more info, i.e. hard refresh on a map marker redirects to error if logged in */}
+            {!localStorage.token ? <Redirect from='/map/markers/:id' to='/map/no-auth' /> : null}
+            
             <Route path='/map/no-auth' />
           </Switch>
           </Fragment>
