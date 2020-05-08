@@ -16,6 +16,7 @@ import MarkerCard from './components/MarkerCard'
 import PostToMap from './components/PostToMap'
 import SymptomChecker from './components/SymptomChecker'
 import MedicalProfile from './components/MedicalProfile'
+import Audio from './components/Audio'
 import NoAuth from './components/NoAuth'
 
 class App extends Component {  
@@ -37,6 +38,7 @@ class App extends Component {
   
   render() {
     const loggedIn = this.props.user.currentUser !== undefined && this.props.user.currentUser.id
+    console.log(!!loggedIn)
 
     return (
       <Fragment>
@@ -70,6 +72,7 @@ class App extends Component {
       <Route exact path="/">
         <Home loggedIn={loggedIn} user={this.props.user.currentUser}/>
       </Route>
+      <Route path="/audio" component={Audio} />
       <Route exact path="/map/no-auth" component={NoAuth} />
 
 
@@ -102,9 +105,10 @@ class App extends Component {
             />
 
             <Route exact path="/checker" />
+            <Route path="/audio" />
             <Route exact path="/map" />
 
-            <Redirect to="/" />          
+            {/* <Redirect to="/map" />           */}
           </Switch>
           )
           : 
@@ -114,7 +118,7 @@ class App extends Component {
             <Route path="/checker" />
             <Route exact path="/map" />
             <Route exact path="/" />
-            <Redirect to="/map/no-auth" />
+            <Route path="/map/no-auth" />
           </Switch>
         }
         </Fragment>
