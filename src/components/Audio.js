@@ -38,6 +38,7 @@ class Audio extends Component {
       <NavBar />
       <header className="welcome"><h1 className="welcome">Record a Cough</h1></header>
       <div className="medical-info audio-page">
+        <span className="info">This component is a work in progress. You may press start for a visualization of audio and then stop, then download your recording as a .wav file. Soon you will be able to submit the recording to be saved to our database for a doctor to review, and/or use machine learning audio recognition to identify if your cough matches the sound of coughs from confirmed COVID-19 patients.</span>
       <ReactMic
           record={this.state.record}
           className="sound-wave"
