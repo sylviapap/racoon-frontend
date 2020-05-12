@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 const Home = (props) => {
     return (
@@ -34,9 +34,14 @@ const Home = (props) => {
           <div className="row">
             <a href="/checker" className="home">Check Symptoms</a>
           </div>
-          {!localStorage.token ? (<div className="row">
-            <a href="/signup" className="home">Sign Up</a><a href="/login" className="home">Log In</a>
-          </div>) : <div className="row"><a href="/medical" className="home">View Your Profile</a></div>}
+          {!localStorage.token ? (
+            <Fragment>
+          <div className="row">
+            <a href="/signup" className="home">Sign Up</a>
+            </div>
+            <div className="row"><a href="/login" className="home">Log In</a>
+          </div>
+          </Fragment>) : <div className="row"><a href="/medical" className="home">View Your Profile</a></div>}
       
         </div>
       </div>
