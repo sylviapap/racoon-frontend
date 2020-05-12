@@ -3,21 +3,9 @@ import React from 'react'
 const Home = (props) => {
     return (
       <div className="home-page-container">
-      <div className="home-page-background">
       <div className="home-page">
         <div className="main-square">
-    {props.loggedIn ? (
-      <div className="logged-in">
-        <span className="welcome-name">
-          Hello, {props.user.first_name.charAt(0).toUpperCase()+props.user.first_name.substr(1).toLowerCase()}
-        </span>
-        <p className="welcome">
-          Welcome back to
-        </p>
-      </div>) 
-      : 
-      <p className="welcome">Welcome to</p>
-    }
+    
         <div className="home-letters" id="box">
         <span className="letter-r">R</span>
         <span className="letter-a">A</span>
@@ -39,18 +27,18 @@ const Home = (props) => {
         <span className="home-description">virus / COVID-19</span>
 
         </div>
-        
-        <div className="row">
-          <a href="/map" className="home">View the Map</a>
+        <div className="home-buttons">
+          <div className="row">
+            <a href="/map" className="home">View the Map</a>
+          </div>
+          <div className="row">
+            <a href="/checker" className="home">Check Symptoms</a>
+          </div>
+          {!localStorage.token ? (<div className="row">
+            <a href="/signup" className="home">Sign Up</a><a href="/login" className="home">Log In</a>
+          </div>) : <div className="row"><a href="/medical" className="home">View Your Profile</a></div>}
+      
         </div>
-        <div className="row">
-          <a href="/checker" className="home">Check Symptoms</a>
-        </div>
-        {!props.loggedIn ? (<div className="row">
-          <a href="/signup" className="home">Sign Up</a><a href="/login" className="home">Log In</a>
-        </div>) : null}
-        
-      </div>
       </div>
       </div>
     )

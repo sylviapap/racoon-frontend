@@ -130,37 +130,36 @@ span.welcome-name {
 
 .home-page-container {
   /* background: url(brian-mcgowan-7OabDHeImsA-unsplash.jpg) no-repeat center center fixed;  */
-  background: rgb(200, 211, 252);
+  background: #4464d7;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   height: 100%;
   overflow: hidden;
-}
-
-.home-page-background {
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.4);
   display: flex;
   flex-direction: column;
 }
 
 .home-page {
   display: flex;
-  flex-direction: column;
   text-align: center;
   align-items: center;
-  background: rgba(255, 255, 255, 0.7);
-  width: 40%;
-  margin: auto;
-  padding: 3%;
+  height: 100%;
 }
 
 .main-square {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: white;
+  height: 100%;
+  width: 50%;
+  padding: 3%;
+}
+
+.home-buttons {
+  width: 50%;
 }
 
 span.welcome {
@@ -179,23 +178,23 @@ span.welcome {
 }
 
 .letter-r {
-  color: #4464D7;
+  color: rgb(110, 132, 209);
 }
 
 .letter-a {
-  color: rgb(188, 191, 247);
+  color: rgb(220, 222, 255);
 }
 
 .letter-c {
-  color: rgb(126, 151, 243);
+  color: rgb(50, 72, 148);
 }
 
 .letter-o {
-  color: #879CE5;
+  color: rgb(116, 146, 255);
 }
 
 .letter-n {
-  color: rgb(64, 90, 184);
+  color: #4464d7;
 }
 
 .home-letters {
