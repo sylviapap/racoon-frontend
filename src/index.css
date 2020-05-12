@@ -129,7 +129,8 @@ span.welcome-name {
 }
 
 .home-page-container {
-  background: url(brian-mcgowan-7OabDHeImsA-unsplash.jpg) no-repeat center center fixed; 
+  /* background: url(brian-mcgowan-7OabDHeImsA-unsplash.jpg) no-repeat center center fixed;  */
+  background: rgb(200, 211, 252);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -182,7 +183,7 @@ span.welcome {
 }
 
 .letter-a {
-  color: rgba(31, 40, 207, 0.1);
+  color: rgb(188, 191, 247);
 }
 
 .letter-c {
