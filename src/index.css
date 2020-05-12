@@ -215,7 +215,7 @@ a.home {
 }
 
 a:hover.home {
-  background-color: rgba(74, 114, 255, 0.3);
+  background-color: rgba(77, 115, 255, .5);
   color: black;
 }
 
