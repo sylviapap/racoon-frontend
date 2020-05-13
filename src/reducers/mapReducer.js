@@ -1,14 +1,14 @@
 const intitialState = {
   myMap: [{
-    address: "init",
+    address: "",
     comments: [],
-    created_at: "init",
+    created_at: "",
     creator: {symptoms: []},
     id: 1,
     latitude: 0,
     longitude: 0,
-    message: "init",
-    title: "init"
+    message: "",
+    title: "Loading..."
   }],
   officialMap: []
 }
