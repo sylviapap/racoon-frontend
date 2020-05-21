@@ -9,6 +9,7 @@ import {styles} from '../services/mapStyles'
 
 import fetchMyMap from '../actions/fetchMyMap'
 import fetchOfficialMap from '../actions/fetchOfficialMap'
+
 const containerStyle = {
   position: "fixed",
   width: "100%",
@@ -81,14 +82,14 @@ class GoogleMap extends Component {
         initialCenter={centerCoords}
         center={centerCoords}
         >
-          {!!this.props.officialMap.id ?
+          {!!this.props.officialMap.length ?
           this.props.officialMap.map(object => 
           <Circle
           key={this.props.officialMap.indexOf(object)}
           radius={Math.sqrt(object.confirmed) * 1000}
           center={{
-            lat: parseFloat(object.latitude) || 0,
-            lng: parseFloat(object.longitude) || 0}}
+            lat: parseFloat(object.region.lat) || 0,
+            lng: parseFloat(object.region.long) || 0}}
           strokeColor={"#FF0000"}
           strokeOpacity={0}
           strokeWeight={5}
@@ -96,14 +97,14 @@ class GoogleMap extends Component {
           fillOpacity={0.2}
           onClick={this.onMarkerClick}
           position={{
-            lat: object.latitude,
-            lng: object.longitude}}
-          country={object.country}
+            lat: parseFloat(object.region.lat),
+            lng: parseFloat(object.region.long)}}
+          country={object.region.name}
+          province={object.region.province}
           confirmed={object.confirmed}
           recovered={object.recovered}
-          critical={object.critical}
           deaths={object.deaths}
-          lastUpdate={object.lastUpdate}
+          lastUpdate={object.last_update}
           />)
           :
           null
@@ -148,11 +149,10 @@ class GoogleMap extends Component {
               key={this.state.selectedPlace.id}>More Info</button></div>)
               :
               (<div>
-                <h3>{this.state.selectedPlace.country}</h3>
+                <h3>Country: {this.state.selectedPlace.country}</h3>
+                <h4>Province: {this.state.selectedPlace.province}</h4>
                 <p>Confirmed cases: {this.state.selectedPlace.confirmed}</p>
-                <p>Critical cases: {this.state.selectedPlace.critical}</p>
                 <p>Deaths: {this.state.selectedPlace.deaths}</p>
-                <p>Recovered: {this.state.selectedPlace.recovered}</p>
                 <span className="info">Last Updated: {new Date(this.state.selectedPlace.lastUpdate).toString()}</span>
               </div>)}
           </div>
