@@ -9,15 +9,11 @@ import {styles} from '../services/mapStyles'
 
 import fetchMyMap from '../actions/fetchMyMap'
 import fetchOfficialMap from '../actions/fetchOfficialMap'
-
-// latitude = vertical! north, up and down
-
 const containerStyle = {
   position: "fixed",
   width: "100%",
   height: "90%"
 }
-
 class GoogleMap extends Component {
   state = {
     showingInfoWindow: false,
@@ -67,6 +63,8 @@ class GoogleMap extends Component {
   render() {
     const centerCoords = {lat: 20, lng: -40}
     console.log(this.props)
+    // const div = document.querySelector("#root > div")
+    // div.className = "map-container"
 
     return (
       <Fragment>
@@ -83,7 +81,7 @@ class GoogleMap extends Component {
         initialCenter={centerCoords}
         center={centerCoords}
         >
-          {this.props.officialMap ?
+          {!!this.props.officialMap.id ?
           this.props.officialMap.map(object => 
           <Circle
           key={this.props.officialMap.indexOf(object)}

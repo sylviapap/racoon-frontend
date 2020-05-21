@@ -18,6 +18,7 @@ body {
 
 #root {
   height: 100%;
+  width: 100%;
 }
 
 .row {
@@ -28,13 +29,12 @@ body {
   width: 100%;
 }
 
-.container {
+/* .map-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-  height: -webkit-fill-available;
-}
+  flex-direction: column;
+  height: 100%;
+  position: absolute;
+} */
 
 /******************************* Text  */
 
@@ -231,6 +231,7 @@ a:hover.home {
   align-items: center;
   font-size: medium;
   font-variant: all-small-caps;
+  /* z-index: 1; */
 }
 
 .nav-logo{
