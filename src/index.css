@@ -78,6 +78,12 @@ header.error-header {
 
 /******************************* Auth */
 
+.login.container, .signup.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
 .login-page, .signup-page {
   background: #4464D7;
   color: white;
@@ -88,6 +94,7 @@ header.error-header {
   align-items: center;
   text-align: center;
   width: 50%;
+  margin: auto;
 }
 
 .btn-login, #btn-signup {
