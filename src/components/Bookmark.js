@@ -15,7 +15,6 @@ class Bookmark extends Component {
 	}
 
 	render() {
-		console.log(this.props)
 		return(
 			<div className="created-bookmark item">
 				<h2 className="bookmark-page-title">Title: {this.props.bookmark.map_marker.title}</h2>

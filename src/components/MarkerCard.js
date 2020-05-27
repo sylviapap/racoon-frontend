@@ -19,7 +19,6 @@ class MarkerCard extends Component {
 	}
 
 	componentDidUpdate(prevProps) {
-		console.log("update")
 		if (this.props.match.params.id !== prevProps.match.params.id) {
 			let id = parseInt(this.props.match.params.id)
 			let marker = this.props.myMap.filter(marker => marker.id === id)
@@ -50,10 +49,7 @@ class MarkerCard extends Component {
 
 	removeBookmark = () => {
 		let mapMarkerId = parseInt(this.props.match.params.id);
-		console.log(mapMarkerId)
-		console.log(this.props.bookmarks)
 		let selectedBookmark = this.props.bookmarks.find(b => b.map_marker.id === mapMarkerId)
-		console.log(selectedBookmark)
 		this.props.deleteBookmark(selectedBookmark.id);
 	}
 
@@ -63,17 +59,12 @@ class MarkerCard extends Component {
 	}
 
 	render() {
-		console.log(this.props)
-		console.log(this.state)
-
 		let id = parseInt(this.props.match.params.id)
 		let marker = this.props.myMap.filter(marker => marker.id === id)[0]
-		console.log(marker)
 		
 		if (marker) {
 			let bookmarkFilter = this.props.bookmarks.filter(b => b.map_marker.id === marker.id)
 			let createdFilter = this.props.createdMarkers.filter(m => m.id === marker.id)
-			console.log(bookmarkFilter)
 		return(
 			<div className="marker page" key={marker.id}>
 				<i className="fa fa-times-circle return" onClick={this.props.handleReturnClick}/>

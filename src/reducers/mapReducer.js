@@ -35,7 +35,6 @@ const mapReducer = (state = intitialState, action) => {
 
     case "DELETE_FROM_MAP":
       const myMap = state.myMap.filter(marker => marker.id !== action.id)
-      console.log(myMap)
       return {
         ...state,
         myMap

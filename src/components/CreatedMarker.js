@@ -15,7 +15,6 @@ class CreatedMarker extends Component {
 	}
 
 	render() {
-		console.log(this.props)
 		return(
 			<div className="created-marker item">
 				<h2 className="marker-page-title">Title: {this.props.marker.title}</h2>

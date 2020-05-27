@@ -24,14 +24,14 @@ class PostComment extends Component{
       })
     })
       .then(response => response.json())
-      .then(json => {console.log(json);
+      .then(json => {
+        // console.log(json);
         this.props.handleCommentPost(event, json);
         this.setState({content: "", user_first_name: ""})
       })
   }
 
   render() {
-    console.log(this.props.currentUser)
     return(
       <form onSubmit ={this.handleSubmit}>
         <textarea

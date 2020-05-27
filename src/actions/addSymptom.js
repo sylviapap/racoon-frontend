@@ -21,7 +21,7 @@ const addSymptom = (event, userId, symptomId) => {
 			}
 		})
     .then(json => {
-      console.log(json);
+      // console.log(json);
       dispatch({ type: "ADD_SYMPTOM", reportedSymptom: json })
     })
   }

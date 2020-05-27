@@ -10,7 +10,8 @@ const addBookmark = (event, markerData, history) => {
       body: JSON.stringify(markerData)
     })
     .then(response => response.json())
-    .then(json => { console.log(json);
+    .then(json => { 
+      // console.log(json);
       if(json.error || json.message) {
         console.log("error", json)
       } else {

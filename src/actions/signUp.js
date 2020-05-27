@@ -16,7 +16,6 @@ const signUp = (event, userInput, history) => {
       .then(response => response.json())
       .then(json => { 
         if(json.errors) {
-          console.log(json.errors)
           dispatch({ type: "SET_ERROR", messages: json.errors })
         }
         else {

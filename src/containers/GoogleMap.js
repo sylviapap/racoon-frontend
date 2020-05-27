@@ -31,7 +31,6 @@ class GoogleMap extends Component {
   }
      
   onMarkerClick = (props, marker) => {    
-    console.log(props)
     if (this.props.history.location.pathname !== '/map') {
     this.props.history.push('/map')
   }
@@ -63,7 +62,6 @@ class GoogleMap extends Component {
 
   render() {
     const centerCoords = {lat: 20, lng: -40}
-    console.log(this.props)
     // const div = document.querySelector("#root > div")
     // div.className = "map-container"
 

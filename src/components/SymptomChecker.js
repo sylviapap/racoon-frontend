@@ -31,13 +31,12 @@ class SymptomChecker extends Component {
     })
     .then(response => response.json())
     .then(json => {
-      console.log(json)
+      // console.log(json)
       this.setState({response: json})
     })
   }
 
   render() {
-    console.log(!!this.props.currentUser.id)
     return(
       <Fragment>
       <NavBar />

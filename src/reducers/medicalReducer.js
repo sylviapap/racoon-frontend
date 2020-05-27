@@ -45,7 +45,6 @@ const medicalReducer = (state = intitialState, action) => {
 
     case "ADD_DIAGNOSIS":
       let diagnosisFilter = state.diagnoses.filter(d => d.id === action.newDiagnosis.id)
-      console.log(diagnosisFilter.length)
       if (diagnosisFilter.length) {
         return state
       }

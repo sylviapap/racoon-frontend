@@ -36,7 +36,6 @@ class MedicalProfile extends Component {
     let last = this.props.currentUser.last_name
     let titleFirstName = first.charAt(0).toUpperCase() + first.substr(1).toLowerCase()
     let titleLastName = last.charAt(0).toUpperCase() + last.substr(1).toLowerCase()
-    console.log(this.props)
     return(
       <Fragment>
       <NavBar />

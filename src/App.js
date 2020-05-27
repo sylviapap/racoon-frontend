@@ -38,7 +38,7 @@ class App extends Component {
   
   render() {
     const loggedIn = this.props.currentUser !== undefined && this.props.currentUser.id
-    console.log(!!loggedIn)
+    // console.log(!!loggedIn)
 
     return (
       <Fragment>

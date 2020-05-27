@@ -5,7 +5,6 @@ import addDiagnosis from '../actions/addDiagnosis'
 class Results extends Component{
 
   handleSaveClick = () => {
-    console.log(this.props)
     const data = {
       user_id: this.props.currentUser.id,
       description: this.props.response.description,

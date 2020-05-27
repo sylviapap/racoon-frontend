@@ -41,7 +41,7 @@ export default class SymptomForm extends Component {
     const presentNormalSymptoms = this.state.symptom_ids.map(s => Object.assign({}, {"id": s, "choice_id": "present"}));
     const presentSerious = this.state.seriousSymptom_ids.map(s => Object.assign({}, {"id": s, "choice_id": "present"}));
     const symptomsPresent = presentNormalSymptoms.concat(presentSerious)
-    console.log(symptomsPresent)
+    // console.log(symptomsPresent)
     // array of objects of {s_id, choice_id: present}
 
     const symptomsAbsentNormal = symptomsNonEmergency.filter(s => !this.state.symptom_ids.includes(s.id))
@@ -49,13 +49,13 @@ export default class SymptomForm extends Component {
     const symptomsAbsentNormalArray = symptomsAbsentNormal.map(s => Object.assign({}, {"id": s.id, "choice_id": "absent"}));
     const symptomsAbsentSeriousArray = symptomsAbsentSerious.map(s => Object.assign({}, {"id": s.id, "choice_id": "absent"}));
     const symptomsAbsent = symptomsAbsentNormalArray.concat(symptomsAbsentSeriousArray)
-    console.log(symptomsAbsent)
+    // console.log(symptomsAbsent)
     // array of obj {s_id, choice_id: absent}
 
     const normalRisks = this.state.risk_ids.map(rf => Object.assign({}, {"id": rf, "choice_id": "present"}));
     const seriousRisks = this.state.seriousRisk_ids.map(rf => Object.assign({}, {"id": rf, "choice_id": "present"}));
     const risksPresent = normalRisks.concat(seriousRisks)
-    console.log(risksPresent)
+    // console.log(risksPresent)
     // AoO {p_id, present}
 
     const normalRisksAbsent = nonSeriousRisks.filter(rf => !this.state.risk_ids.includes(rf.id))
@@ -63,7 +63,7 @@ export default class SymptomForm extends Component {
     const seriousRisksAbsent = emergencyRisks.filter(rf => !this.state.seriousRisk_ids.includes(rf.id))
     const seriousRisksAbsentArray = seriousRisksAbsent.map(rf => Object.assign({}, {"id": rf.id, "choice_id": "absent"}));
     const risksAbsent = normalRisksAbsentArray.concat(seriousRisksAbsentArray)
-    console.log(risksAbsent)
+    // console.log(risksAbsent)
     // AoO {p_id, absent}
 
     const symptomEvidence = symptomsPresent.concat(symptomsAbsent)
@@ -83,7 +83,7 @@ export default class SymptomForm extends Component {
 
     // combines everything
     const evidence = symptomsAndRisks.concat(feverArray)
-    console.log(evidence)
+    // console.log(evidence)
 
     this.props.handleSubmit(event, this.state.fields.sex, this.state.fields.age, evidence)
   }
