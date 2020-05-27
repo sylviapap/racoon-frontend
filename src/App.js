@@ -122,6 +122,7 @@ class App extends Component {
           <Switch>
             {/* This redirect is very weird - make sure to only go to a map marker page by clicking on more info, i.e. hard refresh on a map marker redirects to error if logged in */}
             {!localStorage.token ? <Redirect from='/map/markers/:id' to='/map/no-auth' /> : null}
+            {!localStorage.token ? <Redirect from='/medical' to='/map/no-auth' /> : null}
             
             <Route path='/map/no-auth' />
           </Switch>
