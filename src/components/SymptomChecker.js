@@ -5,7 +5,7 @@ import NavBar from './NavBar'
 import Results from './Results'
 import SymptomForm from './SymptomForm'
 
-import doctor from '../doctor.png'
+import doctor from '../images/doctor.png'
 
 const infermedicaHeaders = {
   "App-Id": process.env.REACT_APP_INFERMEDICA_APP_ID,
