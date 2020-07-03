@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Map, GoogleApiWrapper, Marker, Circle } from 'google-maps-react';
 import InfoWindowRef  from '../components/InfoWindowRef'
 import NavBar  from '../components/NavBar'
-import logo from '../racoon-logo-small.png'
+import logo from '../images/racoon-logo-small.png'
 import {styles} from '../services/mapStyles'
 
 import fetchMyMap from '../actions/fetchMyMap'
