@@ -40,7 +40,7 @@ const getCurrentUser = () => {
 					createdMarkers: json.user.created_markers})
 			} 
 			else {
-				console.log(json, "not logged in")
+				console.log("Please log in or sign up")
 			}
 		})
 	}
