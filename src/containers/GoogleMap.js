@@ -22,11 +22,8 @@ class GoogleMap extends Component {
     selectedPlace: {}
   }
 
-  componentWillMount() {
-    this.props.fetchMyMap();
-  }
-
   componentDidMount() {
+    this.props.fetchMyMap();
     this.props.fetchOfficialMap();
   }
      
