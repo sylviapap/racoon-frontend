@@ -54,6 +54,7 @@ class SignUp extends Component{
               placeholder="Email"
               value={email}
               onChange={handleChange}
+              autoComplete="username"
             />
           </div>
           <div className="field">
@@ -74,6 +75,7 @@ class SignUp extends Component{
               type="password"
               value={password_confirmation}
               placeholder="Confirm Password"
+              autoComplete="new-password"
               />          
           </div>
           <input type="submit" id="btn-signup" value="Sign Up"/>
