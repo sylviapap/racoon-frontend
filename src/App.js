@@ -19,12 +19,9 @@ import Audio from './components/Audio'
 import NoAuth from './components/NoAuth'
 
 class App extends Component {  
-  
-  componentWillMount() {
-    this.props.getCurrentUser();
-  }
 
   componentDidMount() {
+    this.props.getCurrentUser();
     this.props.fetchSymptomList();
   }
 
