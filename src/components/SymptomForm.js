@@ -100,7 +100,8 @@ export default class SymptomForm extends Component {
               className="input-sex" 
               value="male" 
               checked={this.state.fields.sex === "male"}
-              onChange={this.handleChange} />
+              onChange={this.handleChange} 
+              required />
                 <label><i className="fa fa-fw fa-mars"/>Male</label>
             <input 
               type="radio" 
@@ -121,7 +122,8 @@ export default class SymptomForm extends Component {
               name="age"
               value={this.state.fields.age} 
               onChange={this.handleChange}
-              autoComplete="off" />
+              autoComplete="off" 
+              required />
 
 <div className="fever-choice">
           <label className="symptom-item">
@@ -132,14 +134,17 @@ export default class SymptomForm extends Component {
             value="true"
             type="radio"
             checked={this.state.fields.fever === "true"}
-            onChange={this.handleChange} /><label className="symptom-item">Yes</label>
+            onChange={this.handleChange}
+            required />
+              <label className="symptom-item">Yes</label>
           <input
             className="symptom-item"
             name="fever"
             value="false"
             type="radio"
             checked={this.state.fields.fever === "false"}
-            onChange={this.handleChange} /><label className="symptom-item">No</label>
+            onChange={this.handleChange} />
+              <label className="symptom-item">No</label>
           </div>
 
           {this.state.fields.fever === "true" ? 
