@@ -7,6 +7,8 @@ import SymptomForm from './SymptomForm'
 
 import doctor from '../images/doctor.png'
 
+// document.getElementById("chatbot-chat").style.display = "inherit";
+
 const infermedicaHeaders = {
   "App-Id": process.env.REACT_APP_INFERMEDICA_APP_ID,
   "App-Key": process.env.REACT_APP_INFERMEDICA_APP_KEY,
@@ -16,6 +18,18 @@ const infermedicaHeaders = {
 class SymptomChecker extends Component {
   state = {
     response: {}
+  }
+
+  componentDidMount() {
+    const script = document.createElement("script");
+    script.innerHTML = `window.__be = window.__be || {};
+    window.__be.id = "5f10b26174b9c20007a1537a";
+    (function() {
+        var be = document.createElement('script'); be.type = 'text/javascript'; be.async = true;
+        be.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.chatbot.com/widget/plugin.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(be, s);
+    })();`
+    this.div.appendChild(script);
   }
 
   handleSubmit = (event, sex, age, evidence) => {
@@ -41,7 +55,8 @@ class SymptomChecker extends Component {
       <Fragment>
       <NavBar />
       <header className="checker"><h1 className="checker">Symptom Checker</h1></header>
-      <div className="symptom-checker">
+      <div className="symptom-checker" ref={el => (this.div = el)}>
+        
         <img src={doctor} className="doctor" alt="doctor" />
 
         {!this.props.currentUser.id ? 
