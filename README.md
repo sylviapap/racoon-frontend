@@ -5,11 +5,11 @@ COVID-19 symptom checker/self report map web application
 
 This is the frontend code for my Flatiron School final project.
 
-## Live Site https://racoon.digital 
+### Live Site https://racoon.digital 
 
-## Backend: https://github.com/sylviapap/final-project-server
+### Backend: https://github.com/sylviapap/racoon-server
 
-## Frontend
+### Frontend
 
 * React.js
 * Redux
@@ -28,7 +28,7 @@ This is the frontend code for my Flatiron School final project.
 * Hosted on Netlify using continuous deployment (https://racoon-app.netlify.app/)
 
 
-## Backend
+### Backend
 
 * Ruby on Rails
 * Active Model Serializers
