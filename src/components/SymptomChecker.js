@@ -67,7 +67,7 @@ class SymptomChecker extends Component {
         {!!this.state.response.serious || this.state.response.description ? 
           <Results response={this.state.response} history={this.props.history}/>
           : 
-          <div className="checker-main"><span className="checker info">Please enter your sex, age, if you have a fever, and at least one other symptom. Results might not give a formal diagnosis if not enough information is given.</span>
+          <div className="checker-main"><span className="checker info">Use the Chatbot in the bottom right corner for a full COVID-19 symptom checking interview. Or, use the form below.</span>
           <SymptomForm handleSubmit={this.handleSubmit} /></div>
         }
         
