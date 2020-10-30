@@ -332,7 +332,10 @@ header.checker{
 .result-item {
   display: flex;
   flex-direction: row;
-  margin: 5%;
+  margin: 10px;
+  background: #e2e9ff;
+  padding: 10px;
+  border-radius: 15px;
 }
 
 .sex-choice {
@@ -496,6 +499,7 @@ button, input[type=submit] {
   cursor: pointer;
   padding: 10px;
   width: fit-content;
+  margin: 10px;
 }
 
 button:hover, input[type=submit]:hover {

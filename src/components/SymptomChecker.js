@@ -50,8 +50,9 @@ class SymptomChecker extends Component {
         {!!this.state.response.serious || this.state.response.description ? 
           <Results response={this.state.response} history={this.props.history}/>
           : 
-          <div className="checker-main"><span className="checker info">Please fill out the form below</span>
-          <SymptomForm handleSubmit={this.handleSubmit} /></div>
+          <div className="checker-main">
+          <SymptomForm handleSubmit={this.handleSubmit} />
+          </div>
         }
         
         {!!this.state.response.message ?
@@ -59,8 +60,7 @@ class SymptomChecker extends Component {
         :
         null}
 
-
-        <p className="disclaimer">*Results are not meant to replace professional medical advice. Credit: Infermedica API</p>
+        <p className="disclaimer">*Results are not meant to replace professional medical advice</p>
       </div>
       </Fragment>
     )

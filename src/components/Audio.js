@@ -27,10 +27,6 @@ class Audio extends Component {
     console.log('recordedBlob', recordedBlob);
   }
 
-  saveRecording = () => {
-    console.log("saved?")
-  }
-
   render() {
 
     return (
@@ -48,16 +44,12 @@ class Audio extends Component {
           backgroundColor="#c9d5fb" />
 
         <div className="audio-buttons-container">
-
           <button onClick={this.startRecording} type="button">
             <i className="fa fa-microphone"/>Start
           </button>
           <button onClick={this.stopRecording} type="button">
             <i className="fa fa-microphone"/>Stop
           </button>
-          
-          <a className="download-btn record" href={this.state.href} download='test.wav' onClick={this.saveRecording}><i className="fa fa-save"/>Download</a>
-
         </div>
       </div>
       </Fragment>
