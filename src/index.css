@@ -56,6 +56,7 @@ a.btn {
 span.info {
   font-size: xx-small;
   font-style: italic;
+  float: right;
 }
 
 /* Errors */
@@ -623,7 +624,9 @@ a.record {
   border-radius: 4px;
   cursor: pointer;
   padding: 10px;
-  margin: auto;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 5%;
 }
 
 canvas {

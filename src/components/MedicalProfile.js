@@ -44,7 +44,7 @@ class MedicalProfile extends Component {
       <div className="medical-info">
         <h2>Name: {titleFirstName} {titleLastName}</h2>
         <div className="medical-card card">
-        <span className="saved">Saved Diagnoses:</span><ul>{this.props.diagnoses.map(d => <div key={d.id}><li >{d.description ? d.description : `Inconclusive`}</li><span className="info">[Saved: {new Date(d.created_at).toString()}]</span></div>)}</ul>
+        <span className="saved">Saved Diagnoses:</span><ul>{this.props.diagnoses.map(d => <div key={d.id}><li className="symptoms">{d.description ? d.description : `Inconclusive`}</li><span className="info">{new Date(d.created_at).toLocaleString()}</span></div>)}</ul>
         <span className="saved">Saved Symptoms:</span><ul>{this.props.reportedSymptoms.map(s => <li key={s.id} className="symptoms">{s.symptom.common_name}<button onClick={() => this.deleteSymptom(s.id)} className="symptoms-delete"><i className="fa fa-trash"></i>Delete</button></li>)}</ul>
       </div></div>
       <form onSubmit ={this.handleSubmit}className="post-form">
@@ -63,7 +63,7 @@ class MedicalProfile extends Component {
           </select>
         <input className="symptom-submit" type="submit" value="Submit"/>
       </form>
-      <a href="/audio" className="record btn">Go to Audio Record</a>
+      <a href="/audio" className="record btn">Record Audio</a>
       </div>
     </Fragment>
     )
