@@ -226,6 +226,7 @@ a:hover.home {
   height: 100px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   font-size: medium;
   font-variant: all-small-caps;
@@ -333,7 +334,7 @@ header.checker{
   display: flex;
   flex-direction: row;
   margin: 10px;
-  background: #e2e9ff;
+  background: whitesmoke;
   padding: 10px;
   border-radius: 15px;
 }
@@ -588,12 +589,15 @@ form.post-form {
 
 li.symptoms {
   display: flex;
-  text-align: initial;
+  align-items: center;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: white;
 }
 
 button.symptoms-delete {
-  margin-right: 0;
-  width: min-content;
+  width: fit-content !important;
+  min-width: fit-content !important;
   padding: 2%;
   margin-left: auto;
 }
@@ -640,15 +644,4 @@ canvas {
   display: flex;
   justify-content: space-evenly;
   margin: 1%;
-}
-
-a.download-btn {
-  background-color: #4A72FF;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  padding: 10px;
-  margin: 0;
-  font-size: small;
 }
