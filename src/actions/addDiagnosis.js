@@ -18,7 +18,6 @@ const addDiagnosis = (data, history) => {
 			}
 		})
     .then(json => {
-      // console.log(json);
       dispatch({ type: "ADD_DIAGNOSIS", newDiagnosis: json })
       history.push('/medical')
     })

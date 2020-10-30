@@ -8,7 +8,6 @@ const deleteCreatedMarker = (id, history) => {
       headers: authHeaders
     })
     .then(resp => {
-      // console.log(resp);
       dispatch({ type: "DELETE_FROM_MAP", id: id});
       dispatch({ type: "DELETE_CREATED_MARKER", id: id});
       history.push('/map/my-markers')

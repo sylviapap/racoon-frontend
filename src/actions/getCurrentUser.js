@@ -20,7 +20,6 @@ const getCurrentUser = () => {
 		})
 		.then(json => { 
 			if(json.user !== undefined) {
-				// console.log("json", json);
 				dispatch({ 
 					type: "SET_CURRENT_USER", 
 					user: json.user })

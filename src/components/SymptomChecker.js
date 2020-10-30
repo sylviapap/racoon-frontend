@@ -29,7 +29,6 @@ class SymptomChecker extends Component {
     })
     .then(response => response.json())
     .then(json => {
-      // console.log(json)
       this.setState({response: json})
     })
   }
@@ -56,7 +55,7 @@ class SymptomChecker extends Component {
         }
         
         {!!this.state.response.message ?
-        <p className="symptoms-warning">Error: Not enough information. Please make sure you have selected your sex, age as a whole number, and enough symptoms/risk factors {console.log(this.state.response.message)}</p>
+        <p className="symptoms-warning">Error: Not enough information. Please make sure you have selected your sex, age as a whole number, and enough symptoms/risk factors</p>
         :
         null}
 

@@ -32,7 +32,6 @@ class PostToMap extends Component{
   handleChange = (event) => {
     const newFields = { ...this.state.fields, [event.target.name]: event.target.value };
     this.setState({ fields: newFields });
-    // console.log(this.state.fields)
   };
 
   handleSubmit = (event) => {
