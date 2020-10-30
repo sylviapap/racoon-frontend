@@ -1,11 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
-
 import getCurrentUser from './actions/getCurrentUser'
 import fetchSymptomList from './actions/fetchSymptomList'
 import errorToggle from './actions/errorToggle'
-
 import GoogleMap from './containers/GoogleMap'
 import Home from './components/Home'
 import Login from './components/Login'
@@ -70,7 +68,6 @@ class App extends Component {
             loggedIn={loggedIn}
           />}/>
 
-
         {loggedIn ?  (
           <Switch>
             <Route 
@@ -116,15 +113,12 @@ class App extends Component {
               <Route exact path="/" />
           </Switch>
           <Switch>
-            {/* This redirect is very weird - make sure to only go to a map marker page by clicking on more info, i.e. hard refresh on a map marker redirects to error if logged in */}
             {!localStorage.token ? <Redirect from='/map/markers/:id' to='/map/no-auth' /> : null}
             {!localStorage.token ? <Redirect from='/medical' to='/map/no-auth' /> : null}
-            
             <Route path='/map/no-auth' />
           </Switch>
           </Fragment>
           )
-
         }
         </Fragment>
     );

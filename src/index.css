@@ -29,15 +29,6 @@ body {
   width: 100%;
 }
 
-/* .map-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  position: absolute;
-} */
-
-/******************************* Text  */
-
 ul {
   list-style-type: none;
   padding: 0;
@@ -67,7 +58,7 @@ span.info {
   font-style: italic;
 }
 
-/******************************* Errors */
+/* Errors */
 
 h1.error-header {
   margin: auto;
@@ -77,7 +68,7 @@ header.error-header {
   display: flex;
 }
 
-/******************************* Auth */
+/* Auth */
 
 .login.container, .signup.container {
   height: 100%;
@@ -126,7 +117,8 @@ a.signup:hover {
 p.or {
   font-size: smaller;
 }
-/******************************* Home */
+
+/* Landing Page */
 
 p.welcome {
   font: -webkit-control;
@@ -137,7 +129,6 @@ span.welcome-name {
 }
 
 .home-page-container {
-  /* background: url(brian-mcgowan-7OabDHeImsA-unsplash.jpg) no-repeat center center fixed;  */
   background: #4464d7;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -227,8 +218,7 @@ a:hover.home {
   color: black;
 }
 
-
-/******************************* Nav Bar */
+/* Nav */
 
 .nav-bar {
   background-color: #4464D7;
@@ -239,7 +229,6 @@ a:hover.home {
   align-items: center;
   font-size: medium;
   font-variant: all-small-caps;
-  /* z-index: 1; */
 }
 
 .nav-logo{
@@ -277,7 +266,7 @@ img.racoon-logo {
   text-decoration: none;
 }
 
-/******************************* 'Pages' to Pop Up on Map */
+/* Pages/Popups on Map */
 
 .page {
   padding: 1%;
@@ -314,7 +303,7 @@ img.racoon-logo {
   cursor: pointer;
 }
 
-/************************ Symptom Checker */
+/* Symptom Checker */
 
 header.checker{
   background-image: url(images/sitting8.png), url(images/standing.png), url(images/sitting4.png);
@@ -413,7 +402,7 @@ h1.checker, h1.welcome {
   align-items: center;
 }
 
-/************************ Forms */
+/* Forms */
 
 form {
   display: flex;
@@ -460,7 +449,7 @@ i {
   padding: inherit;
 }
 
-/************************ Comments */
+/* Comments */
 
 .comment-card {
   border: 1px solid #ccc;
@@ -497,7 +486,7 @@ span.comment-time {
   font-style: italic;
 }
 
-/******************************* Buttons */
+/* Buttons */
 
 button, input[type=submit] {
   background-color: #4A72FF;
@@ -514,7 +503,8 @@ button:hover, input[type=submit]:hover {
   color: black;
 }
 
-/******************************* Error Message */
+/* Warnings */
+
 .warning-window {
   position: fixed;
   background-color: rgba(0, 0, 0, 0.25);
@@ -548,9 +538,7 @@ a.warning:hover {
   text-decoration: underline;
 }
 
-
-
-/******************************* headers */
+/* Headers */
 
 header {
   background: #879CE5;
@@ -573,7 +561,7 @@ header.marker {
   background-position-y: 100%, 100%, 100%;
 }
 
-/******************************* Medical Profile */
+/* Medical Profile */
 
 .medical-profile {
   display: flex;
@@ -618,7 +606,7 @@ input.symptom-submit {
   width: 50%;
 }
 
-/******************************* Audio */
+/* Audio */
 
 a.record {
   background-color: #4A72FF;
@@ -660,10 +648,3 @@ a.download-btn {
   margin: 0;
   font-size: small;
 }
-
-
-/******************************* Responsive layout */
-
-/* @media screen and (max-width: 600px) {
-
-} */
