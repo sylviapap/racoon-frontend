@@ -1,13 +1,9 @@
 import React, {Component, Fragment} from 'react';
 import { connect } from 'react-redux';
-
 import NavBar from './NavBar'
 import Results from './Results'
 import SymptomForm from './SymptomForm'
-
 import doctor from '../images/doctor.png'
-
-// document.getElementById("chatbot-chat").style.display = "inherit";
 
 const infermedicaHeaders = {
   "App-Id": process.env.REACT_APP_INFERMEDICA_APP_ID,
@@ -18,18 +14,6 @@ const infermedicaHeaders = {
 class SymptomChecker extends Component {
   state = {
     response: {}
-  }
-
-  componentDidMount() {
-    const script = document.createElement("script");
-    script.innerHTML = `window.__be = window.__be || {};
-    window.__be.id = "5f10b26174b9c20007a1537a";
-    (function() {
-        var be = document.createElement('script'); be.type = 'text/javascript'; be.async = true;
-        be.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.chatbot.com/widget/plugin.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(be, s);
-    })();`
-    this.div.appendChild(script);
   }
 
   handleSubmit = (event, sex, age, evidence) => {
@@ -67,7 +51,7 @@ class SymptomChecker extends Component {
         {!!this.state.response.serious || this.state.response.description ? 
           <Results response={this.state.response} history={this.props.history}/>
           : 
-          <div className="checker-main"><span className="checker info">Use the Chatbot in the bottom right corner for a full COVID-19 symptom checking interview. Or, use the form below.</span>
+          <div className="checker-main"><span className="checker info">Please fill out the form below</span>
           <SymptomForm handleSubmit={this.handleSubmit} /></div>
         }
         

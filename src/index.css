@@ -51,6 +51,7 @@ li {
   font-style: italic;
   font-size: x-small;
   text-align: right;
+  margin-left: auto;
 }
 
 a {
@@ -335,11 +336,14 @@ header.checker{
 
 .emergency {
   color: red;
+  margin-left: auto;
+  font-variant: all-small-caps;
 }
 
 .result-item {
   display: flex;
   flex-direction: row;
+  margin: 5%;
 }
 
 .sex-choice {
