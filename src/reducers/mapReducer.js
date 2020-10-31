@@ -1,6 +1,5 @@
 const intitialState = {
   myMap: [{
-    address: "",
     comments: [],
     created_at: "",
     creator: {symptoms: []},

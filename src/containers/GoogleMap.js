@@ -115,7 +115,6 @@ class GoogleMap extends Component {
             lat: object.latitude,
             lng: object.longitude}}
           title={object.title}
-          address={object.address}
           comments={object.comments}
           id={object.id}
           key={object.id}
@@ -136,7 +135,6 @@ class GoogleMap extends Component {
           {this.state.selectedPlace.name === "Marker" ? 
             (<div key={this.state.selectedPlace.id}><h3>{this.state.selectedPlace.message}</h3>
             <h3>{this.state.selectedPlace.title}</h3>
-            <p>Address: {this.state.selectedPlace.address}</p>
             <p>Symptoms: </p><ul>{this.state.selectedPlace.creatorSymptoms.map(s => <li key={s.id}>{s.common_name}</li>)}</ul>
             <button 
               className="button" 

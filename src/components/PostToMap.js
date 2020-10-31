@@ -9,7 +9,6 @@ class PostToMap extends Component{
       latitude: [],
       longitude: [],
       title: [], 
-      address: [],
       message: ""
     },
     symptomsToAdd: []
@@ -42,7 +41,6 @@ class PostToMap extends Component{
       latitude: this.state.fields.latitude,
       longitude: this.state.fields.longitude,
       title: this.state.fields.title, 
-      address: this.state.fields.address,
       message: this.state.fields.message  
     }
     this.state.symptomsToAdd.map(s => this.props.addSymptom(event, userId, s, this.props.history))
@@ -53,7 +51,6 @@ class PostToMap extends Component{
         latitude: [],
         longitude: [],
         title: [], 
-        address: [],
         message: ""
     }});
   }
@@ -81,8 +78,6 @@ class PostToMap extends Component{
           <input name="title" type="text" value={this.state.fields.title} onChange={this.handleChange}/>
         <label>Message/caption (optional)</label>
           <input name="message" type="text" value={this.state.fields.message} onChange={this.handleChange}/>
-        <label>Address (optional)</label>
-          <input name="address" type="text" value={this.state.fields.address} onChange={this.handleChange}/>
         <label>Latitude</label>
           <input name="latitude" type="number" value={this.state.fields.latitude} onChange={this.handleChange}/>
         <label>Longitude</label>
