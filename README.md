@@ -1,17 +1,12 @@
-# R-A-C-O-O-N
-*Anagram of 'Corona'* 
+# Racoon (*Anagram Corona*) - COVID-19 Web App
 
-COVID-19 symptom checker/self report map web application
+## Symptom checker, medical profile, anonymous user self-reporting and worldwide data map
 
-This is the frontend code for my Flatiron School final project.
+## Live Site: https://racoon.digital
 
-### Live Site: https://racoon.digital
+## [Video Demo](https://youtu.be/SntYf3koT1c)
 
-### [Video Demo](https://youtu.be/SntYf3koT1c)
-
-### Backend: https://github.com/sylviapap/racoon-server
-
-### Frontend
+## Frontend
 
 * React.js
 * Redux
@@ -30,7 +25,8 @@ This is the frontend code for my Flatiron School final project.
 * Hosted on Netlify using continuous deployment (https://racoon-app.netlify.app/)
 
 
-### Backend
+## Backend
+https://github.com/sylviapap/racoon-backend
 
 * Ruby on Rails
 * Active Model Serializers
