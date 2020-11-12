@@ -7,6 +7,7 @@
 ## [Video Demo](https://youtu.be/SntYf3koT1c)
 
 ## Frontend
+https://github.com/sylviapap/racoon-frontend
 
 * React.js
 * Redux
