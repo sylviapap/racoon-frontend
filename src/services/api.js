@@ -1,7 +1,7 @@
-const local = `http://localhost:3001`
+// const local = `http://localhost:3001`
 const heroku = `https://racoon-backend.herokuapp.com`
 
-export const API_ROOT = `${local}/api/v1`;
+export const API_ROOT = `${heroku}/api/v1`;
 
 export const token = localStorage.getItem('token');
 
