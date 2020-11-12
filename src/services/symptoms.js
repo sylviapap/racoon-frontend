@@ -2,7 +2,6 @@ export const symptoms = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Fever",
       "extras": {},
       "id": "s_0",
       "image_source": null,
@@ -17,7 +16,6 @@ export const symptoms = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Cough",
       "extras": {},
       "id": "s_1",
       "image_source": null,
@@ -32,7 +30,6 @@ export const symptoms = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Shortness of breath",
       "extras": {},
       "id": "s_2",
       "image_source": null,
@@ -47,7 +44,6 @@ export const symptoms = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Unconsciousness",
       "extras": {},
       "id": "s_10",
       "image_source": null,
@@ -62,7 +58,6 @@ export const symptoms = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Not responding normally",
       "extras": {},
       "id": "s_11",
       "image_source": null,
@@ -77,7 +72,6 @@ export const symptoms = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Symptoms quickly worsening",
       "extras": {},
       "id": "s_12",
       "image_source": null,
@@ -92,7 +86,6 @@ export const symptoms = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Fever between 37.5°C and 38°C (99.5°F and 100.4°F)",
       "extras": {},
       "id": "s_22",
       "image_source": null,
@@ -107,7 +100,6 @@ export const symptoms = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Fever between 38°C and 40°C (100.4°F and 104°F)",
       "extras": {},
       "id": "s_23",
       "image_source": null,
@@ -122,7 +114,6 @@ export const symptoms = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Fever over 40°C (104°F)",
       "extras": {},
       "id": "s_4",
       "image_source": null,
@@ -137,7 +128,6 @@ export const symptoms = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Fever not measured",
       "extras": {},
       "id": "s_5",
       "image_source": null,
@@ -152,7 +142,6 @@ export const symptoms = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Rapid breathing",
       "extras": {},
       "id": "s_13",
       "image_source": null,
@@ -167,7 +156,6 @@ export const symptoms = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Coughing up blood",
       "extras": {},
       "id": "s_14",
       "image_source": null,
@@ -182,7 +170,6 @@ export const symptoms = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Fatigue",
       "extras": {},
       "id": "s_15",
       "image_source": null,
@@ -197,7 +184,6 @@ export const symptoms = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Muscle pain",
       "extras": {},
       "id": "s_16",
       "image_source": null,
@@ -212,7 +198,6 @@ export const symptoms = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Chills",
       "extras": {},
       "id": "s_17",
       "image_source": null,
@@ -227,7 +212,6 @@ export const symptoms = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Headache",
       "extras": {},
       "id": "s_18",
       "image_source": null,
@@ -242,7 +226,6 @@ export const symptoms = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Diarrhea",
       "extras": {},
       "id": "s_19",
       "image_source": null,
@@ -257,7 +240,6 @@ export const symptoms = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Nausea",
       "extras": {},
       "id": "s_20",
       "image_source": null,
@@ -272,7 +254,6 @@ export const symptoms = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Sore throat",
       "extras": {},
       "id": "s_21",
       "image_source": null,
@@ -287,7 +268,6 @@ export const symptoms = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Impaired taste or smell",
       "extras": {},
       "id": "s_24",
       "image_source": null,

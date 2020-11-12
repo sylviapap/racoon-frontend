@@ -45,7 +45,7 @@ class MedicalProfile extends Component {
         <h2>Name: {titleFirstName} {titleLastName}</h2>
         <div className="medical-card card">
         <span className="saved">Saved Diagnoses:</span><ul>{this.props.diagnoses.map(d => <div key={d.id}><li className="symptoms">{d.description ? d.description : `Inconclusive`}</li><span className="info">{new Date(d.created_at).toLocaleString()}</span></div>)}</ul>
-        <span className="saved">Saved Symptoms:</span><ul>{this.props.reportedSymptoms.map(s => <li key={s.id} className="symptoms">{s.symptom.common_name}<button onClick={() => this.deleteSymptom(s.id)} className="symptoms-delete"><i className="fa fa-trash"></i>Delete</button></li>)}</ul>
+        <span className="saved">Saved Symptoms:</span><ul>{this.props.reportedSymptoms.map(s => <li key={s.id} className="symptoms">{s.symptom.name}<button onClick={() => this.deleteSymptom(s.id)} className="symptoms-delete"><i className="fa fa-trash"></i>Delete</button></li>)}</ul>
       </div></div>
       <form onSubmit ={this.handleSubmit}className="post-form">
         <label>Add symptoms to your information: (Hold Ctrl or Cmd to select multiple)</label>
@@ -58,7 +58,7 @@ class MedicalProfile extends Component {
                 <option 
                   value={symptom.id} 
                   key={symptom.id}>
-                    {symptom.common_name}
+                    {symptom.name}
                 </option>)}
           </select>
         <input className="symptom-submit" type="submit" value="Submit"/>

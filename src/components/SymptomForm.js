@@ -165,7 +165,7 @@ export default class SymptomForm extends Component {
                   <option 
                     value={symptom.id} 
                     key={emergencySymptoms.indexOf(symptom)}>
-                      {symptom.common_name}
+                      {symptom.name}
                   </option>)}
             </select></div>
 
@@ -179,7 +179,7 @@ export default class SymptomForm extends Component {
                   <option 
                     value={symptom.id} 
                     key={symptomsNonEmergency.indexOf(symptom)}>
-                      {symptom.common_name}
+                      {symptom.name}
                   </option>)}
             </select>
 

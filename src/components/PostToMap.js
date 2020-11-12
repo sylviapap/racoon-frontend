@@ -93,7 +93,7 @@ class PostToMap extends Component{
                   <option 
                     value={symptom.id} 
                     key={symptom.id}>
-                      {symptom.common_name}
+                      {symptom.name}
                   </option>)}
             </select>
 

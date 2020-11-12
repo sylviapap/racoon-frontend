@@ -29,7 +29,7 @@ class Results extends Component{
         
         {this.props.response.serious.map(a => 
         <div className="result-item" key={a.id}>
-          <span>{a.common_name}</span>
+          <span>{a.name}</span>
           {a.is_emergency ? <span className="emergency"> Emergency symptom</span> : null}
         </div>
         )}

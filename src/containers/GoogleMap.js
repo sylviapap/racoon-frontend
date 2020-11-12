@@ -135,7 +135,7 @@ class GoogleMap extends Component {
           {this.state.selectedPlace.name === "Marker" ? 
             (<div key={this.state.selectedPlace.id}><h3>{this.state.selectedPlace.message}</h3>
             <h3>{this.state.selectedPlace.title}</h3>
-            <p>Symptoms: </p><ul>{this.state.selectedPlace.creatorSymptoms.map(s => <li key={s.id}>{s.common_name}</li>)}</ul>
+            <p>Symptoms: </p><ul>{this.state.selectedPlace.creatorSymptoms.map(s => <li key={s.id}>{s.name}</li>)}</ul>
             <button 
               className="button" 
               onClick={() => this.onMoreInfoClick(this.state.selectedPlace)}

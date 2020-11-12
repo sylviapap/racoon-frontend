@@ -2,7 +2,6 @@ export const symptomsNonEmergency = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Cough",
       "extras": {},
       "id": "s_1",
       "image_source": null,
@@ -17,7 +16,6 @@ export const symptomsNonEmergency = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Fatigue",
       "extras": {},
       "id": "s_15",
       "image_source": null,
@@ -32,7 +30,6 @@ export const symptomsNonEmergency = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Muscle pain",
       "extras": {},
       "id": "s_16",
       "image_source": null,
@@ -47,7 +44,6 @@ export const symptomsNonEmergency = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Chills",
       "extras": {},
       "id": "s_17",
       "image_source": null,
@@ -62,7 +58,6 @@ export const symptomsNonEmergency = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Headache",
       "extras": {},
       "id": "s_18",
       "image_source": null,
@@ -77,7 +72,6 @@ export const symptomsNonEmergency = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Diarrhea",
       "extras": {},
       "id": "s_19",
       "image_source": null,
@@ -92,7 +86,6 @@ export const symptomsNonEmergency = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Nausea",
       "extras": {},
       "id": "s_20",
       "image_source": null,
@@ -107,7 +100,6 @@ export const symptomsNonEmergency = [
   {
       "category": "Signs and symptoms",
       "children": [],
-      "common_name": "Sore throat",
       "extras": {},
       "id": "s_21",
       "image_source": null,
@@ -122,7 +114,6 @@ export const symptomsNonEmergency = [
     {
         "category": "Signs and symptoms",
         "children": [],
-        "common_name": "Impaired taste or smell",
         "extras": {},
         "id": "s_24",
         "image_source": null,
